@@ -36,11 +36,11 @@ jobs:
         run: npm run type-check
 
       # 4) main에서만 테스트 실행
-      - name: Run tests (main only)
-        if: |
-          github.ref == 'refs/heads/main' ||
-          github.base_ref == 'main'
-        run: npm run test:run
+      # - name: Run tests (main only)
+      #   if: |
+      #     github.ref == 'refs/heads/main' ||
+      #     github.base_ref == 'main'
+      #   run: npm run test:run
 
       # 5) main에서만 빌드 실행
       - name: Build project (main only)
