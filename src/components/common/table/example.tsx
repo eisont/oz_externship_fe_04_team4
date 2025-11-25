@@ -58,6 +58,7 @@ export default function ExampleTable() {
         onPageChange={setCurrentPage}
         columns={columns}
         response={exampleResponse}
+        isLoading
       />
     </div>
   )

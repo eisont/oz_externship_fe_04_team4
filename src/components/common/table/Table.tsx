@@ -21,6 +21,7 @@ interface TableProps<T> {
   currentPage: number
   onPageChange: (newPage: number) => void
   pageSize?: number
+  isLoading?: boolean
 }
 /**
  * Table 컴포넌트
@@ -45,6 +46,7 @@ export function Table<T>({
   currentPage = 1,
   onPageChange,
   pageSize = 10,
+  isLoading,
 }: TableProps<T>) {
   const totalPages = Math.ceil(response.count / pageSize)
   return (
@@ -66,7 +68,17 @@ export function Table<T>({
           </thead>
 
           <tbody className="divide-y divide-gray-200">
-            {response.results.length === 0 ? (
+            {isLoading ? (
+              Array.from({ length: 10 }).map((_, rowIndex) => (
+                <tr key={`skeleton-${rowIndex}`}>
+                  {columns.map((_, colIndex) => (
+                    <td key={colIndex} className="px-4 py-3">
+                      <div className="h-4 animate-pulse rounded bg-gray-200" />
+                    </td>
+                  ))}
+                </tr>
+              ))
+            ) : response.results.length === 0 ? (
               <tr>
                 <td
                   colSpan={columns.length}
