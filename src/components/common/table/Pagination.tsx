@@ -1,11 +1,24 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from 'lucide-react'
 
 interface PaginationProps {
   currentPage: number
   totalPages: number
   onPageChange: (newPage: number) => void
 }
-
+/**
+ * Pagination 컴포넌트
+ * @description 페이지네이션 컴포넌트 입니다
+ * @howto Table 컴포넌트와 함께 사용. 직접사용할 경우 해당 파라미터 참조
+ * @param currentPage 현재 페이지
+ * @param totalPages 전체 페이지
+ * @param onPageChange 페이지 변경 핸들러 콜백
+ * @returns 페이지네이션
+ */
 export function Pagination({
   currentPage,
   totalPages,
@@ -52,6 +65,13 @@ export function Pagination({
       <button
         className="flex h-8 w-8 items-center justify-center rounded border border-gray-300 bg-white text-gray-600 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
         disabled={currentPage === 1}
+        onClick={() => onPageChange(1)}
+      >
+        <ChevronsLeft className="h-4 w-4" />
+      </button>
+      <button
+        className="flex h-8 w-8 items-center justify-center rounded border border-gray-300 bg-white text-gray-600 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+        disabled={currentPage === 1}
         onClick={handlePreviousChange}
       >
         <ChevronLeft className="h-4 w-4" />
@@ -90,6 +110,13 @@ export function Pagination({
         onClick={handleNextChange}
       >
         <ChevronRight className="h-4 w-4" />
+      </button>
+      <button
+        className="flex h-8 w-8 items-center justify-center rounded border border-gray-300 bg-white text-gray-600 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+        disabled={currentPage === totalPages}
+        onClick={() => onPageChange(totalPages)}
+      >
+        <ChevronsRight className="h-4 w-4" />
       </button>
     </div>
   )

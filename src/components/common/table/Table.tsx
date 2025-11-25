@@ -20,7 +20,23 @@ interface TableProps<T> {
   onPageChange: (newPage: number) => void
   pageSize?: number
 }
-
+/**
+ * Table 컴포넌트
+ * @description 페이징 기능이 포함된 공통 테이블 컴포넌트 입니다.
+ * @howto
+ * 1. 사용하려는 화면의 컬럼 정의 > (API 참고해서 직접 작성)
+ *   columns={ [ { key: 'id', header: '회원 ID', width: '100px' },...]}
+ * 컬럼 정의 시 render 옵션으로 커스텀 컬럼 추가(example 참조)
+ * 2. 조회 응답 그대로 넘기기(response={count, next, previous, results})
+ * 3. 담당자는 currentPage 상태 관리 필요(useState...)
+ * 4. onPageChange 핸들러 넘기기(setCurrentPage)
+ * @param columns 테이블 컬럼 정의
+ * @param response API 응답 객체(전부)
+ * @param currentPage 현재 페이지
+ * @param onPageChange 페이지 변경 핸들러
+ * @param pageSize 10고정
+ * @returns 페이징테이블
+ */
 export function Table<T>({
   columns,
   response,
