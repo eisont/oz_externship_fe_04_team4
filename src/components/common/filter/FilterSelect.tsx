@@ -17,7 +17,7 @@ export function FilterSelect({
   placeholder = 'Select',
 }: FilterSelectProps) {
   return (
-    <div className="flex flex-1 flex-col gap-1">
+    <div className="flex flex-col gap-1">
       {label && (
         <label className="text-xs font-medium text-gray-700">{label}</label>
       )}

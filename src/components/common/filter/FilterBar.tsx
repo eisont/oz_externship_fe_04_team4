@@ -29,7 +29,7 @@ interface FilterBarProps {
  */
 export function FilterBar({ searchConfig, filters = [] }: FilterBarProps) {
   return (
-    <div className="mb-2 flex gap-2 pr-4 pl-4">
+    <div className="mb-2 grid grid-cols-3 gap-2 px-4">
       <SearchInput
         label={searchConfig.label}
         placeholder={searchConfig.placeholder}
@@ -38,16 +38,29 @@ export function FilterBar({ searchConfig, filters = [] }: FilterBarProps) {
         debounceDelay={searchConfig.debounceDelay}
       />
 
-      {filters.map((filter, index) => (
+      {filters[0] ? (
         <FilterSelect
-          key={index}
-          label={filter.label}
-          options={filter.options}
-          value={filter.value}
-          onChange={filter.onChange}
-          placeholder={filter.placeholder}
+          label={filters[0].label}
+          options={filters[0].options}
+          value={filters[0].value}
+          onChange={filters[0].onChange}
+          placeholder={filters[0].placeholder}
         />
-      ))}
+      ) : (
+        <div />
+      )}
+
+      {filters[1] ? (
+        <FilterSelect
+          label={filters[1].label}
+          options={filters[1].options}
+          value={filters[1].value}
+          onChange={filters[1].onChange}
+          placeholder={filters[1].placeholder}
+        />
+      ) : (
+        <div />
+      )}
     </div>
   )
 }
