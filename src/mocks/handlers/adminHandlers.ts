@@ -22,7 +22,7 @@ import { http, HttpResponse } from 'msw'
 
 const BASE_URL = 'http://api.ozcoding.site'
 const API_V1_PREFIX = '/api/v1'
-const ADMIN_API_PREFIX = `${API_V1_PREFIX}/admin`
+export const ADMIN_API_PREFIX = `${API_V1_PREFIX}/admin`
 
 /**
  * 공통 admin 인증 체크
