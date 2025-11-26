@@ -1,6 +1,6 @@
 import type {
-  AccountLists,
   AccountsDetail,
+  AccountsList,
   ApplicationsDetail,
   ApplicationsList,
   LectureList,
@@ -21,7 +21,7 @@ import type {
 
 // api/v1/admin/accounts
 // 유저 목록 조회
-export const mockAccountLists: AccountLists = {
+export const mockAccountsList: AccountsList = {
   count: 4018,
   next: 'http://api.ozcoding.site/api/v1/admin/accounts?page=2&page_size=20',
   previous: null,
@@ -251,272 +251,287 @@ export const mockAccountLists: AccountLists = {
 
 // api/v1/admin/accounts/{account_id}
 // 유저 정보 상세 조회
-export const mockAccountDetail: AccountsDetail[] = [
-  {
+export const mockAccountDetail: AccountsDetail = {
+  // mockAccountsList의 첫 번째 유저(id: 1)와 연결
+  id: 1,
+  email: 'user1@example.com',
+  nickname: 'hong1',
+  name: '홍길동',
+  gender: 'M',
+  phone_number: '01000000001',
+  birthday: '1995-01-15',
+  status: 'withdrew',
+  role: 'user',
+  profile_img_url: 'https://example.com/images/profiles/user1.png',
+  created_at: '2025-10-30T10:01:57.505250+09:00',
+}
+
+export const mockAccountDetailMap: Record<number, AccountsDetail> = {
+  1: {
     id: 1,
     email: 'user1@example.com',
+    nickname: 'hong1',
     name: '홍길동',
     gender: 'M',
-    nickname: 'hong1',
-    birthday: '1995-01-15',
     phone_number: '01000000001',
-    role: 'user',
+    birthday: '1995-01-15',
     status: 'withdrew',
+    role: 'user',
     profile_img_url: 'https://example.com/images/profiles/user1.png',
     created_at: '2025-10-30T10:01:57.505250+09:00',
   },
-  {
+  2: {
     id: 2,
     email: 'user2@example.com',
+    nickname: 'young2',
     name: '김영희',
     gender: 'F',
-    nickname: 'young2',
-    birthday: '1994-03-22',
     phone_number: '01000000002',
-    role: 'user',
+    birthday: '1994-03-22',
     status: 'withdrew',
+    role: 'user',
     profile_img_url: 'https://example.com/images/profiles/user2.png',
     created_at: '2025-10-30T10:05:10.505250+09:00',
   },
-  {
+  3: {
     id: 3,
     email: 'user3@example.com',
+    nickname: 'chul3',
     name: '이철수',
     gender: 'M',
-    nickname: 'chul3',
-    birthday: '1992-07-09',
     phone_number: '01000000003',
-    role: 'staff',
+    birthday: '1992-07-09',
     status: 'withdrew',
+    role: 'staff',
     profile_img_url: 'https://example.com/images/profiles/user3.png',
     created_at: '2025-10-30T10:10:20.505250+09:00',
   },
-  {
+  4: {
     id: 4,
     email: 'user4@example.com',
+    nickname: 'min4',
     name: '박민수',
     gender: 'M',
-    nickname: 'min4',
-    birthday: '1990-11-30',
     phone_number: '01000000004',
-    role: 'user',
+    birthday: '1990-11-30',
     status: 'withdrew',
+    role: 'user',
     profile_img_url: 'https://example.com/images/profiles/user4.png',
     created_at: '2025-10-30T10:15:30.505250+09:00',
   },
-  {
+  5: {
     id: 5,
     email: 'user5@example.com',
+    nickname: 'suji5',
     name: '최수지',
     gender: 'F',
-    nickname: 'suji5',
-    birthday: '1996-05-02',
     phone_number: '01000000005',
-    role: 'user',
+    birthday: '1996-05-02',
     status: 'withdrew',
+    role: 'user',
     profile_img_url: 'https://example.com/images/profiles/user5.png',
     created_at: '2025-10-30T10:20:40.505250+09:00',
   },
-  {
+  6: {
     id: 6,
     email: 'user6@example.com',
+    nickname: 'woo6',
     name: '장우진',
     gender: 'M',
-    nickname: 'woo6',
-    birthday: '1993-08-18',
     phone_number: '01000000006',
-    role: 'staff',
+    birthday: '1993-08-18',
     status: 'withdrew',
+    role: 'staff',
     profile_img_url: 'https://example.com/images/profiles/user6.png',
     created_at: '2025-10-30T10:25:00.505250+09:00',
   },
-  {
+  7: {
     id: 7,
     email: 'user7@example.com',
+    nickname: 'jimin7',
     name: '한지민',
     gender: 'F',
-    nickname: 'jimin7',
-    birthday: '1997-09-12',
     phone_number: '01000000007',
-    role: 'user',
+    birthday: '1997-09-12',
     status: 'withdrew',
+    role: 'user',
     profile_img_url: 'https://example.com/images/profiles/user7.png',
     created_at: '2025-10-30T10:30:10.505250+09:00',
   },
-  {
+  8: {
     id: 8,
     email: 'user8@example.com',
+    nickname: 'sehun8',
     name: '오세훈',
     gender: 'M',
-    nickname: 'sehun8',
-    birthday: '1989-12-25',
     phone_number: '01000000008',
-    role: 'admin',
+    birthday: '1989-12-25',
     status: 'withdrew',
+    role: 'admin',
     profile_img_url: 'https://example.com/images/profiles/user8.png',
     created_at: '2025-10-30T10:35:20.505250+09:00',
   },
-  {
+  9: {
     id: 9,
     email: 'user9@example.com',
+    nickname: 'nari9',
     name: '유나리',
     gender: 'F',
-    nickname: 'nari9',
-    birthday: '1998-02-11',
     phone_number: '01000000009',
-    role: 'user',
+    birthday: '1998-02-11',
     status: 'withdrew',
+    role: 'user',
     profile_img_url: 'https://example.com/images/profiles/user9.png',
     created_at: '2025-10-30T10:40:30.505250+09:00',
   },
-  {
+  10: {
     id: 10,
     email: 'user10@example.com',
+    nickname: 'doyun10',
     name: '정도윤',
     gender: 'M',
-    nickname: 'doyun10',
-    birthday: '1991-06-07',
     phone_number: '01000000010',
-    role: 'staff',
+    birthday: '1991-06-07',
     status: 'withdrew',
+    role: 'staff',
     profile_img_url: 'https://example.com/images/profiles/user10.png',
     created_at: '2025-10-30T10:45:40.505250+09:00',
   },
-  {
+  11: {
     id: 11,
     email: 'user11@example.com',
+    nickname: 'jiho11',
     name: '서지호',
     gender: 'M',
-    nickname: 'jiho11',
-    birthday: '1999-03-19',
     phone_number: '01000000011',
-    role: 'user',
+    birthday: '1999-03-19',
     status: 'withdrew',
+    role: 'user',
     profile_img_url: 'https://example.com/images/profiles/user11.png',
     created_at: '2025-10-30T10:50:50.505250+09:00',
   },
-  {
+  12: {
     id: 12,
     email: 'user12@example.com',
+    nickname: 'daeun12',
     name: '문다은',
     gender: 'F',
-    nickname: 'daeun12',
-    birthday: '1993-04-28',
     phone_number: '01000000012',
-    role: 'user',
+    birthday: '1993-04-28',
     status: 'withdrew',
+    role: 'user',
     profile_img_url: 'https://example.com/images/profiles/user12.png',
     created_at: '2025-10-30T10:55:00.505250+09:00',
   },
-  {
+  13: {
     id: 13,
     email: 'user13@example.com',
+    nickname: 'hae13',
     name: '신해준',
     gender: 'M',
-    nickname: 'hae13',
-    birthday: '1990-09-01',
     phone_number: '01000000013',
-    role: 'staff',
+    birthday: '1990-09-01',
     status: 'withdrew',
+    role: 'staff',
     profile_img_url: 'https://example.com/images/profiles/user13.png',
     created_at: '2025-10-30T11:00:10.505250+09:00',
   },
-  {
+  14: {
     id: 14,
     email: 'user14@example.com',
+    nickname: 'bora14',
     name: '강보라',
     gender: 'F',
-    nickname: 'bora14',
-    birthday: '1997-01-09',
     phone_number: '01000000014',
-    role: 'user',
+    birthday: '1997-01-09',
     status: 'withdrew',
+    role: 'user',
     profile_img_url: 'https://example.com/images/profiles/user14.png',
     created_at: '2025-10-30T11:05:20.505250+09:00',
   },
-  {
+  15: {
     id: 15,
     email: 'user15@example.com',
+    nickname: 'tae15',
     name: '노태현',
     gender: 'M',
-    nickname: 'tae15',
-    birthday: '1992-02-02',
     phone_number: '01000000015',
-    role: 'user',
+    birthday: '1992-02-02',
     status: 'withdrew',
+    role: 'user',
     profile_img_url: 'https://example.com/images/profiles/user15.png',
     created_at: '2025-10-30T11:10:30.505250+09:00',
   },
-  {
+  16: {
     id: 16,
     email: 'user16@example.com',
+    nickname: 'dasol16',
     name: '임다솔',
     gender: 'F',
-    nickname: 'dasol16',
-    birthday: '1996-06-18',
     phone_number: '01000000016',
-    role: 'admin',
+    birthday: '1996-06-18',
     status: 'withdrew',
+    role: 'admin',
     profile_img_url: 'https://example.com/images/profiles/user16.png',
     created_at: '2025-10-30T11:15:40.505250+09:00',
   },
-  {
+  17: {
     id: 17,
     email: 'user17@example.com',
+    nickname: 'jihoon17',
     name: '배지훈',
     gender: 'M',
-    nickname: 'jihoon17',
-    birthday: '1994-10-21',
     phone_number: '01000000017',
-    role: 'staff',
+    birthday: '1994-10-21',
     status: 'withdrew',
+    role: 'staff',
     profile_img_url: 'https://example.com/images/profiles/user17.png',
     created_at: '2025-10-30T11:20:50.505250+09:00',
   },
-  {
+  18: {
     id: 18,
     email: 'user18@example.com',
+    nickname: 'soyeon18',
     name: '권소연',
     gender: 'F',
-    nickname: 'soyeon18',
-    birthday: '1995-12-03',
     phone_number: '01000000018',
-    role: 'user',
+    birthday: '1995-12-03',
     status: 'withdrew',
+    role: 'user',
     profile_img_url: 'https://example.com/images/profiles/user18.png',
     created_at: '2025-10-30T11:25:00.505250+09:00',
   },
-  {
+  19: {
     id: 19,
     email: 'user19@example.com',
+    nickname: 'gaeun19',
     name: '윤가은',
     gender: 'F',
-    nickname: 'gaeun19',
-    birthday: '1998-11-17',
     phone_number: '01000000019',
-    role: 'user',
+    birthday: '1998-11-17',
     status: 'withdrew',
+    role: 'user',
     profile_img_url: 'https://example.com/images/profiles/user19.png',
     created_at: '2025-10-30T11:30:10.505250+09:00',
   },
-  {
+  20: {
     id: 20,
     email: 'user20@example.com',
-    name: '조하늘',
-    gender: 'M',
     nickname: 'haneul20',
-    birthday: '1991-04-05',
+    name: '조하늘',
+    gender: 'F',
     phone_number: '01000000020',
-    role: 'admin',
+    birthday: '1991-04-05',
     status: 'active',
+    role: 'admin',
     profile_img_url: 'https://example.com/images/profiles/user20.png',
     created_at: '2025-10-30T11:35:20.505250+09:00',
   },
-]
+}
 
 // api/v1/admin/withdrawals
 // 회원 탈퇴 내역 목록 조회
-export const mockWithdrawals: WithdrawalsList = {
+export const mockWithdrawalsList: WithdrawalsList = {
   count: 1973,
   next: 'http://api.ozcoding.site/api/v1/admin/withdrawals?page=2&page_size=20',
   previous: null,
@@ -533,16 +548,16 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3986,
       email: 'user1@example.com',
-      name: '탈퇴유저1',
+      name: '홍길동',
       role: 'user',
-      birthday: '1995-01-10',
+      birthday: '1995-01-15',
       reason: 'LACK_OF_INTEREST',
       withdrawn_at: '2025-11-02T09:15:00+09:00',
     },
     {
       id: 3987,
       email: 'user2@example.com',
-      name: '탈퇴유저2',
+      name: '김영희',
       role: 'user',
       birthday: '1994-03-22',
       reason: 'TOO_DIFFICULT',
@@ -551,8 +566,8 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3988,
       email: 'user3@example.com',
-      name: '탈퇴유저3',
-      role: 'user',
+      name: '이철수',
+      role: 'staff',
       birthday: '1992-07-09',
       reason: 'FOUND_BETTER_SERVICE',
       withdrawn_at: '2025-11-04T14:05:20+09:00',
@@ -560,7 +575,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3989,
       email: 'user4@example.com',
-      name: '탈퇴유저4',
+      name: '박민수',
       role: 'user',
       birthday: '1990-11-30',
       reason: 'PRIVACY_CONCERNS',
@@ -569,7 +584,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3990,
       email: 'user5@example.com',
-      name: '탈퇴유저5',
+      name: '최수지',
       role: 'user',
       birthday: '1996-05-02',
       reason: 'POOR_SERVICE_QUALITY',
@@ -578,7 +593,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3991,
       email: 'user6@example.com',
-      name: '탈퇴유저6',
+      name: '장우진',
       role: 'staff',
       birthday: '1993-08-18',
       reason: 'TECHNICAL_ISSUES',
@@ -587,7 +602,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3992,
       email: 'user7@example.com',
-      name: '탈퇴유저7',
+      name: '한지민',
       role: 'user',
       birthday: '1997-09-12',
       reason: 'LACK_OF_CONTENT',
@@ -596,7 +611,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3993,
       email: 'user8@example.com',
-      name: '탈퇴유저8',
+      name: '오세훈',
       role: 'admin',
       birthday: '1989-12-25',
       reason: 'OTHER',
@@ -605,7 +620,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3994,
       email: 'user9@example.com',
-      name: '탈퇴유저9',
+      name: '유나리',
       role: 'user',
       birthday: '1998-02-11',
       reason: 'NO_LONGER_NEEDED',
@@ -614,7 +629,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3995,
       email: 'user10@example.com',
-      name: '탈퇴유저10',
+      name: '정도윤',
       role: 'staff',
       birthday: '1991-06-07',
       reason: 'LACK_OF_INTEREST',
@@ -623,7 +638,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3996,
       email: 'user11@example.com',
-      name: '탈퇴유저11',
+      name: '서지호',
       role: 'user',
       birthday: '1999-03-19',
       reason: 'TOO_DIFFICULT',
@@ -632,7 +647,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3997,
       email: 'user12@example.com',
-      name: '탈퇴유저12',
+      name: '문다은',
       role: 'user',
       birthday: '1993-04-28',
       reason: 'FOUND_BETTER_SERVICE',
@@ -641,7 +656,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3998,
       email: 'user13@example.com',
-      name: '탈퇴유저13',
+      name: '신해준',
       role: 'staff',
       birthday: '1990-09-01',
       reason: 'PRIVACY_CONCERNS',
@@ -650,7 +665,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 3999,
       email: 'user14@example.com',
-      name: '탈퇴유저14',
+      name: '강보라',
       role: 'user',
       birthday: '1997-01-09',
       reason: 'POOR_SERVICE_QUALITY',
@@ -659,7 +674,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 4000,
       email: 'user15@example.com',
-      name: '탈퇴유저15',
+      name: '노태현',
       role: 'user',
       birthday: '1992-02-02',
       reason: 'TECHNICAL_ISSUES',
@@ -668,7 +683,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 4001,
       email: 'user16@example.com',
-      name: '탈퇴유저16',
+      name: '임다솔',
       role: 'admin',
       birthday: '1996-06-18',
       reason: 'LACK_OF_CONTENT',
@@ -677,7 +692,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 4002,
       email: 'user17@example.com',
-      name: '탈퇴유저17',
+      name: '배지훈',
       role: 'staff',
       birthday: '1994-10-21',
       reason: 'OTHER',
@@ -686,7 +701,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 4003,
       email: 'user18@example.com',
-      name: '탈퇴유저18',
+      name: '권소연',
       role: 'user',
       birthday: '1995-12-03',
       reason: 'NO_LONGER_NEEDED',
@@ -695,7 +710,7 @@ export const mockWithdrawals: WithdrawalsList = {
     {
       id: 4004,
       email: 'user19@example.com',
-      name: '탈퇴유저19',
+      name: '윤가은',
       role: 'user',
       birthday: '1998-11-17',
       reason: 'LACK_OF_CONTENT',
@@ -706,28 +721,58 @@ export const mockWithdrawals: WithdrawalsList = {
 
 // api/v1/admin/withdrawals/{withdrawal_id}
 // 회원 탈퇴 내역 상세 조회
-export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
-  {
+export const mockWithdrawalsDetail: WithdrawalsDetail = {
+  // mockWithdrawalsList의 id 3986(홍길동 탈퇴 이력)과 연결
+  id: 3986,
+  user: {
+    // mockAccountsList / mockAccountDetail의 1번 유저 정보와 연결
+    id: 1,
+    email: 'user1@example.com',
+    nickname: 'hong1',
+    name: '홍길동',
+    gender: 'M',
+    role: 'user',
+    status: 'withdrew',
+    profile_img_url: 'https://example.com/images/profiles/user1.png',
+    created_at: '2025-10-30T10:01:57.505250+09:00',
+  },
+  // mockWithdrawalsList의 reason과 동일하게 맞춤
+  reason: 'LACK_OF_INTEREST',
+  // 상세 화면에서만 볼 수 있는 자유 입력 사유
+  reason_detail:
+    '최근에는 학습 시간이 부족해 서비스 이용 빈도가 줄어 탈퇴를 신청했습니다.',
+  // 서비스 정책상 탈퇴 처리 예정일(예: 신청일 기준 30일 후)
+  due_date: '2025-12-02',
+  // mockWithdrawalsList의 withdrawn_at과 동일하게 맞춤
+  withdrawn_at: '2025-11-02T09:15:00+09:00',
+}
+
+export const mockWithdrawalsDetailMap: Record<number, WithdrawalsDetail> = {
+  3985: {
+    // mockWithdrawalsList의 id 3985(테스트58202506 탈퇴 이력)과 연결
     id: 3985,
     user: {
-      id: 999,
+      // 실제 계정 목록에는 없지만 과거에 존재했던 계정이라는 설정
+      id: 9999,
       email: 'user58202506@test.com',
       nickname: 'test58202506',
       name: '테스트58202506',
       gender: 'M',
       role: 'user',
       status: 'withdrew',
-      profile_img_url: 'https://example.com/images/profiles/user58202506.png',
-      created_at: '2023-01-15T09:00:00+09:00',
+      profile_img_url: 'https://example.com/images/profiles/test58202506.png',
+      created_at: '2025-10-01T00:00:00+09:00',
     },
     reason: 'NO_LONGER_NEEDED',
-    reason_detail: '서비스를 더 이상 사용할 필요가 없어서 탈퇴했습니다.',
+    reason_detail: '서비스를 더 이상 사용하지 않아 탈퇴를 신청했습니다.',
     due_date: '2025-12-01',
     withdrawn_at: '2025-11-01T01:01:30+09:00',
   },
-  {
+  3986: {
+    // mockWithdrawalsList의 id 3986(홍길동 탈퇴 이력)과 연결
     id: 3986,
     user: {
+      // mockAccountsList / mockAccountDetail의 1번 유저 정보와 연결
       id: 1,
       email: 'user1@example.com',
       nickname: 'hong1',
@@ -739,11 +784,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T10:01:57.505250+09:00',
     },
     reason: 'LACK_OF_INTEREST',
-    reason_detail: '서비스에 대한 흥미가 줄어 더 이상 이용하지 않습니다.',
+    reason_detail:
+      '최근에는 학습 시간이 부족해 서비스 이용 빈도가 줄어 탈퇴를 신청했습니다.',
     due_date: '2025-12-02',
     withdrawn_at: '2025-11-02T09:15:00+09:00',
   },
-  {
+  3987: {
     id: 3987,
     user: {
       id: 2,
@@ -757,11 +803,11 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T10:05:10.505250+09:00',
     },
     reason: 'TOO_DIFFICULT',
-    reason_detail: '서비스 사용 방법이 복잡해서 사용을 중단했습니다.',
+    reason_detail: '강의 난이도가 생각보다 높아 따라가기 어려워 탈퇴했습니다.',
     due_date: '2025-12-03',
     withdrawn_at: '2025-11-03T11:30:00+09:00',
   },
-  {
+  3988: {
     id: 3988,
     user: {
       id: 3,
@@ -775,11 +821,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T10:10:20.505250+09:00',
     },
     reason: 'FOUND_BETTER_SERVICE',
-    reason_detail: '더 적합한 다른 서비스를 이용하게 되어 탈퇴했습니다.',
+    reason_detail:
+      '비슷한 기능을 제공하지만 더 적합한 다른 서비스를 이용하게 되어 탈퇴했습니다.',
     due_date: '2025-12-04',
     withdrawn_at: '2025-11-04T14:05:20+09:00',
   },
-  {
+  3989: {
     id: 3989,
     user: {
       id: 4,
@@ -793,11 +840,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T10:15:30.505250+09:00',
     },
     reason: 'PRIVACY_CONCERNS',
-    reason_detail: '개인정보 보호에 대한 우려로 서비스를 탈퇴했습니다.',
+    reason_detail:
+      '개인정보 수집 및 보관 정책이 부담스러워 서비스를 더 사용하지 않기로 했습니다.',
     due_date: '2025-12-05',
     withdrawn_at: '2025-11-05T16:42:10+09:00',
   },
-  {
+  3990: {
     id: 3990,
     user: {
       id: 5,
@@ -811,11 +859,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T10:20:40.505250+09:00',
     },
     reason: 'POOR_SERVICE_QUALITY',
-    reason_detail: '서비스 품질에 대한 불만으로 탈퇴를 결정했습니다.',
+    reason_detail:
+      '서비스 품질이 기대에 미치지 못해 더 이상 사용하지 않기로 결정했습니다.',
     due_date: '2025-12-06',
     withdrawn_at: '2025-11-06T10:20:00+09:00',
   },
-  {
+  3991: {
     id: 3991,
     user: {
       id: 6,
@@ -829,11 +878,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T10:25:00.505250+09:00',
     },
     reason: 'TECHNICAL_ISSUES',
-    reason_detail: '자주 발생하는 오류와 기술적 문제 때문에 탈퇴했습니다.',
+    reason_detail:
+      '자주 발생하는 오류와 기술적인 문제로 인해 서비스 이용이 어려워 탈퇴했습니다.',
     due_date: '2025-12-07',
     withdrawn_at: '2025-11-07T13:10:45+09:00',
   },
-  {
+  3992: {
     id: 3992,
     user: {
       id: 7,
@@ -848,11 +898,11 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
     },
     reason: 'LACK_OF_CONTENT',
     reason_detail:
-      '원하는 콘텐츠가 부족하여 서비스를 더 이상 이용하지 않습니다.',
+      '원하는 강의와 콘텐츠가 부족해 더 이상 사용할 이유가 없다고 판단했습니다.',
     due_date: '2025-12-08',
     withdrawn_at: '2025-11-08T18:25:30+09:00',
   },
-  {
+  3993: {
     id: 3993,
     user: {
       id: 8,
@@ -866,11 +916,11 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T10:35:20.505250+09:00',
     },
     reason: 'OTHER',
-    reason_detail: '기타 개인적인 사유로 인해 탈퇴했습니다.',
+    reason_detail: '개인 사정으로 인해 학습 활동을 중단하게 되어 탈퇴했습니다.',
     due_date: '2025-12-09',
     withdrawn_at: '2025-11-09T08:05:10+09:00',
   },
-  {
+  3994: {
     id: 3994,
     user: {
       id: 9,
@@ -884,11 +934,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T10:40:30.505250+09:00',
     },
     reason: 'NO_LONGER_NEEDED',
-    reason_detail: '사용 빈도가 낮아져 더 이상 필요하지 않아 탈퇴했습니다.',
+    reason_detail:
+      '학습 목표를 달성해 더 이상 서비스가 필요하지 않다고 판단했습니다.',
     due_date: '2025-12-10',
     withdrawn_at: '2025-11-10T12:40:00+09:00',
   },
-  {
+  3995: {
     id: 3995,
     user: {
       id: 10,
@@ -902,11 +953,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T10:45:40.505250+09:00',
     },
     reason: 'LACK_OF_INTEREST',
-    reason_detail: '서비스에 대한 관심이 떨어져 탈퇴했습니다.',
+    reason_detail:
+      '최근에는 다른 일에 집중하게 되면서 서비스에 대한 관심이 줄어들었습니다.',
     due_date: '2025-12-11',
     withdrawn_at: '2025-11-11T15:55:20+09:00',
   },
-  {
+  3996: {
     id: 3996,
     user: {
       id: 11,
@@ -920,11 +972,11 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T10:50:50.505250+09:00',
     },
     reason: 'TOO_DIFFICULT',
-    reason_detail: '기능이 복잡하고 이해하기 어려워 더 이상 이용하지 않습니다.',
+    reason_detail: '난이도가 어려워 학습을 지속하기 부담스러워 탈퇴했습니다.',
     due_date: '2025-12-12',
     withdrawn_at: '2025-11-12T09:10:30+09:00',
   },
-  {
+  3997: {
     id: 3997,
     user: {
       id: 12,
@@ -938,11 +990,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T10:55:00.505250+09:00',
     },
     reason: 'FOUND_BETTER_SERVICE',
-    reason_detail: '기능이 더 좋은 다른 서비스를 이용하게 되었습니다.',
+    reason_detail:
+      '비슷한 서비스를 제공하는 다른 플랫폼을 주 사용처로 결정해 탈퇴했습니다.',
     due_date: '2025-12-13',
     withdrawn_at: '2025-11-13T11:25:45+09:00',
   },
-  {
+  3998: {
     id: 3998,
     user: {
       id: 13,
@@ -956,11 +1009,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T11:00:10.505250+09:00',
     },
     reason: 'PRIVACY_CONCERNS',
-    reason_detail: '개인정보 처리 방식에 대한 우려로 탈퇴를 요청했습니다.',
+    reason_detail:
+      '개인정보 활용 범위가 부담스러워 더 이상 서비스를 사용하지 않기로 했습니다.',
     due_date: '2025-12-14',
     withdrawn_at: '2025-11-14T17:35:00+09:00',
   },
-  {
+  3999: {
     id: 3999,
     user: {
       id: 14,
@@ -974,11 +1028,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T11:05:20.505250+09:00',
     },
     reason: 'POOR_SERVICE_QUALITY',
-    reason_detail: '전반적인 서비스 품질에 만족하지 못해 탈퇴했습니다.',
+    reason_detail:
+      '강의 구성이나 서비스 응답 속도 등 전반적인 품질이 만족스럽지 않았습니다.',
     due_date: '2025-12-15',
     withdrawn_at: '2025-11-15T20:15:10+09:00',
   },
-  {
+  4000: {
     id: 4000,
     user: {
       id: 15,
@@ -992,11 +1047,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T11:10:30.505250+09:00',
     },
     reason: 'TECHNICAL_ISSUES',
-    reason_detail: '버그와 접속 오류 등 기술적 문제가 잦아 탈퇴했습니다.',
+    reason_detail:
+      '로그인 오류 및 재생 문제 등 기술적인 이슈가 잦아 탈퇴를 결정했습니다.',
     due_date: '2025-12-16',
     withdrawn_at: '2025-11-16T07:50:30+09:00',
   },
-  {
+  4001: {
     id: 4001,
     user: {
       id: 16,
@@ -1010,11 +1066,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T11:15:40.505250+09:00',
     },
     reason: 'LACK_OF_CONTENT',
-    reason_detail: '필요한 콘텐츠와 기능이 부족하다고 느껴 탈퇴했습니다.',
+    reason_detail:
+      '필요로 하는 고급 과정이나 특화된 콘텐츠가 부족해 다른 서비스를 찾게 되었습니다.',
     due_date: '2025-12-17',
     withdrawn_at: '2025-11-17T13:05:55+09:00',
   },
-  {
+  4002: {
     id: 4002,
     user: {
       id: 17,
@@ -1028,12 +1085,11 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T11:20:50.505250+09:00',
     },
     reason: 'OTHER',
-    reason_detail:
-      '개인 사정으로 더 이상 서비스를 이용하기 어려워 탈퇴했습니다.',
+    reason_detail: '개인 일정 변화로 장기간 학습이 어려워 탈퇴를 신청했습니다.',
     due_date: '2025-12-18',
     withdrawn_at: '2025-11-18T10:40:00+09:00',
   },
-  {
+  4003: {
     id: 4003,
     user: {
       id: 18,
@@ -1047,11 +1103,12 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
       created_at: '2025-10-30T11:25:00.505250+09:00',
     },
     reason: 'NO_LONGER_NEEDED',
-    reason_detail: '서비스 사용 목적이 사라져 더 이상 이용하지 않습니다.',
+    reason_detail:
+      '다른 학습 경로를 찾게 되어 이 서비스는 더 이상 사용하지 않기로 했습니다.',
     due_date: '2025-12-19',
     withdrawn_at: '2025-11-19T16:00:15+09:00',
   },
-  {
+  4004: {
     id: 4004,
     user: {
       id: 19,
@@ -1066,11 +1123,11 @@ export const mockWithdrawalsDetail: WithdrawalsDetail[] = [
     },
     reason: 'LACK_OF_CONTENT',
     reason_detail:
-      '원하는 정보를 찾기 어려워 다른 서비스를 이용하기로 했습니다.',
+      '관심 있는 분야의 심화 콘텐츠가 부족해 다른 플랫폼을 이용하기로 했습니다.',
     due_date: '2025-12-20',
     withdrawn_at: '2025-11-20T19:20:40+09:00',
   },
-]
+}
 
 // api/v1/admin/analytics/signup/trends
 // 회원가입 추세 분석
@@ -1125,12 +1182,59 @@ export const mockWithdrawalReasonsPercentage: WithdrawalReasonsPercentage = {
   to_date: '2025-11-30',
   total: 5000,
   items: [
-    { reason: 'OTHER', reason_label: '기타', count: 234, percentage: 12 },
+    {
+      reason: 'NO_LONGER_NEEDED',
+      reason_label: '더 이상 필요하지 않음',
+      count: 900,
+      percentage: 18,
+    },
+    {
+      reason: 'LACK_OF_INTEREST',
+      reason_label: '관심 감소 / 흥미 저하',
+      count: 850,
+      percentage: 17,
+    },
+    {
+      reason: 'TOO_DIFFICULT',
+      reason_label: '난이도가 너무 높음',
+      count: 700,
+      percentage: 14,
+    },
+    {
+      reason: 'FOUND_BETTER_SERVICE',
+      reason_label: '더 나은/맞는 다른 서비스 이용',
+      count: 650,
+      percentage: 13,
+    },
+    {
+      reason: 'PRIVACY_CONCERNS',
+      reason_label: '개인정보 / 보안 관련 우려',
+      count: 550,
+      percentage: 11,
+    },
+    {
+      reason: 'POOR_SERVICE_QUALITY',
+      reason_label: '서비스 품질 불만족',
+      count: 500,
+      percentage: 10,
+    },
+    {
+      reason: 'TECHNICAL_ISSUES',
+      reason_label: '오류·버그 등 기술적 문제',
+      count: 400,
+      percentage: 8,
+    },
     {
       reason: 'LACK_OF_CONTENT',
-      reason_label: '원하는 콘텐츠나 기능의 부족',
-      count: 344,
-      percentage: 17,
+      reason_label: '원하는 콘텐츠 / 기능 부족',
+      count: 300,
+      percentage: 6,
+    },
+    {
+      reason: 'OTHER',
+      reason_label: '기타',
+      count: 150,
+      percentage: 3,
     },
   ],
 }
@@ -1164,7 +1268,7 @@ export const mockWithdrawalReasonsStatsMonthly: WithdrawalReasonsStatsMonthly =
 
 // api/v1/admin/lectures
 // 어드민 페이지 강의 목록 조회 API
-export const mockLectureList: LectureList = {
+export const mockLecturesList: LectureList = {
   count: 4018,
   next: 'http://api.ozcoding.site/api/v1/admin/lectures?page=2&page_size=20',
   previous: null,
@@ -1389,35 +1493,409 @@ export const mockLectureList: LectureList = {
 }
 
 // api/v1/admin/lectures/{lecture_id}
-// 강의 상세 조회
-export const mockLecturesDetail: LecturesDetail = {
-  // mockLectureList의 id 43012 강의와 연결
-  id: 43012,
-  title: '3시간 완성 n8n',
-  instructor: 'SOLVIT team',
-  total_class_time: 180, // 3시간 완성 컨셉에 맞게 180분으로 설정
-  original_price: 100000,
-  discounted_price: 80000,
-  difficulty: 'EASY',
-  thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/image.png',
-  average_rating: 4.3,
-  platform: 'INFLEARN',
-  url_link: 'https://www.inflearn.com/course/3시간-완성-n8n',
-  // 카테고리는 어드민에서 필터링/통계에 쓰일 수 있도록 태그성으로 구성
-  categories: [
-    {
-      id: 5,
-      name: '노코드 / 자동화',
-    },
-    {
-      id: 6,
-      name: '워크플로우 툴',
-    },
-  ],
-  // mockLectureList의 생성/수정일과 동일하게 맞춤
-  created_at: '2025-11-20T00:00:05.875842+09:00',
-  updated_at: '2025-11-20T00:00:05.875842+09:00',
+// 강의 상세 조회 - 전체 강의 상세 맵
+export const mockLecturesDetailMap: Record<number, LecturesDetail> = {
+  43001: {
+    id: 43001,
+    title: '파이썬 입문',
+    instructor: '김한영',
+    total_class_time: 180,
+    original_price: 99000,
+    discounted_price: 69000,
+    difficulty: 'EASY',
+    thumbnail_img_url:
+      'https://example.com/images/lecture/thumbnails/python1.png',
+    average_rating: 4.7,
+    platform: 'INFLEARN',
+    url_link: 'https://www.inflearn.com/course/python-intro',
+    categories: [
+      { id: 1, name: 'Python' },
+      { id: 2, name: '입문' },
+    ],
+    created_at: '2025-11-01T10:00:00+09:00',
+    updated_at: '2025-11-01T10:00:00+09:00',
+  },
+  43002: {
+    id: 43002,
+    title: '자바스크립트 마스터',
+    instructor: '이철수',
+    total_class_time: 240,
+    original_price: 120000,
+    discounted_price: 89000,
+    difficulty: 'NORMAL',
+    thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/js.png',
+    average_rating: 4.5,
+    platform: 'UDEMY',
+    url_link: 'https://www.udemy.com/course/js-master',
+    categories: [
+      { id: 3, name: 'JavaScript' },
+      { id: 4, name: '웹 프론트엔드' },
+    ],
+    created_at: '2025-11-02T11:00:00+09:00',
+    updated_at: '2025-11-02T11:00:00+09:00',
+  },
+  43003: {
+    id: 43003,
+    title: 'React 완전정복',
+    instructor: '홍길동',
+    total_class_time: 300,
+    original_price: 130000,
+    discounted_price: 99000,
+    difficulty: 'NORMAL',
+    thumbnail_img_url:
+      'https://example.com/images/lecture/thumbnails/react.png',
+    average_rating: 4.8,
+    platform: 'INFLEARN',
+    url_link: 'https://www.inflearn.com/course/react-master',
+    categories: [
+      { id: 5, name: 'React' },
+      { id: 4, name: '웹 프론트엔드' },
+    ],
+    created_at: '2025-11-03T12:00:00+09:00',
+    updated_at: '2025-11-03T12:00:00+09:00',
+  },
+  43004: {
+    id: 43004,
+    title: 'Vue.js로 웹 개발',
+    instructor: '박민수',
+    total_class_time: 240,
+    original_price: 110000,
+    discounted_price: 85000,
+    difficulty: 'NORMAL',
+    thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/vue.png',
+    average_rating: 4.3,
+    platform: 'UDEMY',
+    url_link: 'https://www.udemy.com/course/vue-web',
+    categories: [
+      { id: 6, name: 'Vue.js' },
+      { id: 4, name: '웹 프론트엔드' },
+    ],
+    created_at: '2025-11-04T13:00:00+09:00',
+    updated_at: '2025-11-04T13:00:00+09:00',
+  },
+  43005: {
+    id: 43005,
+    title: 'Node.js 백엔드',
+    instructor: '최수지',
+    total_class_time: 270,
+    original_price: 115000,
+    discounted_price: 89000,
+    difficulty: 'NORMAL',
+    thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/node.png',
+    average_rating: 4.4,
+    platform: 'INFLEARN',
+    url_link: 'https://www.inflearn.com/course/node-backend',
+    categories: [
+      { id: 7, name: 'Node.js' },
+      { id: 8, name: '백엔드' },
+    ],
+    created_at: '2025-11-05T14:00:00+09:00',
+    updated_at: '2025-11-05T14:00:00+09:00',
+  },
+  43006: {
+    id: 43006,
+    title: 'AI 기초',
+    instructor: '장우진',
+    total_class_time: 180,
+    original_price: 99000,
+    discounted_price: 79000,
+    difficulty: 'EASY',
+    thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/ai.png',
+    average_rating: 4.2,
+    platform: 'INFLEARN',
+    url_link: 'https://www.inflearn.com/course/ai-basic',
+    categories: [
+      { id: 9, name: 'AI 기초' },
+      { id: 10, name: '머신러닝/딥러닝 입문' },
+    ],
+    created_at: '2025-11-06T15:00:00+09:00',
+    updated_at: '2025-11-06T15:00:00+09:00',
+  },
+  43007: {
+    id: 43007,
+    title: '머신러닝 실전',
+    instructor: '한지민',
+    total_class_time: 320,
+    original_price: 140000,
+    discounted_price: 109000,
+    difficulty: 'HARD',
+    thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/ml.png',
+    average_rating: 4.6,
+    platform: 'UDEMY',
+    url_link: 'https://www.udemy.com/course/ml-practice',
+    categories: [
+      { id: 11, name: '머신러닝' },
+      { id: 12, name: '실전 프로젝트' },
+    ],
+    created_at: '2025-11-07T16:00:00+09:00',
+    updated_at: '2025-11-07T16:00:00+09:00',
+  },
+  43008: {
+    id: 43008,
+    title: '딥러닝 완벽 가이드',
+    instructor: '오세훈',
+    total_class_time: 360,
+    original_price: 150000,
+    discounted_price: 119000,
+    difficulty: 'HARD',
+    thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/dl.png',
+    average_rating: 4.7,
+    platform: 'INFLEARN',
+    url_link: 'https://www.inflearn.com/course/dl-guide',
+    categories: [
+      { id: 13, name: '딥러닝' },
+      { id: 10, name: '머신러닝/딥러닝 입문' },
+    ],
+    created_at: '2025-11-08T17:00:00+09:00',
+    updated_at: '2025-11-08T17:00:00+09:00',
+  },
+  43009: {
+    id: 43009,
+    title: 'SQL과 데이터베이스',
+    instructor: '유나리',
+    total_class_time: 210,
+    original_price: 90000,
+    discounted_price: 69000,
+    difficulty: 'NORMAL',
+    thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/sql.png',
+    average_rating: 4.4,
+    platform: 'UDEMY',
+    url_link: 'https://www.udemy.com/course/sql-db',
+    categories: [
+      { id: 14, name: 'SQL' },
+      { id: 15, name: '데이터베이스' },
+    ],
+    created_at: '2025-11-09T18:00:00+09:00',
+    updated_at: '2025-11-09T18:00:00+09:00',
+  },
+  43010: {
+    id: 43010,
+    title: 'AWS 클라우드 입문',
+    instructor: '정도윤',
+    total_class_time: 200,
+    original_price: 110000,
+    discounted_price: 85000,
+    difficulty: 'EASY',
+    thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/aws.png',
+    average_rating: 4.3,
+    platform: 'INFLEARN',
+    url_link: 'https://www.inflearn.com/course/aws-intro',
+    categories: [
+      { id: 16, name: '클라우드' },
+      { id: 17, name: 'AWS' },
+    ],
+    created_at: '2025-11-10T19:00:00+09:00',
+    updated_at: '2025-11-10T19:00:00+09:00',
+  },
+  43011: {
+    id: 43011,
+    title: 'Docker와 DevOps',
+    instructor: '서지호',
+    total_class_time: 220,
+    original_price: 120000,
+    discounted_price: 95000,
+    difficulty: 'NORMAL',
+    thumbnail_img_url:
+      'https://example.com/images/lecture/thumbnails/docker.png',
+    average_rating: 4.5,
+    platform: 'UDEMY',
+    url_link: 'https://www.udemy.com/course/docker-devops',
+    categories: [
+      { id: 18, name: 'DevOps' },
+      { id: 19, name: 'Docker/Kubernetes' },
+    ],
+    created_at: '2025-11-11T20:00:00+09:00',
+    updated_at: '2025-11-11T20:00:00+09:00',
+  },
+  43012: {
+    // mockLecturesList의 id 43012 강의와 연결
+    id: 43012,
+    title: '3시간 완성 n8n',
+    instructor: 'SOLVIT team',
+    total_class_time: 180, // 3시간 완성 컨셉에 맞게 180분으로 설정
+    original_price: 100000,
+    discounted_price: 80000,
+    difficulty: 'EASY',
+    thumbnail_img_url:
+      'https://example.com/images/lecture/thumbnails/image.png',
+    average_rating: 4.3,
+    platform: 'INFLEARN',
+    url_link: 'https://www.inflearn.com/course/3시간-완성-n8n',
+    // 카테고리는 어드민에서 필터링/통계에 쓰일 수 있도록 태그성으로 구성
+    categories: [
+      {
+        id: 20,
+        name: '노코드 / 자동화',
+      },
+      {
+        id: 21,
+        name: '워크플로우 툴',
+      },
+    ],
+    // mockLecturesList의 생성/수정일과 동일하게 맞춤
+    created_at: '2025-11-20T00:00:05.875842+09:00',
+    updated_at: '2025-11-20T00:00:05.875842+09:00',
+  },
+  43013: {
+    id: 43013,
+    title: 'Git & GitHub 마스터',
+    instructor: '문다은',
+    total_class_time: 180,
+    original_price: 80000,
+    discounted_price: 59000,
+    difficulty: 'EASY',
+    thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/git.png',
+    average_rating: 4.6,
+    platform: 'INFLEARN',
+    url_link: 'https://www.inflearn.com/course/git-github',
+    categories: [
+      { id: 22, name: 'Git' },
+      { id: 23, name: '협업 도구' },
+    ],
+    created_at: '2025-11-13T09:00:00+09:00',
+    updated_at: '2025-11-13T09:00:00+09:00',
+  },
+  43014: {
+    id: 43014,
+    title: 'HTML/CSS 웹 퍼블리싱',
+    instructor: '신해준',
+    total_class_time: 200,
+    original_price: 70000,
+    discounted_price: 55000,
+    difficulty: 'EASY',
+    thumbnail_img_url:
+      'https://example.com/images/lecture/thumbnails/htmlcss.png',
+    average_rating: 4.4,
+    platform: 'UDEMY',
+    url_link: 'https://www.udemy.com/course/html-css',
+    categories: [
+      { id: 24, name: 'HTML/CSS' },
+      { id: 4, name: '웹 프론트엔드' },
+    ],
+    created_at: '2025-11-14T10:00:00+09:00',
+    updated_at: '2025-11-14T10:00:00+09:00',
+  },
+  43015: {
+    id: 43015,
+    title: '프론트엔드 실무',
+    instructor: '강보라',
+    total_class_time: 260,
+    original_price: 130000,
+    discounted_price: 99000,
+    difficulty: 'NORMAL',
+    thumbnail_img_url:
+      'https://example.com/images/lecture/thumbnails/frontend.png',
+    average_rating: 4.7,
+    platform: 'INFLEARN',
+    url_link: 'https://www.inflearn.com/course/frontend-practice',
+    categories: [
+      { id: 25, name: '프론트엔드 실무' },
+      { id: 4, name: '웹 프론트엔드' },
+    ],
+    created_at: '2025-11-15T11:00:00+09:00',
+    updated_at: '2025-11-15T11:00:00+09:00',
+  },
+  43016: {
+    id: 43016,
+    title: '백엔드 실무',
+    instructor: '노태현',
+    total_class_time: 280,
+    original_price: 130000,
+    discounted_price: 99000,
+    difficulty: 'NORMAL',
+    thumbnail_img_url:
+      'https://example.com/images/lecture/thumbnails/backend.png',
+    average_rating: 4.5,
+    platform: 'UDEMY',
+    url_link: 'https://www.udemy.com/course/backend-practice',
+    categories: [
+      { id: 26, name: '백엔드 실무' },
+      { id: 8, name: '백엔드' },
+    ],
+    created_at: '2025-11-16T12:00:00+09:00',
+    updated_at: '2025-11-16T12:00:00+09:00',
+  },
+  43017: {
+    id: 43017,
+    title: '데이터 분석 입문',
+    instructor: '임다솔',
+    total_class_time: 210,
+    original_price: 90000,
+    discounted_price: 69000,
+    difficulty: 'EASY',
+    thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/data.png',
+    average_rating: 4.3,
+    platform: 'INFLEARN',
+    url_link: 'https://www.inflearn.com/course/data-analysis',
+    categories: [
+      { id: 27, name: '데이터 분석' },
+      { id: 28, name: '입문' },
+    ],
+    created_at: '2025-11-17T13:00:00+09:00',
+    updated_at: '2025-11-17T13:00:00+09:00',
+  },
+  43018: {
+    id: 43018,
+    title: '통계로 보는 세상',
+    instructor: '배지훈',
+    total_class_time: 200,
+    original_price: 85000,
+    discounted_price: 65000,
+    difficulty: 'NORMAL',
+    thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/stat.png',
+    average_rating: 4.1,
+    platform: 'UDEMY',
+    url_link: 'https://www.udemy.com/course/statistics',
+    categories: [
+      { id: 29, name: '통계' },
+      { id: 27, name: '데이터 분석' },
+    ],
+    created_at: '2025-11-18T14:00:00+09:00',
+    updated_at: '2025-11-18T14:00:00+09:00',
+  },
+  43019: {
+    id: 43019,
+    title: '파이썬 자동화',
+    instructor: '권소연',
+    total_class_time: 190,
+    original_price: 95000,
+    discounted_price: 72000,
+    difficulty: 'NORMAL',
+    thumbnail_img_url:
+      'https://example.com/images/lecture/thumbnails/automation.png',
+    average_rating: 4.6,
+    platform: 'INFLEARN',
+    url_link: 'https://www.inflearn.com/course/python-automation',
+    categories: [
+      { id: 1, name: 'Python' },
+      { id: 30, name: '업무 자동화' },
+    ],
+    created_at: '2025-11-19T15:00:00+09:00',
+    updated_at: '2025-11-19T15:00:00+09:00',
+  },
+  43020: {
+    id: 43020,
+    title: 'UI/UX 디자인',
+    instructor: '윤가은',
+    total_class_time: 180,
+    original_price: 100000,
+    discounted_price: 79000,
+    difficulty: 'EASY',
+    thumbnail_img_url: 'https://example.com/images/lecture/thumbnails/uiux.png',
+    average_rating: 4.5,
+    platform: 'UDEMY',
+    url_link: 'https://www.udemy.com/course/uiux-design',
+    categories: [
+      { id: 31, name: 'UI/UX' },
+      { id: 32, name: '디자인' },
+    ],
+    created_at: '2025-11-20T16:00:00+09:00',
+    updated_at: '2025-11-20T16:00:00+09:00',
+  },
 }
+
+// 기존 핸들러 호환용 단일 상세 데이터 (id 43012)
+export const mockLecturesDetail: LecturesDetail = mockLecturesDetailMap[43012]
 
 // api/v1/admin/study-groups
 // 스터디 그룹 목록 조회
@@ -1750,8 +2228,8 @@ export const mockStudyGroupDetail: StudyGroupDetail = {
 // api/v1/admin/study-reviews
 // 스터디 리뷰 목록 조회
 export const mockStudyReviewList: StudyReviewList = {
-  count: 1,
-  next: null,
+  count: 100,
+  next: 'http://api.ozcoding.site/api/v1/admin/study-reviews?page=2&page_size=20',
   previous: null,
   results: [
     {
@@ -1766,9 +2244,314 @@ export const mockStudyReviewList: StudyReviewList = {
         email: 'user1@example.com',
       },
       star_rating: 5,
-      content: '재밌게 놀다 갑니다.',
-      created_at: '2025-11-20T00:00:05.875842+09:00',
-      updated_at: '2025-11-20T00:00:05.875845+09:00',
+      content: '파이썬 기초를 탄탄하게 다질 수 있었어요.',
+      created_at: '2025-11-20T09:00:00+09:00',
+      updated_at: '2025-11-20T09:00:00+09:00',
+    },
+    {
+      id: 2,
+      study_group: {
+        id: 1,
+        name: 'python 스터디',
+      },
+      author: {
+        id: 2,
+        nickname: 'young2',
+        email: 'user2@example.com',
+      },
+      star_rating: 4,
+      content: '진도는 빨랐지만 꾸준히 따라가면 도움 많이 됩니다.',
+      created_at: '2025-11-20T09:10:00+09:00',
+      updated_at: '2025-11-20T09:10:00+09:00',
+    },
+    {
+      id: 3,
+      study_group: {
+        id: 2,
+        name: '웹 프론트엔드 기초 스터디',
+      },
+      author: {
+        id: 3,
+        nickname: 'chul3',
+        email: 'user3@example.com',
+      },
+      star_rating: 5,
+      content: 'HTML/CSS 기초를 다시 정리하기에 딱 좋았습니다.',
+      created_at: '2025-11-20T09:20:00+09:00',
+      updated_at: '2025-11-20T09:20:00+09:00',
+    },
+    {
+      id: 4,
+      study_group: {
+        id: 2,
+        name: '웹 프론트엔드 기초 스터디',
+      },
+      author: {
+        id: 4,
+        nickname: 'min4',
+        email: 'user4@example.com',
+      },
+      star_rating: 3,
+      content: '전반적으로 좋았지만 과제가 조금 많았어요.',
+      created_at: '2025-11-20T09:30:00+09:00',
+      updated_at: '2025-11-20T09:30:00+09:00',
+    },
+    {
+      id: 5,
+      study_group: {
+        id: 3,
+        name: 'React 심화 스터디',
+      },
+      author: {
+        id: 5,
+        nickname: 'suji5',
+        email: 'user5@example.com',
+      },
+      star_rating: 5,
+      content: '실무에서 바로 쓸 수 있는 React 패턴을 많이 배웠습니다.',
+      created_at: '2025-11-20T09:40:00+09:00',
+      updated_at: '2025-11-20T09:40:00+09:00',
+    },
+    {
+      id: 6,
+      study_group: {
+        id: 3,
+        name: 'React 심화 스터디',
+      },
+      author: {
+        id: 6,
+        nickname: 'woo6',
+        email: 'user6@example.com',
+      },
+      star_rating: 4,
+      content: 'Hook과 상태 관리에 대한 이해가 많이 깊어졌어요.',
+      created_at: '2025-11-20T09:50:00+09:00',
+      updated_at: '2025-11-20T09:50:00+09:00',
+    },
+    {
+      id: 7,
+      study_group: {
+        id: 4,
+        name: '알고리즘 & 코딩테스트 스터디',
+      },
+      author: {
+        id: 7,
+        nickname: 'jimin7',
+        email: 'user7@example.com',
+      },
+      star_rating: 5,
+      content: '코딩테스트 기초를 잡는 데 큰 도움이 됐습니다.',
+      created_at: '2025-11-20T10:00:00+09:00',
+      updated_at: '2025-11-20T10:00:00+09:00',
+    },
+    {
+      id: 8,
+      study_group: {
+        id: 4,
+        name: '알고리즘 & 코딩테스트 스터디',
+      },
+      author: {
+        id: 8,
+        nickname: 'sehun8',
+        email: 'user8@example.com',
+      },
+      star_rating: 4,
+      content: '문제가 어렵지만 꾸준히 하면 확실히 실력이 느는 스터디입니다.',
+      created_at: '2025-11-20T10:10:00+09:00',
+      updated_at: '2025-11-20T10:10:00+09:00',
+    },
+    {
+      id: 9,
+      study_group: {
+        id: 5,
+        name: '데이터 분석 입문 스터디',
+      },
+      author: {
+        id: 9,
+        nickname: 'nari9',
+        email: 'user9@example.com',
+      },
+      star_rating: 4,
+      content: '파이썬으로 데이터 분석 맛보기를 하기 좋은 스터디였어요.',
+      created_at: '2025-11-20T10:20:00+09:00',
+      updated_at: '2025-11-20T10:20:00+09:00',
+    },
+    {
+      id: 10,
+      study_group: {
+        id: 5,
+        name: '데이터 분석 입문 스터디',
+      },
+      author: {
+        id: 10,
+        nickname: 'doyun10',
+        email: 'user10@example.com',
+      },
+      star_rating: 5,
+      content: '실습 위주라서 지루할 틈이 없었습니다.',
+      created_at: '2025-11-20T10:30:00+09:00',
+      updated_at: '2025-11-20T10:30:00+09:00',
+    },
+    {
+      id: 11,
+      study_group: {
+        id: 6,
+        name: '머신러닝 이론 스터디',
+      },
+      author: {
+        id: 11,
+        nickname: 'jiho11',
+        email: 'user11@example.com',
+      },
+      star_rating: 3,
+      content: '수학 내용이 많아서 조금 어려웠지만 개념 정리는 잘 됐어요.',
+      created_at: '2025-11-20T10:40:00+09:00',
+      updated_at: '2025-11-20T10:40:00+09:00',
+    },
+    {
+      id: 12,
+      study_group: {
+        id: 6,
+        name: '머신러닝 이론 스터디',
+      },
+      author: {
+        id: 12,
+        nickname: 'daeun12',
+        email: 'user12@example.com',
+      },
+      star_rating: 4,
+      content: '이론 위주지만 정리 자료가 잘 되어 있어서 복습하기 좋았습니다.',
+      created_at: '2025-11-20T10:50:00+09:00',
+      updated_at: '2025-11-20T10:50:00+09:00',
+    },
+    {
+      id: 13,
+      study_group: {
+        id: 7,
+        name: 'CS 기초 개념 정리 스터디',
+      },
+      author: {
+        id: 13,
+        nickname: 'hae13',
+        email: 'user13@example.com',
+      },
+      star_rating: 5,
+      content: '네트워크, 운영체제 등 전반적인 CS 개념을 훑기 좋았어요.',
+      created_at: '2025-11-20T11:00:00+09:00',
+      updated_at: '2025-11-20T11:00:00+09:00',
+    },
+    {
+      id: 14,
+      study_group: {
+        id: 7,
+        name: 'CS 기초 개념 정리 스터디',
+      },
+      author: {
+        id: 14,
+        nickname: 'bora14',
+        email: 'user14@example.com',
+      },
+      star_rating: 4,
+      content: '면접 대비용으로 요약해 두기 좋은 자료들이 많았습니다.',
+      created_at: '2025-11-20T11:10:00+09:00',
+      updated_at: '2025-11-20T11:10:00+09:00',
+    },
+    {
+      id: 15,
+      study_group: {
+        id: 8,
+        name: 'SQL & 데이터베이스 스터디',
+      },
+      author: {
+        id: 15,
+        nickname: 'tae15',
+        email: 'user15@example.com',
+      },
+      star_rating: 4,
+      content: '조인, 인덱스 같은 개념을 실습과 함께 배울 수 있었습니다.',
+      created_at: '2025-11-20T11:20:00+09:00',
+      updated_at: '2025-11-20T11:20:00+09:00',
+    },
+    {
+      id: 16,
+      study_group: {
+        id: 8,
+        name: 'SQL & 데이터베이스 스터디',
+      },
+      author: {
+        id: 16,
+        nickname: 'dasol16',
+        email: 'user16@example.com',
+      },
+      star_rating: 5,
+      content: '실무에서 바로 쓸 수 있는 쿼리 예제가 많아서 좋았습니다.',
+      created_at: '2025-11-20T11:30:00+09:00',
+      updated_at: '2025-11-20T11:30:00+09:00',
+    },
+    {
+      id: 17,
+      study_group: {
+        id: 9,
+        name: 'AWS 클라우드 입문 스터디',
+      },
+      author: {
+        id: 17,
+        nickname: 'jihoon17',
+        email: 'user17@example.com',
+      },
+      star_rating: 4,
+      content: '기초 서비스 위주로 다뤄줘서 처음 접하기에 부담 없었습니다.',
+      created_at: '2025-11-20T11:40:00+09:00',
+      updated_at: '2025-11-20T11:40:00+09:00',
+    },
+    {
+      id: 18,
+      study_group: {
+        id: 9,
+        name: 'AWS 클라우드 입문 스터디',
+      },
+      author: {
+        id: 18,
+        nickname: 'soyeon18',
+        email: 'user18@example.com',
+      },
+      star_rating: 5,
+      content: '콘솔 실습을 많이 해서 실제로 써보는 경험을 할 수 있었습니다.',
+      created_at: '2025-11-20T11:50:00+09:00',
+      updated_at: '2025-11-20T11:50:00+09:00',
+    },
+    {
+      id: 19,
+      study_group: {
+        id: 10,
+        name: 'Git & GitHub 협업 스터디',
+      },
+      author: {
+        id: 19,
+        nickname: 'gaeun19',
+        email: 'user19@example.com',
+      },
+      star_rating: 5,
+      content: '브랜치 전략과 PR 리뷰 흐름을 연습해볼 수 있어서 좋았어요.',
+      created_at: '2025-11-20T12:00:00+09:00',
+      updated_at: '2025-11-20T12:00:00+09:00',
+    },
+    {
+      id: 20,
+      study_group: {
+        id: 10,
+        name: 'Git & GitHub 협업 스터디',
+      },
+      author: {
+        id: 20,
+        nickname: 'haneul20',
+        email: 'user20@example.com',
+      },
+      star_rating: 4,
+      content:
+        '실수도 해보면서 협업 플로우를 몸에 익힐 수 있는 스터디였습니다.',
+      created_at: '2025-11-20T12:10:00+09:00',
+      updated_at: '2025-11-20T12:10:00+09:00',
     },
   ],
 }

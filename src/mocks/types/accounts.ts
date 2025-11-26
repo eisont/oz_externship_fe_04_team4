@@ -11,14 +11,14 @@ export type AccountListItem = {
   created_at: string
 }
 
-export type AccountLists = {
+export type AccountsList = {
   count: number
   next: string | null
   previous: string | null
   results: AccountListItem[]
 }
 
-// api / v1 / admin / accounts / { account_id }
+// api/v1/admin/accounts/{ account_id }
 export type AccountsDetail = {
   id: number
   email: string
