@@ -1,9 +1,6 @@
+import type { FilterOption } from '@/components/common/filter/types'
 import { ChevronDown } from 'lucide-react'
 
-export interface FilterOption {
-  label: string
-  value: string
-}
 interface FilterSelectProps {
   label?: string
   options: FilterOption[]

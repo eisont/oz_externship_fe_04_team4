@@ -1,16 +1,7 @@
-import {
-  FilterSelect,
-  type FilterOption,
-} from '@/components/common/filter/FilterSelect'
+import { FilterSelect } from '@/components/common/filter/FilterSelect'
 import { SearchInput } from '@/components/common/filter/SearchInput'
+import type { FilterConfig } from '@/components/common/filter/types'
 
-interface FilterConfig {
-  label?: string
-  options: FilterOption[]
-  value: string
-  onChange: (value: string) => void
-  placeholder?: string
-}
 interface FilterBarProps {
   searchConfig: {
     label?: string

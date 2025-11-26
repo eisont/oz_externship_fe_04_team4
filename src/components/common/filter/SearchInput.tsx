@@ -1,14 +1,7 @@
+import type { SearchConfig } from '@/components/common/filter/types'
 import { useDebounce } from '@/hooks'
 import { Search } from 'lucide-react'
 import { useEffect, useState } from 'react'
-
-interface SearchInputProps {
-  label?: string
-  placeholder: string
-  value: string
-  onChange: (value: string) => void
-  debounceDelay?: number
-}
 
 export function SearchInput({
   label = '검색',
@@ -16,7 +9,7 @@ export function SearchInput({
   value,
   onChange,
   debounceDelay = 500,
-}: SearchInputProps) {
+}: SearchConfig) {
   const [localValue, setLocalValue] = useState(value)
   const debounceValue = useDebounce(localValue, debounceDelay)
 
