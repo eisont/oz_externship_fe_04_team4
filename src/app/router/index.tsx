@@ -1,5 +1,5 @@
-import Login from '@/pages'
 import Layout from '@/pages/layout'
+import Login from '@/pages/login'
 import AdminDashboardPage from '@/pages/members/dashboard'
 import AdminUserManagementPage from '@/pages/members/users'
 import AdminWithdrawalManagementPage from '@/pages/members/withdrawals'
