@@ -1,4 +1,3 @@
-import { formatperiodToMonth } from '@/utils/formatperiodToMonth'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import {
@@ -10,6 +9,8 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
+
+import { formatperiodToMonth } from '@/utils/formatperiodToMonth'
 
 interface ApiRawItem {
   period: string
@@ -58,7 +59,15 @@ export default function BarChart({
         },
       })
       .then((res) => {
+        const items = res?.data?.items ?? []
+
+        if (!Array.isArray(items)) {
+          setData([])
+          return
+        }
+
         setRawData(res.data)
+
         const mapped = res.data.items.map((item) => ({
           label: formatperiodToMonth(item.period),
           value: item.count,

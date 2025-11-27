@@ -1,8 +1,9 @@
+import { useState } from 'react'
+
 import { DashboardAnalyzingSignupTrends } from '@/pages/members/dashboard/components/DashboardAnalyzingSignupTrends'
 import { DashboardAnalyzingwithdrawalReasons } from '@/pages/members/dashboard/components/DashboardAnalyzingwithdrawalReasons'
 import { DashboardAnalyzingWithdrawalsTrends } from '@/pages/members/dashboard/components/DashboardAnalyzingWithdrawalsTrends'
 import Tabs from '@/pages/members/dashboard/components/Tabs'
-import { useState } from 'react'
 
 export default function AdminDashboardPage() {
   const [active, setActive] = useState('signup')
