@@ -9,6 +9,8 @@ import type {
   PaginationResponse,
   SortConfig,
 } from '@/components/common/table/types'
+import clsx, { type ClassValue } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 interface TableProps<T> {
   columns: Column<T>[]
@@ -48,15 +50,25 @@ export function Table<T>({
   onRetry,
 }: TableProps<T>) {
   const totalPages = Math.ceil(response.count / pageSize)
+
+  const twClassName = (classes: ClassValue[]) => {
+    return twMerge(clsx(classes))
+  }
+
   const getSortIcon = (columnKey: string) => {
+    const baseClass = 'ml-1 inline h-4 w-4'
+
     if (!sortConfig || sortConfig.key !== columnKey) {
-      return <ArrowUpDown className="ml-1 inline h-4 w-4 text-gray-400" />
+      return (
+        <ArrowUpDown className={twClassName([baseClass, 'text-gray-400'])} />
+      )
     }
     if (sortConfig.direction === 'asc') {
-      return <ArrowUp className="ml-1 inline h-4 w-4 text-blue-600" />
+      return <ArrowUp className={twClassName([baseClass, 'text-blue-600'])} />
     }
-    return <ArrowDown className="ml-1 inline h-4 w-4 text-blue-600" />
+    return <ArrowDown className={twClassName([baseClass, 'text-blue-600'])} />
   }
+
   const hasError = !!error
   const showLoading = isLoading && !hasError
   const isEmpty = !hasError && !isLoading && response.results.length === 0
