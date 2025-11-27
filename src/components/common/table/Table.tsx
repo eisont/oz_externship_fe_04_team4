@@ -65,6 +65,10 @@ export function Table<T>({
     }
     return <ArrowDown className="ml-1 inline h-4 w-4 text-blue-600" />
   }
+  const hasError = !!error
+  const showLoading = isLoading && !hasError
+  const isEmpty = !hasError && !isLoading && response.results.length === 0
+  const hasData = !hasError && !isLoading && response.results.length > 0
   return (
     <div className="flex flex-col gap-4">
       <div className="overflow-x-auto rounded-lg border border-gray-200">
@@ -113,40 +117,51 @@ export function Table<T>({
           </thead>
 
           <tbody className="divide-y divide-gray-200">
-            {error ? (
-              <TableError
-                error={error}
-                colSpan={columns.length}
-                onRetry={onRetry}
-              />
-            ) : isLoading ? (
-              Array.from({ length: 10 }).map((_, rowIndex) => (
-                <tr key={`skeleton-${rowIndex}`}>
-                  {columns.map((_, colIndex) => (
-                    <td key={colIndex} className="px-4 py-3">
-                      <div className="h-4 animate-pulse rounded bg-gray-200" />
-                    </td>
-                  ))}
-                </tr>
-              ))
-            ) : response.results.length === 0 ? (
-              <TableDataNone length={columns.length} />
-            ) : (
-              response.results.map((row, rowIndex) => (
-                <tr
-                  key={rowIndex}
-                  className="cursor-pointer transition-colors hover:bg-gray-50"
-                >
-                  {columns.map((column, colIndex) => (
-                    <td key={colIndex} className="px-4 py-3 text-gray-600">
-                      {column.render
-                        ? column.render(row[column.key as keyof T], row)
-                        : (row[column.key as keyof T] as ReactNode)}
-                    </td>
-                  ))}
-                </tr>
-              ))
-            )}
+            {(() => {
+              return (
+                <>
+                  {hasError && (
+                    <TableError
+                      error={error}
+                      colSpan={columns.length}
+                      onRetry={onRetry}
+                    />
+                  )}
+
+                  {showLoading &&
+                    Array.from({ length: 10 }).map((_, rowIndex) => (
+                      <tr key={`skeleton-${rowIndex}`}>
+                        {columns.map((_, colIndex) => (
+                          <td key={colIndex} className="px-4 py-3">
+                            <div className="h-4 animate-pulse rounded bg-gray-200" />
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+
+                  {isEmpty && <TableDataNone length={columns.length} />}
+
+                  {hasData &&
+                    response.results.map((row, rowIndex) => (
+                      <tr
+                        key={rowIndex}
+                        className="cursor-pointer transition-colors hover:bg-gray-50"
+                      >
+                        {columns.map((column, colIndex) => (
+                          <td
+                            key={colIndex}
+                            className="px-4 py-3 text-gray-600"
+                          >
+                            {column.render
+                              ? column.render(row[column.key as keyof T], row)
+                              : (row[column.key as keyof T] as ReactNode)}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                </>
+              )
+            })()}
           </tbody>
         </table>
       </div>
