@@ -1,5 +1,3 @@
-// login 페이지
-
 import { useState, type FormEvent } from 'react'
 
 import { useNavigate } from 'react-router'
@@ -31,14 +29,14 @@ export default function Login() {
   }
 
   return (
-    <div className="flex">
-      <div className="flex h-full w-[840px] items-center justify-center">
+    <div className="flex items-center justify-between">
+      <div className="flex h-full w-6/10 items-center justify-center">
         <div className="flex flex-col items-center">
           <img src="/logo.png" alt="logo" />
-          <div className="py-4 text-3xl font-bold text-[#111827]">
+          <div className="cursor-default py-4 text-3xl font-bold text-[#111827]">
             관리자 로그인
           </div>
-          <div className="py-6">
+          <div className="cursor-default py-6">
             <span className="text-[#F6A818]">admin 계정</span>을 통해 로그인을
             진행해주세요.
           </div>
@@ -71,7 +69,7 @@ export default function Login() {
           </form>
         </div>
       </div>
-      <div className="h-dvh w-[600px] bg-[#F6A818] opacity-10" />
+      <div className="h-dvh w-4/10 bg-[#F6A818] opacity-10" />
     </div>
   )
 }
