@@ -1,3 +1,7 @@
+import { ArrowDown, ArrowUp, ArrowUpDown } from 'lucide-react'
+
+import type { ReactNode } from 'react'
+
 import { Pagination } from '@/components/common/table/Pagination'
 import { TableDataNone } from '@/components/common/table/TableDataNone'
 import { TableError } from '@/components/common/table/TableError'
