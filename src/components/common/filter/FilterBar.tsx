@@ -38,29 +38,16 @@ export function FilterBar({ searchConfig, filters = [] }: FilterBarProps) {
         debounceDelay={searchConfig.debounceDelay}
       />
 
-      {filters[0] ? (
+      {filters.map((filter) => (
         <FilterSelect
-          label={filters[0].label}
-          options={filters[0].options}
-          value={filters[0].value}
-          onChange={filters[0].onChange}
-          placeholder={filters[0].placeholder}
+          key={filter.value}
+          label={filter.label}
+          options={filter.options}
+          value={filter.value}
+          onChange={filter.onChange}
+          placeholder={filter.placeholder}
         />
-      ) : (
-        <div />
-      )}
-
-      {filters[1] ? (
-        <FilterSelect
-          label={filters[1].label}
-          options={filters[1].options}
-          value={filters[1].value}
-          onChange={filters[1].onChange}
-          placeholder={filters[1].placeholder}
-        />
-      ) : (
-        <div />
-      )}
+      ))}
     </div>
   )
 }
