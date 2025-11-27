@@ -1,5 +1,8 @@
+import clsx, { type ClassValue } from 'clsx'
 import { ArrowDown, ArrowUp, ArrowUpDown } from 'lucide-react'
 import type { Dispatch, ReactNode, SetStateAction } from 'react'
+
+import { twMerge } from 'tailwind-merge'
 
 import { Pagination } from '@/components/common/table/Pagination'
 import { TableDataNone } from '@/components/common/table/TableDataNone'
@@ -9,8 +12,6 @@ import type {
   PaginationResponse,
   SortConfig,
 } from '@/components/common/table/types'
-import clsx, { type ClassValue } from 'clsx'
-import { twMerge } from 'tailwind-merge'
 
 interface TableProps<T> {
   columns: Column<T>[]
