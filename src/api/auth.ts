@@ -1,4 +1,4 @@
-import { ADMIN_API_PREFIX } from '@/mocks/handlers/adminHandlers'
+import { adminFetch } from '@/api/client'
 
 export type LoginRequest = {
   email: string
@@ -16,11 +16,9 @@ export type LoginResponse = {
 }
 
 export async function loginAdmin(body: LoginRequest): Promise<LoginResponse> {
-  const res = await fetch(`${ADMIN_API_PREFIX}/login`, {
+  const res = await adminFetch('/login', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    skipAuth: true,
     body: JSON.stringify(body),
   })
 

@@ -10,7 +10,7 @@ const loginHandler = http.post(
   async ({ request }) => {
     const body = (await request.json()) as LoginRequestBody
 
-    if (body.email === 'admin@example.com' && body.password === 'password') {
+    if (body.email === 'admin@example.com' && body.password === 'admin') {
       // ⚠️ 중요: access_token은 나머지 admin API와 맞추기 (Bearer token_value)
       return HttpResponse.json(
         {
