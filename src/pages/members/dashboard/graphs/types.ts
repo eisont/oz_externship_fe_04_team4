@@ -22,3 +22,36 @@ export interface BarChartProps {
   barColor?: string
   height?: number
 }
+
+export interface PieApiRawItem {
+  reason: string
+  reason_label: string
+  count: number
+  percentage: number
+}
+
+export interface PieApiResponse {
+  from_date: string
+  to_date: string
+  total: number
+  items: PieApiRawItem[]
+}
+
+export interface PieApiItem {
+  label: string
+  value: number
+  [key: string]: string | number
+}
+
+export interface PieApiLegend {
+  reason_label: string
+  legend_num: number
+}
+
+export interface PieChartProps {
+  apiUrl: string
+  title?: string
+  fill?: string
+  height?: number
+  isAnimationActive?: boolean
+}
