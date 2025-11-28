@@ -1,3 +1,9 @@
+export type ApplicationsStatus =
+  | 'PENDING'
+  | 'ACCEPTED'
+  | 'REJECTED'
+  | 'CANCELED'
+
 // api/v1/admin/accounts
 export type AccountListItem = {
   id: number
@@ -334,7 +340,7 @@ export type RecruitmentDetailApplications = {
     nickname: string
     email: string
   }
-  status: 'PENDING' | 'ACCEPTED' | 'REJECTED' | 'CANCELED'
+  status: ApplicationsStatus
   created_at: string
 }
 export type RecruitmentDetail = {
@@ -367,7 +373,7 @@ export type ApplicationsListResults = {
     nickname: string
     email: string
   }
-  status: 'PENDING' | 'ACCEPTED' | 'REJECTED' | 'CANCELED'
+  status: ApplicationsStatus
   created_at: string
   updated_at: string
 }
@@ -395,7 +401,7 @@ export type ApplicationsDetail = {
   available_time: string
   has_study_experience: boolean
   study_experience: string
-  status: 'PENDING' | 'ACCEPTED' | 'REJECTED' | 'CANCELED'
+  status: ApplicationsStatus
   recruitment: {
     id: number
     title: string
