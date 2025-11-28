@@ -4,15 +4,15 @@ import { useState } from 'react'
 
 import { FilterBar } from '@/components/common/filter'
 
-type Lecture = {
-  id: number
-  thimbnail: string
-  title: string
-  instructor: string
-  platform: string
-  createAt: string
-  updateAt: string
-}
+// type Lecture = {
+//   id: number
+//   thimbnail: string
+//   title: string
+//   instructor: string
+//   platform: string
+//   createAt: string
+//   updateAt: string
+// }
 export default function LectureManagementPage() {
   const [search, setSearch] = useState<string>('')
   // const [currentPage, setCurrentPage] = useState<number>(1)
