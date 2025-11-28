@@ -2,7 +2,7 @@ import { X } from 'lucide-react'
 
 const dummyTags = ['Frontend', 'PHP', 'Django', 'Express']
 
-export default function GetSelectedTags() {
+export default function SelectedTagList() {
   return (
     <div className="h-[109px] border-b border-[#E5E7EB] bg-[#F9FAFB] p-6">
       <div className="flex w-full justify-between">

@@ -5,16 +5,16 @@ import { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { FilterSelect, SearchInput } from '@/components/common/filter'
-import ApplicationsButton from '@/components/common/filter/applications/applicationsButton'
-import ApplicationSearch from '@/components/common/filter/applications/applicationSearch'
-import GetSelectedTags from '@/components/common/filter/applications/getSelectedTags'
-import ToggleSelectedTag from '@/components/common/filter/applications/toggleSelectedTag'
 import Modal from '@/components/common/Modal'
+import SelectedTagList from '@/components/common/modal/applications/SelectedTagList'
+import TagFilterActionButtons from '@/components/common/modal/applications/TagFilterActionButtons'
+import TagOptionList from '@/components/common/modal/applications/TagOptionList'
+import TagSearchInput from '@/components/common/modal/applications/TagSearchInput'
 
 const LABEL_STYLE = 'text-sm text-[#374151]'
 const BOX_STYLE = 'w-[256px] h-9 focus:ring-0 focus:border-0'
 
-export default function ApplicationManagementPage() {
+export default function RecruitmentApplicationsPage() {
   const [search, setSearch] = useState('')
   const [status, setStatus] = useState('')
   const [open, setOpen] = useState(false)
@@ -38,14 +38,14 @@ export default function ApplicationManagementPage() {
         isOpen={open}
         title="태그 필터 선택"
         contentClassName="p-0"
-        footer={<ApplicationsButton setOpen={setOpen} />}
+        footer={<TagFilterActionButtons setOpen={setOpen} />}
         footerClassName="p-0"
         topCloseButton
         onClose={() => setOpen(false)}
       >
-        <ApplicationSearch />
-        <GetSelectedTags />
-        <ToggleSelectedTag />
+        <TagSearchInput />
+        <SelectedTagList />
+        <TagOptionList />
       </Modal>
 
       <div className="flex items-center">

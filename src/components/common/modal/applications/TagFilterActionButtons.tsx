@@ -2,7 +2,7 @@ type Props = {
   setOpen: (value: boolean) => void
 }
 
-export default function ApplicationsButton({ setOpen }: Props) {
+export default function TagFilterActionButtons({ setOpen }: Props) {
   return (
     <div className="flex h-[73px] w-full items-center justify-end px-6 py-4">
       <div className="flex h-10 w-auto items-center">

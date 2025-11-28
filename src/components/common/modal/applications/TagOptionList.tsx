@@ -43,7 +43,7 @@ const tags = [
   '평일',
 ]
 
-export default function ToggleSelectedTag() {
+export default function TagOptionList() {
   return (
     <div className="h-96 w-full overflow-scroll border-b border-[#E5E7EB] p-6">
       <div className="flex flex-wrap justify-between">
