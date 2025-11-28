@@ -11,36 +11,60 @@ import TagFilterActionButtons from '@/components/common/modal/applications/TagFi
 import TagOptionList from '@/components/common/modal/applications/TagOptionList'
 import TagSearchInput from '@/components/common/modal/applications/TagSearchInput'
 import { Table, type SortConfig } from '@/components/common/table'
+import { mockRecruitmentList } from '@/mocks/data/accounts'
+import { sliceDateTime } from '@/utils/format'
 
 const LABEL_STYLE = 'text-sm text-[#374151]'
 const BOX_STYLE = 'w-[256px] h-9 focus:ring-0 focus:border-0'
 
 // =================== Table ========================
 
-const exampleData = Array.from({ length: 1000 }, (_, i) => ({
-  id: i + 1,
-  title: `user${i + 1}@example.com`,
-  tags: `user00${i + 1}`,
-  closedAt: '2023. 1. 15.',
-  status: i === 3 ? '마감' : '모집중',
-  role: 'user',
-  view: 2,
-  bookMark: 2,
-  createdAt: '2025-10-30T14:01:57.505250+09:00',
-  updatedAt: '2025-10-30T14:01:57.505250+09:00',
+const exampleData = mockRecruitmentList.results.map((el) => ({
+  id: el.id,
+  title: el.title,
+  tags: el.tags,
+  is_closed: el.is_closed ? '마감' : '모집중',
+  views_count: el.views_count,
+  bookmark_count: el.bookmark_count,
+  close_at: el.close_at,
+  created_at: el.created_at,
+  updated_at: el.updated_at,
 }))
+
+console.log('exampleData', exampleData)
 
 const columns = [
   { key: 'id', header: 'ID', width: '80px' },
   { key: 'title', header: '공고 제목', width: '250px' },
-  { key: 'tags', header: '태그', width: '150px' },
   {
-    key: 'closedAt',
-    header: '마감 기한',
-    width: '100px',
+    key: 'tags',
+    header: '태그',
+    width: '150px',
+    render: (value: { id: number; name: string }[]) => {
+      const tags = value
+
+      return (
+        <div className="flex flex-wrap gap-1">
+          {tags.map((tag) => (
+            <span
+              key={tag.id}
+              className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-700"
+            >
+              {tag.name}
+            </span>
+          ))}
+        </div>
+      )
+    },
   },
   {
-    key: 'status',
+    key: 'close_at',
+    header: '마감 기한',
+    width: '100px',
+    render: (value: string) => sliceDateTime(value, 10),
+  },
+  {
+    key: 'is_closed',
     header: '상태',
     width: '80px',
     render: (value: string) => (
@@ -56,28 +80,30 @@ const columns = [
     ),
   },
   {
-    key: 'view',
+    key: 'views_count',
     header: '조회수',
     width: '80px',
     sortable: { asc: 'oldest', desc: 'latest' },
   },
   {
-    key: 'bookMark',
+    key: 'bookmark_count',
     header: '북마크',
     width: '80px',
     sortable: { asc: 'closed_asc', desc: 'closed_desc' },
   },
   {
-    key: 'createdAt',
+    key: 'created_at',
     header: '생성일시',
     width: '100px',
     sortable: { asc: 'closed_asc', desc: 'closed_desc' },
+    render: (value: string) => sliceDateTime(value, 16),
   },
   {
-    key: 'updatedAt',
+    key: 'updated_at',
     header: '수정일시',
     width: '100px',
     sortable: { asc: 'closed_asc', desc: 'closed_desc' },
+    render: (value: string) => sliceDateTime(value, 16),
   },
 ]
 
@@ -206,8 +232,6 @@ export default function RecruitmentApplicationsPage() {
           onPageChange={setCurrentPage}
           columns={columns}
           response={exampleResponse}
-          // isLoading
-          // error={'error'}
           sortConfig={sortConfig}
           onSort={handleSort}
         />
