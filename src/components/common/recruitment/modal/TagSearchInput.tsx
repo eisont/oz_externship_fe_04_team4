@@ -1,6 +1,20 @@
 import { Search } from 'lucide-react'
+import type { KeyboardEvent } from 'react'
 
-export default function TagSearchInput() {
+type Props = {
+  search: string
+  setSearch: (value: string) => void
+  onSubmit: () => void
+}
+
+export default function TagSearchInput({ search, setSearch, onSubmit }: Props) {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      onSubmit()
+    }
+  }
+
   return (
     <div className="flex h-[87px] w-full items-center justify-center border-b border-[#E5E7EB]">
       <div className="flex h-[38px] w-[624px] items-center rounded-lg border border-[#D1D5DB] p-3">
@@ -9,6 +23,9 @@ export default function TagSearchInput() {
           type="text"
           placeholder="태그 검색"
           className="h-5 w-[566px] outline-0"
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
+          onKeyDown={handleKeyDown}
         />
       </div>
     </div>
