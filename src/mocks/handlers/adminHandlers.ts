@@ -10,6 +10,7 @@ import {
   mockLecturesList,
   mockRecruitmentDetail,
   mockRecruitmentList,
+  mockRecruitmentTags,
   mockSignupTrendsMonthly,
   mockSignupTrendsYearly,
   mockStudyGroupDetail,
@@ -24,6 +25,7 @@ import {
   mockWithdrawalsTrendsYearly,
   type WithdrawalReason,
 } from '@/mocks/data/accounts'
+import type { RecruitmentTags } from '@/mocks/types/accounts'
 
 /**
  * 공통 admin 인증 체크
@@ -668,6 +670,54 @@ export const getAdminStudyReviewDetailHandler = http.get(
 /* 6. Recruitments (모집 공고)                                                */
 /* -------------------------------------------------------------------------- */
 
+// GET /api/v1/recruitment-tags - 태그 목록 조회
+export const getRecruitmentTagsHandler = http.get(
+  `${BASE_URL}/api/v1/recruitment-tags`,
+  ({ request }) => {
+    const url = new URL(request.url)
+
+    const pageParam = url.searchParams.get('page')
+    const pageSizeParam = url.searchParams.get('page_size')
+    const searchParam = url.searchParams.get('search')
+
+    const page =
+      !pageParam || Number.isNaN(Number(pageParam)) ? 1 : Number(pageParam)
+    const pageSize =
+      !pageSizeParam || Number.isNaN(Number(pageSizeParam))
+        ? 10
+        : Number(pageSizeParam)
+    const search = searchParam?.trim().toLowerCase() ?? ''
+
+    const allTags = mockRecruitmentTags.results
+
+    // search: name 부분 일치
+    const filteredTags = search
+      ? allTags.filter((tag) =>
+          tag.name.toLowerCase().includes(search.toLowerCase())
+        )
+      : allTags
+
+    const start = (page - 1) * pageSize
+    const end = start + pageSize
+    const paginatedTags = filteredTags.slice(start, end)
+
+    const baseUrl = `${BASE_URL}/api/v1/recruitment-tags`
+    const buildUrl = (p: number) =>
+      `${baseUrl}?page=${p}&page_size=${pageSize}${
+        search ? `&search=${encodeURIComponent(search)}` : ''
+      }`
+
+    const responseBody: RecruitmentTags = {
+      count: filteredTags.length,
+      next: end < filteredTags.length ? buildUrl(page + 1) : null,
+      previous: page > 1 ? buildUrl(page - 1) : null,
+      results: paginatedTags,
+    }
+
+    return HttpResponse.json(responseBody)
+  }
+)
+
 // GET /api/v1/admin/recruitments - 모집 공고 목록
 export const getAdminRecruitmentsHandler = http.get(
   `${ADMIN_API_PREFIX}/recruitments`,
@@ -859,6 +909,7 @@ export const adminHandlers = [
   getAdminStudyReviewDetailHandler,
 
   // recruitments
+  getRecruitmentTagsHandler,
   getAdminRecruitmentsHandler,
   getAdminRecruitmentDetailHandler,
   deleteAdminRecruitmentHandler,

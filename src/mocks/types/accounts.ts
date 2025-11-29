@@ -299,6 +299,12 @@ export type RecruitmentListResultTags = {
   id: number
   name: string
 }
+export type RecruitmentTags = {
+  count: number
+  next: null | string
+  previous: null | string
+  results: RecruitmentListResultTags[]
+}
 export type RecruitmentListResults = {
   id: number
   title: string

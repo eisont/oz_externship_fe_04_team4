@@ -7,6 +7,7 @@ import type {
   LecturesDetail,
   RecruitmentDetail,
   RecruitmentList,
+  RecruitmentTags,
   SignupTrends,
   StudyGroupDetail,
   StudyGroupList,
@@ -2832,6 +2833,59 @@ export const mockStudyReviewDetail: StudyReviewDetail = {
   content: '재밌게 놀다 갑니다.',
   created_at: '2025-11-20T00:00:05.875842+09:00',
   updated_at: '2025-11-20T00:00:05.875845+09:00',
+}
+
+// =================================== recruitment ===================================
+// =================================== recruitment ===================================
+
+// api/v1/recruitment-tags
+// 태그 목록 조회
+export const mockRecruitmentTags: RecruitmentTags = {
+  count: 100,
+  next: 'http://api.ozcoding.site/api/v1/recruitments-tags/page=2&page_size=10',
+  previous: null,
+  results: [
+    { id: 1, name: 'React' },
+    { id: 2, name: 'Vue.js' },
+    { id: 3, name: 'Angular' },
+    { id: 4, name: 'JavaScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 6, name: 'Spring Boot' },
+    { id: 7, name: 'Node.js' },
+    { id: 8, name: 'Express' },
+    { id: 9, name: 'NextJS' },
+    { id: 10, name: 'Java' },
+    { id: 11, name: 'Python' },
+    { id: 12, name: 'Django' },
+    { id: 13, name: 'FastAPI' },
+    { id: 14, name: 'Flask' },
+    { id: 15, name: 'PHP' },
+    { id: 16, name: 'Docker' },
+    { id: 17, name: 'Kubernetes' },
+    { id: 18, name: 'AWS' },
+    { id: 19, name: 'Azure' },
+    { id: 20, name: 'GCP' },
+    { id: 21, name: 'FrontEnd' },
+    { id: 22, name: 'Backend' },
+    { id: 23, name: 'Full Stack' },
+    { id: 24, name: 'DevOps' },
+    { id: 25, name: 'AI' },
+    { id: 26, name: 'ML' },
+    { id: 27, name: '데이터분석' },
+    { id: 28, name: '데이터사이언스' },
+    { id: 29, name: '웹개발' },
+    { id: 30, name: '모바일' },
+    { id: 31, name: '실무' },
+    { id: 32, name: '프로젝트' },
+    { id: 33, name: '포트폴리오' },
+    { id: 34, name: '취업' },
+    { id: 35, name: '신입' },
+    { id: 36, name: '경력' },
+    { id: 37, name: '온라인' },
+    { id: 38, name: '오프라인' },
+    { id: 39, name: '주말' },
+    { id: 40, name: '평일' },
+  ],
 }
 
 // api/v1/admin/recruitments
