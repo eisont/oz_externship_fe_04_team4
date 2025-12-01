@@ -1,58 +1,55 @@
 import { Check } from 'lucide-react'
 
-const tags = [
-  'React',
-  'Vue.js',
-  'Angular',
-  'JavaScript',
-  'TypeScript',
-  'Spring Boot',
-  'Node.js',
-  'Express',
-  'NextJS',
-  'Java',
-  'Python',
-  'Django',
-  'FastAPI',
-  'Flask',
-  'PHP',
-  'Docker',
-  'Kubernetes',
-  'AWS',
-  'Azure',
-  'GCP',
-  'FrontEnd',
-  'Backend',
-  'Full Stack',
-  'DevOps',
-  'AI',
-  'ML',
-  '데이터분석',
-  '데이터사이언스',
-  '웹개발',
-  '모바일',
-  '실무',
-  '프로젝트',
-  '포트폴리오',
-  '취업',
-  '신입',
-  '경력',
-  '온라인',
-  '오프라인',
-  '주말',
-  '평일',
-]
+import type { RecruitmentTag } from '@/mocks/types/accounts'
 
-export default function TagOptionList() {
+type Props = {
+  tags?: RecruitmentTag[]
+  isLoading: boolean
+  isError: boolean
+}
+
+export default function TagOptionList({ tags, isLoading, isError }: Props) {
+  if (isLoading) {
+    return (
+      <div className="max-h-96 w-full border-b border-[#E5E7EB] p-6 text-sm text-gray-500">
+        태그를 불러오는 중입니다...
+      </div>
+    )
+  }
+
+  if (isError) {
+    return (
+      <div className="max-h-96 w-full border-b border-[#E5E7EB] p-6 text-sm text-red-500">
+        태그 목록을 불러오는데 실패했습니다.
+      </div>
+    )
+  }
+
+  // 아직 검색 전(첫 상태) + 결과 없음 처리
+  if (!tags) {
+    return (
+      <div className="max-h-96 w-full border-b border-[#E5E7EB] p-6 text-sm text-gray-500">
+        검색어를 입력하고 Enter를 눌러 태그를 검색해보세요.
+      </div>
+    )
+  }
+  if (tags.length === 0) {
+    return (
+      <div className="max-h-96 w-full border-b border-[#E5E7EB] p-6 text-sm text-gray-500">
+        일치한 검색 결과가 없습니다. 다시 검색하세요.
+      </div>
+    )
+  }
+
   return (
-    <div className="h-96 w-full overflow-scroll border-b border-[#E5E7EB] p-6">
+    <div className="max-h-96 w-full overflow-scroll border-b border-[#E5E7EB] p-6">
       <div className="flex flex-wrap justify-between">
-        {tags.map((el) => (
+        {tags?.map((el) => (
           <div
-            key={el}
+            key={el.id}
             className="mb-2 flex h-[38px] w-[202px] cursor-pointer items-center justify-between rounded-lg border border-[#D1D5DB] px-2 py-3 hover:border-[#FDE047] hover:bg-[#FEF9C3] hover:text-[#854D0E] active:font-bold"
           >
-            {el}
+            {el.name}
             <Check className="w-4 text-[#CA8A04]" />
           </div>
         ))}
