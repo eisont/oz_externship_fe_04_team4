@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { useRecruitmentTagsQuery } from '@/api/recruitment/useRecruitmentTagsQuery'
 import Modal from '@/components/common/Modal'
 import SelectedTagList from '@/components/common/recruitment/modal/SelectedTagList'
 import TagFilterActionButtons from '@/components/common/recruitment/modal/TagFilterActionButtons'
@@ -10,14 +11,19 @@ import { useRecruitmentModalStore } from '@/store/recruitment/useRecruitmentModa
 export default function RecruitmentModal() {
   const { isOpen, closeModal } = useRecruitmentModalStore()
 
-  const [search, setSearch] = useState('')
+  const [inputSearch, setInputSearch] = useState('')
+  const [keywordSearch, setKeywordSearch] = useState('')
+
+  const { data, isLoading, isError } = useRecruitmentTagsQuery({
+    page: 1,
+    pageSize: 100,
+    search: keywordSearch,
+  })
 
   const handleSearchSubmit = () => {
-    // 🔥 여기서 API 호출
-    // 예: fetchTags({ search })
-    // 혹은 React Query 쓰면 refetch() 호출
-    // console.log('검색 API 호출, keyword:', search)
+    setKeywordSearch(inputSearch.trim())
   }
+
   return (
     <Modal
       isOpen={isOpen}
@@ -29,12 +35,16 @@ export default function RecruitmentModal() {
       onClose={closeModal}
     >
       <TagSearchInput
-        search={search}
-        setSearch={setSearch}
+        search={inputSearch}
+        setSearch={setInputSearch}
         onSubmit={handleSearchSubmit}
       />
       <SelectedTagList />
-      <TagOptionList />
+      <TagOptionList
+        tags={data?.results}
+        isLoading={isLoading}
+        isError={isError}
+      />
     </Modal>
   )
 }
