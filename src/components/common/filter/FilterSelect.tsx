@@ -24,7 +24,7 @@ export function FilterSelect({
   options,
   value,
   onChange,
-  placeholder = 'Select',
+  placeholder = '전체',
 }: FilterSelectProps) {
   return (
     <div className={twMerge(clsx('flex flex-col gap-1', className))}>
