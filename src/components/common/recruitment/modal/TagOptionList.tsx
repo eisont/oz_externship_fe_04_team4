@@ -1,7 +1,7 @@
 import { Check } from 'lucide-react'
 
 import type { RecruitmentTag } from '@/mocks/types/accounts'
-import { useRecruitmentTagStore } from '@/store/recruitment/useRecruitmentTagsStore'
+import { useRecruitmentTagsStore } from '@/store/recruitment/useRecruitmentTagsStore'
 
 type Props = {
   tags?: RecruitmentTag[]
@@ -13,7 +13,7 @@ const ITEMS_STYLE =
   'mb-2 flex h-[38px] w-[202px] cursor-pointer items-center justify-between rounded-lg border border-[#D1D5DB] px-2 py-3 hover:border-[#FDE047] hover:bg-[#FEF9C3] hover:text-[#854D0E] active:font-bold aria-[current=true]:border-[#FDE047] aria-[current=true]:bg-[#FEF9C3] aria-[current=true]:text-[#854D0E]'
 
 export default function TagOptionList({ tags, isLoading, isError }: Props) {
-  const { selectedTags, toggleTag } = useRecruitmentTagStore()
+  const { selectedTags, toggleTag } = useRecruitmentTagsStore()
 
   if (isLoading) {
     return (
@@ -58,7 +58,7 @@ export default function TagOptionList({ tags, isLoading, isError }: Props) {
             )}
             className={ITEMS_STYLE}
           >
-            {el.name}
+            <div className="max-w-[165px] truncate"> {el.name}</div>
             {selectedTags.find((name) => name === el.name) && (
               <Check className="w-4 text-[#CA8A04]" />
             )}
