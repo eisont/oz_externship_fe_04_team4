@@ -106,19 +106,18 @@ export default function LectureManagementPage() {
     setSelectedLecture(0)
   }
   return (
-    <div className="space-y-6 rounded-lg bg-white p-6 shadow-sm">
-      <FilterBar
-        searchConfig={{
-          label: '검색',
-          placeholder: '강의명, 강사명 검색...',
-          value: filters.search,
-          onChange: (value) =>
-            setFilters((prev) => ({ ...prev, search: value, page: 1 })),
-        }}
-      />
-
-      <div className="border-t border-gray-200" />
-
+    <>
+      <div className="mb-8 space-y-6 rounded-lg bg-white p-6 shadow-sm">
+        <FilterBar
+          searchConfig={{
+            label: '검색',
+            placeholder: '강의명, 강사명 검색...',
+            value: filters.search,
+            onChange: (value) =>
+              setFilters((prev) => ({ ...prev, search: value, page: 1 })),
+          }}
+        />
+      </div>
       <Table
         columns={columns}
         response={data || { count: 0, results: [], next: null, previous: null }}
@@ -134,6 +133,6 @@ export default function LectureManagementPage() {
         onClose={handleCloseModal}
         lectureId={selectedLecture}
       />
-    </div>
+    </>
   )
 }
