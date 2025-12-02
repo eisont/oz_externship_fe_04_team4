@@ -2430,6 +2430,7 @@ export const mockStudyGroupDetail: StudyGroupDetail = {
   end_at: '2025-11-20',
   max_headcount: 4,
   current_headcount: 4,
+  uuid: 'group_uuid_001',
   profile_img_url:
     'https://example.com/images/study_groups/thumbnails/image.png',
   status: 'ONGOING',
