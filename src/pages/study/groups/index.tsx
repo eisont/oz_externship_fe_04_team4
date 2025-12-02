@@ -37,7 +37,7 @@ export default function StudyGroupManagementPage() {
   const [selectedStudyGroupId, setSelectedStudyGroupId] = useState<
     number | null
   >(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const { data, isLoading, error, refetch } = useFetchQuery<
     PaginationResponse<StudyGroup>
   >({
@@ -107,35 +107,34 @@ export default function StudyGroupManagementPage() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
-    setSelectedStudyGroupId(0)
+    setSelectedStudyGroupId(null)
   }
   return (
-    <div className="space-y-6 rounded-lg bg-white p-6 shadow-sm">
-      <FilterBar
-        searchConfig={{
-          label: '검색',
-          placeholder: '그룹명 검색 ...',
-          value: filters.search,
-          onChange: (value) =>
-            setFilters((prev) => ({ ...prev, search: value, page: 1 })),
-        }}
-        filters={[
-          {
-            label: '상태',
-            options: [
-              { label: '대기중', value: 'PENDING' },
-              { label: '진행중', value: 'ONGOING' },
-              { label: '종료됨', value: 'ENDED' },
-            ],
-            value: filters.status,
+    <>
+      <div className="mb-8 space-y-6 rounded-lg bg-white p-6 shadow-sm">
+        <FilterBar
+          searchConfig={{
+            label: '검색',
+            placeholder: '그룹명 검색 ...',
+            value: filters.search,
             onChange: (value) =>
-              setFilters((prev) => ({ ...prev, status: value, page: 1 })),
-          },
-        ]}
-      />
-
-      <div className="border-t border-gray-200" />
-
+              setFilters((prev) => ({ ...prev, search: value, page: 1 })),
+          }}
+          filters={[
+            {
+              label: '상태',
+              options: [
+                { label: '대기중', value: 'PENDING' },
+                { label: '진행중', value: 'ONGOING' },
+                { label: '종료됨', value: 'ENDED' },
+              ],
+              value: filters.status,
+              onChange: (value) =>
+                setFilters((prev) => ({ ...prev, status: value, page: 1 })),
+            },
+          ]}
+        />
+      </div>
       <Table
         columns={columns}
         response={data || { count: 0, results: [], next: null, previous: null }}
@@ -151,6 +150,6 @@ export default function StudyGroupManagementPage() {
         onClose={handleCloseModal}
         studyGroupId={selectedStudyGroupId}
       />
-    </div>
+    </>
   )
 }
