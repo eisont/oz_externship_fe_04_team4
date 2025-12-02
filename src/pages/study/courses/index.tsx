@@ -36,7 +36,7 @@ export default function LectureManagementPage() {
     page: 1,
   })
   const [selectedLecture, setSelectedLecture] = useState<number | null>(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const { data, isLoading, error, refetch } = useFetchQuery<
     PaginationResponse<Lecture>
   >({
@@ -103,7 +103,7 @@ export default function LectureManagementPage() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
-    setSelectedLecture(0)
+    setSelectedLecture(null)
   }
   return (
     <>

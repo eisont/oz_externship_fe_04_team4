@@ -19,16 +19,12 @@ export default function ReviewManagementPage() {
   const [filters, setFilters] = useState<{
     search: string
     page: number
-    status: string
   }>({
     search: '',
     page: 1,
-    status: '',
   })
-  const [selectedStudyGroupId, setSelectedStudyGroupId] = useState<
-    number | null
-  >(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedReviewId, setSelectedReviewId] = useState<number | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const { data, isLoading, error, refetch } = useFetchQuery<
     PaginationResponse<ReviewProps>
   >({
@@ -90,13 +86,13 @@ export default function ReviewManagementPage() {
     },
   ]
   const handleRowClick = (review: ReviewProps) => {
-    setSelectedStudyGroupId(review.id)
+    setSelectedReviewId(review.id)
     setIsModalOpen(true)
   }
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
-    setSelectedStudyGroupId(0)
+    setSelectedReviewId(null)
   }
   return (
     <>
@@ -128,7 +124,7 @@ export default function ReviewManagementPage() {
       <StudyGroupDetailModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-        studyGroupId={selectedStudyGroupId}
+        studyGroupId={selectedReviewId}
       />
     </>
   )

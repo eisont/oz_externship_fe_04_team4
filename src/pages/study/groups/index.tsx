@@ -37,7 +37,7 @@ export default function StudyGroupManagementPage() {
   const [selectedStudyGroupId, setSelectedStudyGroupId] = useState<
     number | null
   >(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const { data, isLoading, error, refetch } = useFetchQuery<
     PaginationResponse<StudyGroup>
   >({
@@ -107,7 +107,7 @@ export default function StudyGroupManagementPage() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
-    setSelectedStudyGroupId(0)
+    setSelectedStudyGroupId(null)
   }
   return (
     <>
