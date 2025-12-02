@@ -13,6 +13,7 @@ interface StudyGroupDetailModalProps {
   studyGroupId: number | null
 }
 interface StudyGroupDetailProps extends StudyGroup {
+  uuid: string
   lectures: {
     id: 1
     title: string
@@ -94,7 +95,7 @@ export function StudyGroupDetailModal({
                 <div>
                   <p className="mb-1 text-sm text-gray-500">UUID</p>
                   <p className="text-base font-medium">
-                    {studyGroup.id || '-'}
+                    {studyGroup.uuid || '-'}
                   </p>
                 </div>
               </div>
