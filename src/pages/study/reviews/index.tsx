@@ -1,5 +1,135 @@
-// 스터디관리 / 리뷰관리
+import { useState } from 'react'
+
+import { FilterBar } from '@/components/common/filter'
+import ReviewRating from '@/components/common/ReviewRating'
+import {
+  Table,
+  type Column,
+  type PaginationResponse,
+} from '@/components/common/table'
+import { SERVICE_URLS } from '@/config/serviceUrls'
+import { useFetchQuery } from '@/hooks/useFetchQuery'
+import type { StudyReviewListResults } from '@/mocks/types/accounts'
+import { StudyGroupDetailModal } from '@/pages/study/groups/StudyGroupDetailModal'
+import { formatDateTime } from '@/utils'
+
+type ReviewProps = StudyReviewListResults
 
 export default function ReviewManagementPage() {
-  return <>스터디관리 / 리뷰관리</>
+  const [filters, setFilters] = useState<{
+    search: string
+    page: number
+    status: string
+  }>({
+    search: '',
+    page: 1,
+    status: '',
+  })
+  const [selectedStudyGroupId, setSelectedStudyGroupId] = useState<
+    number | null
+  >(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { data, isLoading, error, refetch } = useFetchQuery<
+    PaginationResponse<ReviewProps>
+  >({
+    queryKey: ['reviews', filters],
+    url: SERVICE_URLS.STUDY_REVIEWS.LIST,
+    params: {
+      page: filters.page,
+      page_size: 10,
+      search: filters.search,
+    },
+  })
+
+  const columns: Column<ReviewProps>[] = [
+    {
+      key: 'id',
+      header: 'ID',
+      width: '50px',
+    },
+    {
+      key: 'study_group.name',
+      header: '스터디 그룹 명',
+      width: '300px',
+      render: (_, row) => row.study_group.name,
+    },
+    {
+      key: 'author',
+      header: '작성자 정보',
+      width: '300px',
+      render: (_, row) => (
+        <div>
+          <p className="font-medium text-gray-900">{row.author.nickname}</p>
+          <p className="text-sm text-gray-500">{row.author.email}</p>
+        </div>
+      ),
+    },
+    {
+      key: 'content',
+      header: '리뷰 내용',
+      width: '600px',
+    },
+    {
+      key: 'star_rating',
+      header: '별점',
+      width: '200px',
+      render: (_, row) => <ReviewRating value={row.star_rating} />,
+    },
+
+    {
+      key: 'created_at',
+      header: '생성일시',
+      width: '150px',
+      render: (value: string) => formatDateTime(value),
+    },
+    {
+      key: 'updated_at',
+      header: '수정일시',
+      width: '150px',
+      render: (value: string) => formatDateTime(value),
+    },
+  ]
+  const handleRowClick = (review: ReviewProps) => {
+    setSelectedStudyGroupId(review.id)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setSelectedStudyGroupId(0)
+  }
+  return (
+    <>
+      <div className="mb-8 space-y-6 rounded-lg bg-white p-6 shadow-sm">
+        <FilterBar
+          searchConfig={{
+            label: '검색',
+            placeholder: '사용자 닉네임, 이메일 검색 ...',
+            value: filters.search,
+            onChange: (value) =>
+              setFilters((prev) => ({ ...prev, search: value, page: 1 })),
+          }}
+        />
+      </div>
+      <div className="overflow-x-auto">
+        <Table
+          columns={columns}
+          response={
+            data || { count: 0, results: [], next: null, previous: null }
+          }
+          currentPage={filters.page}
+          onPageChange={(page) => setFilters((prev) => ({ ...prev, page }))}
+          isLoading={isLoading}
+          error={error?.message}
+          onRetry={refetch}
+          onRowClick={handleRowClick}
+        />
+      </div>
+      <StudyGroupDetailModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        studyGroupId={selectedStudyGroupId}
+      />
+    </>
+  )
 }
