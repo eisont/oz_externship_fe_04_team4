@@ -10,7 +10,7 @@ import {
 import { SERVICE_URLS } from '@/config/serviceUrls'
 import { useFetchQuery } from '@/hooks/useFetchQuery'
 import type { StudyReviewListResults } from '@/mocks/types/accounts'
-import { StudyGroupDetailModal } from '@/pages/study/groups/StudyGroupDetailModal'
+import { ReviewDetailModal } from '@/pages/study/reviews/ReviewDetailModal'
 import { formatDateTime } from '@/utils'
 
 type ReviewProps = StudyReviewListResults
@@ -121,10 +121,10 @@ export default function ReviewManagementPage() {
           onRowClick={handleRowClick}
         />
       </div>
-      <StudyGroupDetailModal
+      <ReviewDetailModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-        studyGroupId={selectedReviewId}
+        reviewId={selectedReviewId}
       />
     </>
   )
