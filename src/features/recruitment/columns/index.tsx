@@ -51,12 +51,12 @@ export const RecruitmentColumns = () => {
       render: (value: string) => (
         <span
           className={`inline-block rounded-full px-2 py-1 text-xs ${
-            value === '마감'
+            value
               ? 'bg-[#F3F4F6] text-[#1F2937]'
               : 'text-state-permission-txt bg-[#DCFCE7]'
           }`}
         >
-          {value}
+          {value ? '마감' : '모집중'}
         </span>
       ),
     },

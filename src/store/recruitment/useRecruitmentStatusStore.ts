@@ -1,11 +1,11 @@
 import { create } from 'zustand'
 
-type StatusType = 'all' | 'false' | 'true'
+type statusType = 'all' | 'false' | 'true' | string
 
 type StatusState = {
-  status: StatusType
+  status: statusType
 
-  setStatus: (value: StatusType) => void
+  setStatus: (value: statusType) => void
   resetStatus: () => void
 }
 
