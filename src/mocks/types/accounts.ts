@@ -250,6 +250,7 @@ export type StudyGroupDetail = {
   members: StudyGroupDetailMembers[]
   created_at: string
   updated_at: string
+  uuid: string
 }
 
 export type StudyReviewListResults = {
