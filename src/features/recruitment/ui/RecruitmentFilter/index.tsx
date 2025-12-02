@@ -7,7 +7,6 @@ import { FilterSelect, SearchInput } from '@/components/common/filter'
 import TagFilterPreview from '@/features/recruitment/ui/RecruitmentFilter/TagFilterPreview'
 import { useRecruitmentModalStore } from '@/store/recruitment/useRecruitmentModalStore'
 import { useRecruitmentSearchStore } from '@/store/recruitment/useRecruitmentSearchStore'
-import { ueeRecruitmentSortStore } from '@/store/recruitment/useRecruitmentSortStore'
 import { ueeRecruitmentStatusStore } from '@/store/recruitment/useRecruitmentStatusStore'
 
 const LABEL_STYLE = 'text-sm text-[#374151]'
@@ -18,7 +17,6 @@ export default function RecruitmentFilter() {
 
   const { keyword, setKeyword } = useRecruitmentSearchStore()
   const { status, setStatus } = ueeRecruitmentStatusStore()
-  const { sort, setSort } = ueeRecruitmentSortStore()
 
   return (
     <>
@@ -66,21 +64,6 @@ export default function RecruitmentFilter() {
           <ListFilter className="w-4 text-[#9CA3AF]" />
         </div>
       </div>
-      <FilterSelect
-        className=""
-        key={sort}
-        label="정렬"
-        labelClassName={LABEL_STYLE}
-        selectClassName={BOX_STYLE}
-        options={[
-          { label: '오래된순', value: 'oldest' },
-          { label: '조회수순', value: 'most_views' },
-          { label: '북마크순', value: 'most_bookmarks' },
-        ]}
-        value={sort}
-        onChange={setSort}
-        placeholder="최신순"
-      />
     </>
   )
 }
