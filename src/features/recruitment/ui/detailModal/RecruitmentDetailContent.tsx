@@ -6,7 +6,9 @@ import {
   SquareArrowOutUpRight,
   User,
 } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
 import { Link } from 'react-router'
+import rehypeHighlight from 'rehype-highlight'
 import { twMerge } from 'tailwind-merge'
 
 import { mockRecruitmentDetail } from '@/mocks/data/accounts'
@@ -86,7 +88,7 @@ export default function RecruitmentDetailContent() {
 
           <div className={LEFT_BOX_STYLE}>
             <div className={TEXT_STYLE}>공고 상태</div>
-            <div className={TEXT_STYLE}>{MD.is_closed ? '모집중' : '마감'}</div>
+            <div className={TEXT_STYLE}>{MD.is_closed ? '마감' : '모집중'}</div>
           </div>
 
           {/* 조회수, 북마크 순 */}
@@ -99,7 +101,7 @@ export default function RecruitmentDetailContent() {
                 className={twMerge(clsx('flex items-center', { TEXT_STYLE }))}
               >
                 <Eye className="mr-1 w-4 text-[#9CA3AF]" />
-                {MD.expected_headcount}
+                {MD.views_count}
               </div>
             </div>
             <div className={LEFT_BOX_STYLE}>
@@ -110,7 +112,7 @@ export default function RecruitmentDetailContent() {
                 className={twMerge(clsx('flex items-center', { TEXT_STYLE }))}
               >
                 <Bookmark className="mr-1 w-4 text-[#9CA3AF]" />
-                {MD.expected_payment_amount}원
+                {MD.bookmark_count}
               </div>
             </div>
           </div>
@@ -172,9 +174,11 @@ export default function RecruitmentDetailContent() {
         <div className="w-[536px]">
           <div className={RIGHT_LEFT_BOX_STYLE}>
             <div className={TEXT_STYLE}>공고 내용</div>
-            <div className="rounded-lg bg-[#F9FAFB] p-4">
+            <div className="prose prose-sm max-w-none rounded-lg bg-[#F9FAFB] p-4">
               {/* markdown 들어갈 수 있게 */}
-              {MD.content}
+              <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+                {MD.content}
+              </ReactMarkdown>
             </div>
           </div>
 
