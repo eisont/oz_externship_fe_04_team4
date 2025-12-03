@@ -4,10 +4,7 @@ import { useState, type KeyboardEvent } from 'react'
 
 import { FilterSelect } from '@/components/common/filter'
 import TagFilterPreview from '@/components/common/tag/TagFilterPreview'
-import {
-  useDetailModalStore,
-  useTagFilterModalModalStore,
-} from '@/store/recruitment/useRecruitmentModalStore'
+import { useTagFilterModalModalStore } from '@/store/recruitment/useRecruitmentModalStore'
 import { useRecruitmentSearchStore } from '@/store/recruitment/useRecruitmentSearchStore'
 import { ueeRecruitmentStatusStore } from '@/store/recruitment/useRecruitmentStatusStore'
 import { useRecruitmentTagListStore } from '@/store/recruitment/useRecruitmentTagsStore'
@@ -16,7 +13,6 @@ const LABEL_STYLE = 'text-sm text-[#374151]'
 
 export default function RecruitmentFilter() {
   const { openTagFilterModalModal } = useTagFilterModalModalStore()
-  const { openDetailModal } = useDetailModalStore()
 
   const [search, setSearch] = useState('')
   const { setKeyword } = useRecruitmentSearchStore()
@@ -37,7 +33,6 @@ export default function RecruitmentFilter() {
     <>
       <div className="mr-4 flex flex-col">
         <div
-          onClick={openDetailModal}
           className={'mb-2 cursor-default text-sm font-medium text-[##374151]'}
         >
           검색

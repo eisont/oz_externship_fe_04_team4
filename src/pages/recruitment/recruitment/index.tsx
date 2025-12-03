@@ -10,12 +10,14 @@ import { RecruitmentColumns } from '@/features/recruitment/columns'
 import RecruitmentDetailModal from '@/features/recruitment/ui/detailModal'
 import RecruitmentFilter from '@/features/recruitment/ui/RecruitmentFilter'
 import RecruitmentTagFilterModal from '@/features/recruitment/ui/tagFilterModal'
+import { useDetailModalStore } from '@/store/recruitment/useRecruitmentModalStore'
 import { useRecruitmentSearchStore } from '@/store/recruitment/useRecruitmentSearchStore'
 import { ueeRecruitmentStatusStore } from '@/store/recruitment/useRecruitmentStatusStore'
 import { useRecruitmentTagListStore } from '@/store/recruitment/useRecruitmentTagsStore'
 
 export default function RecruitmentPage() {
   const PAGE_SIZE = 10
+  const { openDetailModal } = useDetailModalStore()
 
   // 1) 테이블용 상태
   const [currentPage, setCurrentPage] = useState(1)
@@ -86,6 +88,7 @@ export default function RecruitmentPage() {
         isLoading={isLoading}
         error={error instanceof Error ? error : undefined}
         onRetry={refetch}
+        onRowClick={openDetailModal}
       />
     </>
   )

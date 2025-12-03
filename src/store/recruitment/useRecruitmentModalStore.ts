@@ -8,7 +8,7 @@ type TagFilterModalState = {
   toggleTagFilterModalModal: () => void
 }
 type DetailModalState = {
-  isDetailOpen: boolean
+  isDetailModalOpen: boolean
 
   openDetailModal: () => void
   closeDetailModal: () => void
@@ -27,10 +27,10 @@ export const useTagFilterModalModalStore = create<TagFilterModalState>(
 )
 
 export const useDetailModalStore = create<DetailModalState>((set) => ({
-  isDetailOpen: false,
+  isDetailModalOpen: false,
 
-  openDetailModal: () => set({ isDetailOpen: true }),
-  closeDetailModal: () => set({ isDetailOpen: false }),
+  openDetailModal: () => set({ isDetailModalOpen: true }),
+  closeDetailModal: () => set({ isDetailModalOpen: false }),
   toggleDetailModal: () =>
-    set((state) => ({ isDetailOpen: !state.isDetailOpen })),
+    set((state) => ({ isDetailModalOpen: !state.isDetailModalOpen })),
 }))
