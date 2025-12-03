@@ -1041,6 +1041,17 @@ export const getAdminApplicationDetailHandler = http.get(
     return HttpResponse.json(mockApplicationsDetail, { status: 200 })
   }
 )
+export const catchAllAdminHandler = http.all(
+  `${ADMIN_API_PREFIX}/*`,
+  ({ request }) => {
+    return HttpResponse.json(
+      {
+        error_detail: `Handler not found for ${request.method} ${request.url}`,
+      },
+      { status: 404 }
+    )
+  }
+)
 
 /* -------------------------------------------------------------------------- */
 /* 전체 admin 핸들러 모음                                                    */
@@ -1083,4 +1094,5 @@ export const adminHandlers = [
   // applications
   getAdminApplicationsHandler,
   getAdminApplicationDetailHandler,
+  catchAllAdminHandler,
 ]

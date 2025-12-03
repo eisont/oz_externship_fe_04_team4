@@ -19,6 +19,10 @@ export function useFetchQuery<TData>({
     queryKey: Array.isArray(queryKey) ? queryKey : [queryKey],
     queryFn: async () => {
       const response = await axiosInstance.get<TData>(url, { params })
+
+      if (!response.data) {
+        throw new Error('응답 데이터가 존재하지 않습니다.')
+      }
       return response.data
     },
     ...options,
