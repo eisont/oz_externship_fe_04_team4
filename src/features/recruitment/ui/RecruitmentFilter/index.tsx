@@ -4,10 +4,11 @@ import { ListFilter } from 'lucide-react'
 import { twMerge } from 'tailwind-merge'
 
 import { FilterSelect, SearchInput } from '@/components/common/filter'
-import TagFilterPreview from '@/features/recruitment/ui/RecruitmentFilter/TagFilterPreview'
+import TagFilterPreview from '@/components/common/tag/TagFilterPreview'
 import { useRecruitmentModalStore } from '@/store/recruitment/useRecruitmentModalStore'
 import { useRecruitmentSearchStore } from '@/store/recruitment/useRecruitmentSearchStore'
 import { ueeRecruitmentStatusStore } from '@/store/recruitment/useRecruitmentStatusStore'
+import { useRecruitmentTagListStore } from '@/store/recruitment/useRecruitmentTagsStore'
 
 const LABEL_STYLE = 'text-sm text-[#374151]'
 const BOX_STYLE = 'w-[256px] h-9 focus:ring-0 focus:border-0'
@@ -17,6 +18,7 @@ export default function RecruitmentFilter() {
 
   const { keyword, setKeyword } = useRecruitmentSearchStore()
   const { status, setStatus } = ueeRecruitmentStatusStore()
+  const { selectedTagsResult } = useRecruitmentTagListStore()
 
   return (
     <>
@@ -60,7 +62,7 @@ export default function RecruitmentFilter() {
             )
           )}
         >
-          <TagFilterPreview />
+          <TagFilterPreview tags={selectedTagsResult} />
           <ListFilter className="w-4 text-[#9CA3AF]" />
         </div>
       </div>
