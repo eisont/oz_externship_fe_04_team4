@@ -1,10 +1,14 @@
-import type { ReactNode } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 
 import Button from '@/components/common/Button'
 import Input from '@/components/common/Input'
 import Modal from '@/components/common/Modal'
 import { SERVICE_URLS } from '@/config/serviceUrls'
 import { useFetchQuery } from '@/hooks/useFetchQuery'
+import { useMutateQuery } from '@/hooks/useMutateQuery'
+import { formatDataTimeForUserDetail } from '@/utils/formatDataTimeForUserDetail'
+import { formatPhoneNumber } from '@/utils/formatPhoneNumber'
 interface UserDetailModalProps {
   isOpen: boolean
   onClose: () => void
@@ -40,7 +44,124 @@ export function UserDetailModal({
     url: SERVICE_URLS.ACCOUNTS.DETAIL(userId || 0),
     enabled: !!userId && isOpen,
   })
+  const queryClient = useQueryClient()
+  const [isEditMode, setIsEditMode] = useState(false)
+  const [isRoleModalOpen, setIsRoleModalOpen] = useState(false)
+  const [profileImg, setProfileImg] = useState<string>('')
+  const [file, setFile] = useState<File | null>(null)
+  const fileInput = useRef<HTMLInputElement | null>(null)
+  const [role, setRole] = useState('')
+  const [form, setForm] = useState<UserFormType>({
+    id: userId ?? 0,
+    name: '',
+    nickname: '',
+    phone: '',
+    status: '',
+    email: '',
+    gender: '',
+    birthday: '',
+    role: '',
+    joinDateTime: '',
+  })
 
+  useEffect(() => {
+    if (!user) return
+    setForm({
+      id: user.id,
+      name: user.name,
+      nickname: user.nickname,
+      phone: user.phone_number ? formatPhoneNumber(user.phone_number) : '',
+      status: STATUS_LABEL[user.status as keyof typeof STATUS_LABEL] ?? '',
+      email: user.email,
+      gender: user.gender,
+      birthday: user.birthday,
+      role: ROLE_LABEL[user.role as keyof typeof ROLE_LABEL] ?? '',
+      joinDateTime: user.created_at
+        ? formatDataTimeForUserDetail(user.created_at)
+        : '',
+    })
+  }, [user])
+
+  useEffect(() => {
+    if (!isOpen) {
+      setIsEditMode(false)
+    }
+    if (!isRoleModalOpen) {
+      setRole('')
+    } else if (isRoleModalOpen && user) {
+      setRole(user.role)
+    }
+  }, [isOpen, isRoleModalOpen, user])
+
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    if (name === 'phone') {
+      const onlyNumbers = value.replace(/\D/g, '')
+      setForm((prev) => ({
+        ...prev,
+        phone: onlyNumbers,
+      }))
+      return
+    }
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  const handlePhoneBlur = () => {
+    setForm((prev) => ({
+      ...prev,
+      phone: formatPhoneNumber(prev.phone),
+    }))
+  }
+
+  const handleImgChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    setFile(file)
+
+    const previewUrl = URL.createObjectURL(file)
+    setProfileImg(previewUrl)
+  }
+
+  const updateUserMutation = useMutateQuery({
+    url: SERVICE_URLS.ACCOUNTS.DETAIL(userId!),
+    method: 'patch',
+    onSuccess: () => {
+      alert('회원 정보가 수정되었습니다.')
+      setIsEditMode(false)
+      queryClient.invalidateQueries({ queryKey: ['users'], exact: false })
+    },
+  })
+  const handleFormEditOk = () => {
+    const formData = new FormData()
+
+    formData.append('name', form.name)
+    formData.append('nickname', form.nickname)
+    formData.append('phone_number', form.phone)
+    formData.append('gender', form.gender)
+
+    const statusMap: Record<string, string> = {
+      활성: 'active',
+      비활성: 'inactive',
+      탈퇴: 'withdraw',
+    }
+    formData.append('status', statusMap[form.status])
+
+    const originalRoleKey = Object.keys(ROLE_LABEL).find(
+      (key) => ROLE_LABEL[key as keyof typeof ROLE_LABEL] === form.role
+    )
+    if (originalRoleKey) {
+      formData.append('role', originalRoleKey)
+    }
+    if (file) {
+      formData.append('profile_img', file)
+    }
+    updateUserMutation.mutate(formData)
+  }
   console.log('회원정보 data', user)
 
   if (!isOpen || !userId) return null
