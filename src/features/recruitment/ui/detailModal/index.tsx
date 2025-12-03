@@ -1,55 +1,23 @@
-import { useState } from 'react'
-
-import { useRecruitmentTagsQuery } from '@/api/recruitment/useRecruitmentTagsQuery'
 import Modal from '@/components/common/Modal'
-import SelectedTagList from '@/features/recruitment/ui/tagFilterModal/SelectedTagList'
-import TagFilterActionButtons from '@/features/recruitment/ui/tagFilterModal/TagFilterActionButtons'
-import TagOptionList from '@/features/recruitment/ui/tagFilterModal/TagOptionList'
-import TagSearchInput from '@/features/recruitment/ui/tagFilterModal/TagSearchInput'
+import RecruitmentDetailContent from '@/features/recruitment/ui/detailModal/RecruitmentDetailContent'
+import RecruitmentDetailFooterActions from '@/features/recruitment/ui/detailModal/RecruitmentDetailFooterActions'
 import { useDetailModalStore } from '@/store/recruitment/useRecruitmentModalStore'
-import { useRecruitmentTagsStore } from '@/store/recruitment/useRecruitmentTagsStore'
 
 export default function RecruitmentDetailModal() {
-  const { isDetailOpen, closeDetailModal } = useDetailModalStore()
-
-  const [inputSearch, setInputSearch] = useState('')
-  const [keywordSearch, setKeywordSearch] = useState('')
-
-  const { selectedTags } = useRecruitmentTagsStore()
-
-  const { data, isLoading, isError } = useRecruitmentTagsQuery({
-    page: 1,
-    pageSize: 100,
-    search: keywordSearch,
-  })
-
-  const handleSearchSubmit = () => {
-    setKeywordSearch(inputSearch.trim())
-  }
+  const { isDetailModalOpen, closeDetailModal } = useDetailModalStore()
 
   return (
     <Modal
-      isOpen={isDetailOpen}
-      title="디테일 페이지"
+      className="h-[826px] max-w-6xl"
+      isOpen={isDetailModalOpen}
+      title="스터디 구인 공고 상세 정보"
       contentClassName="p-0"
-      footer={<TagFilterActionButtons />}
+      footer={<RecruitmentDetailFooterActions />}
       footerClassName="p-0"
       topCloseButton
       onClose={closeDetailModal}
     >
-      <TagSearchInput
-        search={inputSearch}
-        setSearch={setInputSearch}
-        onSubmit={handleSearchSubmit}
-      />
-
-      {Boolean(selectedTags.length) && <SelectedTagList />}
-
-      <TagOptionList
-        tags={data?.results}
-        isLoading={isLoading}
-        isError={isError}
-      />
+      <RecruitmentDetailContent />
     </Modal>
   )
 }
