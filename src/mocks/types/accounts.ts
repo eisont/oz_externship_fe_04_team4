@@ -355,6 +355,7 @@ export type RecruitmentDetail = {
   content: string
   thumbnail_img_url: string
   expected_headcount: number
+  expected_payment_amount: number
   close_at: string
   is_closed: boolean
   views_count: number

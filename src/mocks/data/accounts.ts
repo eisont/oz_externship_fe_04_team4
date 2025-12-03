@@ -3202,10 +3202,25 @@ export const mockRecruitmentDetail: RecruitmentDetail = {
   id: 1,
   uuid: 'b8dbd77f-cf73-4ef4-9914-4394d5ab366e',
   title: 'python 스터디 모집 공고 1',
-  content: '파이썬 잘하는 분 구해요. 함께 강의를 들으면서 스터디 진행합니다.',
+  content: `## 스터디 소개
+
+  파이썬을 함께 공부할 스터디원을 모집하는 공고입니다.
+  온라인 강의를 함께 들으면서 개념을 정리하고, 실전 문제도 같이 풀어봅니다.
+  
+  ### 이런 분과 함께해요
+  - 파이썬 기초를 다시 복습하고 싶은 분
+  - 온라인 스터디로 꾸준히 학습 루틴을 만들고 싶은 분
+  - 질의응답과 코드 리뷰를 통해 성장하고 싶은 분
+  
+  ### 진행 방식
+  - 주 2회 온라인 진행 (디스코드 / 줌)
+  - 매 회차 인프런 강의 수강 후 정리 및 실습
+  - 과제 코드 깃허브 레포지토리로 공유 후 간단 리뷰
+  `,
   thumbnail_img_url:
     'https://example.com/uploads/recruitments/images/image.png',
   expected_headcount: 5,
+  expected_payment_amount: 59000, // 예상 결제 금액(원)
   close_at: '2025-11-20T00:00:05.875842+09:00',
   is_closed: false,
   views_count: 1231,
