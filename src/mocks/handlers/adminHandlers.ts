@@ -980,9 +980,9 @@ export const getAdminApplicationsHandler = http.get(
         const dateA = new Date(a.created_at).getTime()
         const dateB = new Date(b.created_at).getTime()
 
-        if (sort === 'LATEST') {
+        if (sort === 'latest') {
           return dateB - dateA
-        } else if (sort === 'OLDEST') {
+        } else if (sort === 'oldest') {
           return dateA - dateB
         }
         return 0

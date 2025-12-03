@@ -24,7 +24,7 @@ export default function ApplicationManagementPage() {
     search: '',
     page: 1,
     status: '',
-    sort: '',
+    sort: 'latest',
   })
   const [selectedApplication, setSelectedApplication] = useState<number | null>(
     null
@@ -126,8 +126,8 @@ export default function ApplicationManagementPage() {
             {
               label: '정렬',
               options: [
-                { label: '최신순', value: 'LATEST' },
-                { label: '오래된순', value: 'OLDEST' },
+                { label: '최신순', value: 'latest' },
+                { label: '오래된순', value: 'oldest' },
               ],
               value: filters.sort,
               onChange: (value) =>
