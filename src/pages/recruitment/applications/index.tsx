@@ -80,10 +80,7 @@ export default function ApplicationManagementPage() {
       key: 'created_at',
       header: '지원일시',
       width: '180px',
-      sortable: {
-        asc: 'oldest',
-        desc: 'latest',
-      },
+
       render: (value: string) => formatDateTime(value),
     },
     {
