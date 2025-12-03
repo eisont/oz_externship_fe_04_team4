@@ -1,6 +1,6 @@
 import { adminFetch } from '@/api/client'
 import { ADMIN_TEXT } from '@/config/api'
-import type { TagsType } from '@/store/recruitment/useRecruitmentTagsStore'
+import type { RecruitmentTag } from '@/mocks/types/accounts'
 
 // 타입 예시, 실제로는 서버 스키마에 맞게 정의해줘
 export type GetAdminRecruitmentsParams = {
@@ -8,7 +8,7 @@ export type GetAdminRecruitmentsParams = {
   page_size: number
   keyword?: string
   status?: 'all' | 'true' | 'false' | string
-  tags?: TagsType[]
+  tags?: RecruitmentTag[]
   sort?: string
 }
 

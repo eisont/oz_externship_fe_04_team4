@@ -48,9 +48,7 @@ export default function RecruitmentFilter() {
       />
 
       <div className="mr-4 flex flex-col">
-        <div
-          className={twMerge(clsx('mb-2 text-sm font-medium text-[##374151]'))}
-        >
+        <div className={'mb-2 text-sm font-medium text-[##374151]'}>
           태그 필터
         </div>
         <div
@@ -62,7 +60,11 @@ export default function RecruitmentFilter() {
             )
           )}
         >
-          <TagFilterPreview tags={selectedTagsResult} />
+          <TagFilterPreview
+            tags={selectedTagsResult}
+            koreanLength={16}
+            englishLength={30}
+          />
           <ListFilter className="w-4 text-[#9CA3AF]" />
         </div>
       </div>

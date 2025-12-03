@@ -4,11 +4,18 @@ const WRAPPER_STYLE = 'flex gap-0.5 truncate text-sm text-[#374151]'
 
 type Props = {
   tags: RecruitmentTag[]
+  englishLength: number
+  koreanLength: number
 }
 
-export default function TagFilterPreview({ tags }: Props) {
-  const joined = tags.join('')
-  const isKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(tags.join(''))
+export default function TagFilterPreview({
+  tags,
+  englishLength,
+  koreanLength,
+}: Props) {
+  const tagNames = tags.map((el) => el.name)
+  const joined = tagNames.join('')
+  const isKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(tagNames.join(''))
   const hasTags = tags.length > 0
   const isMultiTag = tags.length > 1
 
@@ -29,9 +36,12 @@ export default function TagFilterPreview({ tags }: Props) {
     )
   }
   if (!isKorean) {
-    const isLong = joined.length > 30
+    const isLong = joined.length > englishLength
     if (isLong && isMultiTag) {
-      const englishVisible = tags.join('&^').slice(0, 25).split('&^')
+      const englishVisible = tagNames
+        .join('&^')
+        .slice(0, englishLength - 5)
+        .split('&^')
 
       const restCount = tags.length - englishVisible.length
 
@@ -86,10 +96,10 @@ export default function TagFilterPreview({ tags }: Props) {
   // -----------------------------
   // 2) 한글이 포함된 경우
   // -----------------------------
-  const isLongKorean = joined.length > 16
+  const isLongKorean = joined.length > koreanLength
 
   if (isLongKorean) {
-    const koreanVisible = tags.join('&^').slice(0, 16).split('&^')
+    const koreanVisible = tagNames.join('&^').slice(0, koreanLength).split('&^')
 
     const restCount = tags.length - koreanVisible.length
 
