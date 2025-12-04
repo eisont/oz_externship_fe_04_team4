@@ -10,6 +10,7 @@ import { RecruitmentColumns } from '@/features/recruitment/columns'
 import RecruitmentDetailModal from '@/features/recruitment/ui/detailModal'
 import RecruitmentFilter from '@/features/recruitment/ui/RecruitmentFilter'
 import RecruitmentTagFilterModal from '@/features/recruitment/ui/tagFilterModal'
+import type { RecruitmentListResults } from '@/mocks/types/accounts'
 import { useDetailModalStore } from '@/store/recruitment/useRecruitmentModalStore'
 import { useRecruitmentSearchStore } from '@/store/recruitment/useRecruitmentSearchStore'
 import { ueeRecruitmentStatusStore } from '@/store/recruitment/useRecruitmentStatusStore'
@@ -88,7 +89,7 @@ export default function RecruitmentPage() {
         isLoading={isLoading}
         error={error instanceof Error ? error : undefined}
         onRetry={refetch}
-        onRowClick={openDetailModal}
+        onRowClick={(row: RecruitmentListResults) => openDetailModal(row.id)}
       />
     </>
   )

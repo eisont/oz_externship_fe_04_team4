@@ -296,16 +296,14 @@ export type StudyReviewDetail = {
   updated_at: string
 }
 
-export type RecruitmentTag = {
-  id: number
-  name: string
-}
-export type RecruitmentTags = {
+// api/v1/admin/recruitments
+export type RecruitmentList = {
   count: number
   next: null | string
   previous: null | string
-  results: RecruitmentTag[]
+  results: RecruitmentListResults[]
 }
+
 export type RecruitmentListResults = {
   id: number
   title: string
@@ -317,15 +315,39 @@ export type RecruitmentListResults = {
   created_at: string
   updated_at: string
 }
+export type RecruitmentTag = {
+  id: number
+  name: string
+}
 
-// api/v1/admin/recruitments
-export type RecruitmentList = {
+// api/v1/recruitment-tags
+export type RecruitmentTags = {
   count: number
   next: null | string
   previous: null | string
-  results: RecruitmentListResults[]
+  results: RecruitmentTag[]
 }
 
+// api/v1/admin/recruitments/{recruitment_id}
+export type RecruitmentDetail = {
+  id: number
+  uuid: string
+  title: string
+  content: string
+  thumbnail_img_url: string
+  expected_headcount: number
+  expected_payment_amount: number
+  close_at: string
+  is_closed: boolean
+  views_count: number
+  bookmark_count: number
+  created_at: string
+  updated_at: string
+  lectures: RecruitmentDetailLectures[]
+  tags: RecruitmentTag[]
+  files: RecruitmentDetailFiles[]
+  applications: RecruitmentDetailApplications[]
+}
 export type RecruitmentDetailFiles = {
   id: number
   file_name: string
@@ -347,25 +369,6 @@ export type RecruitmentDetailApplications = {
   }
   status: ApplicationsStatus
   created_at: string
-}
-export type RecruitmentDetail = {
-  id: number
-  uuid: string
-  title: string
-  content: string
-  thumbnail_img_url: string
-  expected_headcount: number
-  expected_payment_amount: number
-  close_at: string
-  is_closed: boolean
-  views_count: number
-  bookmark_count: number
-  created_at: string
-  updated_at: string
-  lectures: RecruitmentDetailLectures[]
-  tags: RecruitmentTag[]
-  files: RecruitmentDetailFiles[]
-  applications: RecruitmentDetailApplications[]
 }
 
 export type ApplicationsListResults = {

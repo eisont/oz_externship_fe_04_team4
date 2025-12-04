@@ -4,7 +4,8 @@ import RecruitmentDetailFooterActions from '@/features/recruitment/ui/detailModa
 import { useDetailModalStore } from '@/store/recruitment/useRecruitmentModalStore'
 
 export default function RecruitmentDetailModal() {
-  const { isDetailModalOpen, closeDetailModal } = useDetailModalStore()
+  const { isDetailModalOpen, closeDetailModal, selectedRecruitmentId } =
+    useDetailModalStore()
 
   return (
     <Modal

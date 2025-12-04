@@ -9,8 +9,9 @@ type TagFilterModalState = {
 }
 type DetailModalState = {
   isDetailModalOpen: boolean
+  selectedRecruitmentId: number | null
 
-  openDetailModal: () => void
+  openDetailModal: (value: number) => void
   closeDetailModal: () => void
   toggleDetailModal: () => void
 }
@@ -28,8 +29,10 @@ export const useTagFilterModalModalStore = create<TagFilterModalState>(
 
 export const useDetailModalStore = create<DetailModalState>((set) => ({
   isDetailModalOpen: false,
+  selectedRecruitmentId: null,
 
-  openDetailModal: () => set({ isDetailModalOpen: true }),
+  openDetailModal: (id) =>
+    set({ isDetailModalOpen: true, selectedRecruitmentId: id }),
   closeDetailModal: () => set({ isDetailModalOpen: false }),
   toggleDetailModal: () =>
     set((state) => ({ isDetailModalOpen: !state.isDetailModalOpen })),
