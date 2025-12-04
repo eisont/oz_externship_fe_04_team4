@@ -5,7 +5,7 @@ import { axiosInstance } from '@/lib/axios'
 interface UseMutateQueryParams<TData, TVariables, TError = Error>
   extends Omit<UseMutationOptions<TData, TError, TVariables>, 'mutationFn'> {
   url: string
-  method?: 'post' | 'patch' | 'put' | 'delete'
+  method?: 'post' | 'patch' | 'put' | 'delete' | 'postForm'
 }
 
 export function useMutateQuery<TData, TVariables = unknown>({
@@ -15,6 +15,11 @@ export function useMutateQuery<TData, TVariables = unknown>({
 }: UseMutateQueryParams<TData, TVariables>) {
   return useMutation<TData, Error, TVariables>({
     mutationFn: async (variables: TVariables) => {
+      if (method === 'postForm') {
+        const response = await axiosInstance.postForm<TData>(url, variables)
+        return response.data
+      }
+
       const response = await axiosInstance.request<TData>({
         url,
         method,

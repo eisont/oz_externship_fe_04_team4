@@ -137,7 +137,7 @@ export function UserDetailModal({
 
   const updateUserMutation = useMutateQuery({
     url: SERVICE_URLS.ACCOUNTS.DETAIL(userId!),
-    method: 'patch',
+    method: 'postForm',
     onSuccess: () => {
       alert('회원 정보가 수정되었습니다.')
       setIsEditMode(false)
@@ -146,30 +146,23 @@ export function UserDetailModal({
     },
   })
   const handleFormEditOk = () => {
-    const formData = new FormData()
-
-    formData.append('name', form.name)
-    formData.append('nickname', form.nickname)
-    formData.append('phone_number', form.phone)
-    formData.append('gender', form.gender)
-
     const statusMap: Record<string, string> = {
       활성: 'active',
       비활성: 'inactive',
       탈퇴: 'withdraw',
     }
-    formData.append('status', statusMap[form.status])
-
     const originalRoleKey = Object.keys(ROLE_LABEL).find(
       (key) => ROLE_LABEL[key as keyof typeof ROLE_LABEL] === form.role
     )
-    if (originalRoleKey) {
-      formData.append('role', originalRoleKey)
-    }
-    if (file) {
-      formData.append('profile_img', file)
-    }
-    updateUserMutation.mutate(formData)
+    updateUserMutation.mutate({
+      name: form.name,
+      nickname: form.nickname,
+      phone_number: form.phone,
+      gender: form.gender,
+      status: statusMap[form.status],
+      role: originalRoleKey,
+      profile_img: file ?? undefined,
+    })
   }
   console.log('회원정보 data', user)
 
