@@ -72,6 +72,9 @@ export default function UserTable() {
       status,
       role,
     },
+    staleTime: 60 * 1000,
+    gcTime: 5 * 60 * 1000,
+    refetchOnWindowFocus: false,
   })
 
   console.log('📌 API 응답:', data)
@@ -236,7 +239,7 @@ export default function UserTable() {
             options: [
               { label: '활성', value: 'active' },
               { label: '비활성', value: 'inactive' },
-              { label: '탈퇴요청', value: 'withdraw' },
+              { label: '탈퇴요청', value: 'withdrew' },
             ],
             value: status,
             onChange: setStatus,
