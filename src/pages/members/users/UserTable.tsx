@@ -59,20 +59,22 @@ export default function UserTable() {
   useEffect(() => {
     setPage(1)
   }, [search, status, role])
-  const mappedStatus = status === 'withdraw' ? 'withdrew' : status
 
   const { data, isLoading, error, refetch } = useFetchQuery<
     PaginationResponse<UserApiRawItem>
   >({
-    queryKey: ['users-list', page, search, mappedStatus, role],
+    queryKey: ['users-list', page, search, status, role],
     url: SERVICE_URLS.ACCOUNTS.LIST,
     params: {
       page,
       page_size: 10,
       search,
-      status: mappedStatus,
+      status,
       role,
     },
+    staleTime: 60 * 1000,
+    gcTime: 5 * 60 * 1000,
+    refetchOnWindowFocus: false,
   })
 
   console.log('📌 API 응답:', data)
@@ -237,7 +239,7 @@ export default function UserTable() {
             options: [
               { label: '활성', value: 'active' },
               { label: '비활성', value: 'inactive' },
-              { label: '탈퇴요청', value: 'withdraw' },
+              { label: '탈퇴요청', value: 'withdrew' },
             ],
             value: status,
             onChange: setStatus,
