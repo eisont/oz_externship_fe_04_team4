@@ -6,6 +6,7 @@ import {
   SquareArrowOutUpRight,
   User,
 } from 'lucide-react'
+import type { ChangeEvent } from 'react'
 import { Link } from 'react-router'
 import { twMerge } from 'tailwind-merge'
 
@@ -48,15 +49,19 @@ export default function RecruitmentDetailContent() {
       <div className="flex justify-between">
         {/* 왼쪽 */}
         <div className="w-[536px]">
+          {/* 고유 ID */}
           <div className={LEFT_BOX_STYLE}>
             <div className={TEXT_STYLE}>고유 ID</div>
             <div className={TEXT_STYLE}>#{MD.id}</div>
           </div>
+
+          {/* 고유 UUID */}
           <div className={LEFT_BOX_STYLE}>
             <div className={TEXT_STYLE}>UUID</div>
             <div className={TEXT_STYLE}>{MD.uuid}</div>
           </div>
 
+          {/* 공고 제목 */}
           <div className={LEFT_BOX_STYLE}>
             <div className={TEXT_STYLE}>공고 제목</div>
             <div className="text-primary-black text-lg font-bold">
@@ -80,11 +85,13 @@ export default function RecruitmentDetailContent() {
             </div>
           </div>
 
+          {/* 마감기한 */}
           <div className={LEFT_BOX_STYLE}>
             <div className={TEXT_STYLE}>마감 기한</div>
             <div className={TEXT_STYLE}>{sliceDateTime(MD.close_at, 10)}</div>
           </div>
 
+          {/* 공고 상태 */}
           <div className={LEFT_BOX_STYLE}>
             <div className={TEXT_STYLE}>공고 상태</div>
             <div className={TEXT_STYLE}>{MD.is_closed ? '마감' : '모집중'}</div>
@@ -151,7 +158,7 @@ export default function RecruitmentDetailContent() {
             </div>
           </div>
 
-          {/* 공고 첨푸 파일 */}
+          {/* 공고 첨부 파일 */}
           <div className={'mb-4 flex flex-col gap-3'}>
             <div className={TEXT_STYLE}>사용자 정의 태그</div>
             <div className="flex flex-col">
@@ -161,7 +168,7 @@ export default function RecruitmentDetailContent() {
                   className="mb-2 flex w-full cursor-default items-center rounded-lg bg-[#F9FAFB] p-3 text-[#2563EB]"
                 >
                   <FileText className="mr-2 w-5 text-[#9CA3AF]" />
-                  {el.file_name}
+                  <div className="cursor-pointer">{el.file_name}</div>
                 </div>
               ))}
             </div>
@@ -189,9 +196,14 @@ export default function RecruitmentDetailContent() {
               <div key={el.id} className="rounded-lg bg-[#F9FAFB] p-4">
                 <div className="flex">
                   <img
-                    className="mr-4 h-14 w-20 rounded-md bg-amber-200"
+                    className="mr-4 h-14 w-20 rounded-md bg-white object-cover"
                     src={el.thumbnail_img_url}
                     alt={el.thumbnail_img_url}
+                    onError={(e: ChangeEvent<HTMLImageElement>) => {
+                      e.currentTarget.className =
+                        'mr-4 h-14 w-20 rounded-md bg-white object-contain'
+                      e.currentTarget.src = '/public/logo.png'
+                    }}
                   />
                   <div className="">
                     <div className="text-primary-black mb-1 text-sm font-semibold">
