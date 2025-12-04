@@ -6,11 +6,10 @@ import {
   SquareArrowOutUpRight,
   User,
 } from 'lucide-react'
-import ReactMarkdown from 'react-markdown'
 import { Link } from 'react-router'
-import rehypeHighlight from 'rehype-highlight'
 import { twMerge } from 'tailwind-merge'
 
+import { markdownToHtml } from '@/lib/markdown'
 import { mockRecruitmentDetail } from '@/mocks/data/accounts'
 import { sliceDateTime } from '@/utils/format'
 
@@ -174,12 +173,13 @@ export default function RecruitmentDetailContent() {
         <div className="w-[536px]">
           <div className={RIGHT_LEFT_BOX_STYLE}>
             <div className={TEXT_STYLE}>공고 내용</div>
-            <div className="prose prose-sm max-w-none rounded-lg bg-[#F9FAFB] p-4">
-              {/* markdown 들어갈 수 있게 */}
-              <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
-                {MD.content}
-              </ReactMarkdown>
-            </div>
+            <div
+              className="text-custom-gray-900 remove-focus-outline markdown-content min-h-[200px] w-full list-inside rounded-lg border-0 bg-[#F9FAFB] p-4"
+              dangerouslySetInnerHTML={{
+                __html: markdownToHtml(MD.content.trim()),
+              }}
+              style={{ listStyle: 'decimal' }}
+            />
           </div>
 
           {/* 스터디 강의 목록 */}
