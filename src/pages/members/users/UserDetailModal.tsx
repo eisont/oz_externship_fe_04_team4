@@ -65,6 +65,7 @@ export function UserDetailModal({
   const queryClient = useQueryClient()
   const [isEditMode, setIsEditMode] = useState(false)
   const [isRoleModalOpen, setIsRoleModalOpen] = useState(false)
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [profileImg, setProfileImg] = useState<string>('')
   const [file, setFile] = useState<File | null>(null)
   const fileInput = useRef<HTMLInputElement | null>(null)
@@ -109,7 +110,10 @@ export function UserDetailModal({
     } else if (isRoleModalOpen && user) {
       setRole(user.role)
     }
-  }, [isOpen, isRoleModalOpen, user])
+    if (!isDeleteModalOpen) {
+      setIsDeleteModalOpen(false)
+    }
+  }, [isOpen, isRoleModalOpen, isDeleteModalOpen, user])
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -144,6 +148,21 @@ export function UserDetailModal({
     const previewUrl = URL.createObjectURL(file)
     setProfileImg(previewUrl)
   }
+
+  const handleUserDelete = () => {
+    deleteUserMutation.mutate({})
+  }
+
+  const deleteUserMutation = useMutateQuery({
+    url: SERVICE_URLS.ACCOUNTS.DELETE(userId!),
+    method: 'delete',
+    onSuccess: () => {
+      alert('회원 삭제가 완료되었습니다.')
+      setIsEditMode(false)
+      onClose()
+      queryClient.invalidateQueries({ queryKey: ['users-list'], exact: false })
+    },
+  })
 
   const updateUserMutation = useMutateQuery({
     url: SERVICE_URLS.ACCOUNTS.DETAIL(userId!),
@@ -226,7 +245,33 @@ export function UserDetailModal({
                 </Button>
               )}
 
-              <Button variant="delete">삭제하기</Button>
+              <Button
+                variant="delete"
+                onClick={() => setIsDeleteModalOpen(true)}
+              >
+                삭제하기
+              </Button>
+              <Modal
+                className="w-110"
+                titleClassName="pb-0 border-b-0"
+                title="회원 삭제 확인"
+                isOpen={isDeleteModalOpen}
+                onClose={() => setIsDeleteModalOpen(false)}
+                footerClassName="border-t-0 pt-0"
+                footer={
+                  <div className="flex w-full flex-row justify-end gap-3">
+                    <Button variant="cancel">취소</Button>
+                    <Button variant="delete" onClick={handleUserDelete}>
+                      삭제
+                    </Button>
+                  </div>
+                }
+              >
+                <div className="text-base text-[#4B5563]">
+                  삭제 시 해당 유저와 관련된 모든 데이터가 즉시 삭제되며 되돌릴
+                  수 없습니다.
+                </div>
+              </Modal>
             </div>
           </div>
         }
