@@ -9,6 +9,7 @@ import type { ApplicationsListResults } from '@/mocks/types/accounts'
 import { StudyGroupDetailModal } from '@/pages/study/groups/StudyGroupDetailModal'
 
 type Application = ApplicationsListResults
+
 export default function ApplicationManagementPage() {
   const [filters, setFilters] = useState<{
     search: string
@@ -49,6 +50,7 @@ export default function ApplicationManagementPage() {
     setIsModalOpen(false)
     setSelectedApplication(null)
   }
+
   return (
     <>
       <div className="mb-8 space-y-6 rounded-lg bg-white p-6 shadow-sm">
