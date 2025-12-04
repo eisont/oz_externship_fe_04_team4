@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import clsx from 'clsx'
+import dayjs from 'dayjs'
 import {
   Bookmark,
   Eye,
@@ -14,7 +15,6 @@ import { twMerge } from 'tailwind-merge'
 import { getAdminRecruitmentDetail } from '@/features/recruitment/api/getAdminRecruitmentDetail'
 import { markdownToHtml } from '@/lib/markdown'
 import { useDetailModalStore } from '@/store/recruitment/useRecruitmentModalStore'
-import { sliceDateTime } from '@/utils/format'
 import { formatPrice } from '@/utils/price'
 
 const LEFT_BOX_STYLE = 'flex flex-col gap-1 mb-4 cursor-default'
@@ -113,7 +113,7 @@ export default function RecruitmentDetailContent() {
           <div className={LEFT_BOX_STYLE}>
             <div className={TEXT_STYLE}>마감 기한</div>
             <div className={TEXT_STYLE}>
-              {sliceDateTime(data?.close_at, 10)}
+              {dayjs(data?.close_at).format('YYYY-MM-DD')}
             </div>
           </div>
 
@@ -166,7 +166,7 @@ export default function RecruitmentDetailContent() {
                 공고 등록일시
               </div>
               <div className={TEXT_STYLE}>
-                {sliceDateTime(data?.created_at, 16)}
+                {dayjs(data?.created_at).format('YYYY-MM-DD HH:mm')}
               </div>
             </div>
             <div className={LEFT_BOX_STYLE}>
@@ -174,7 +174,7 @@ export default function RecruitmentDetailContent() {
                 마지막 수정일시
               </div>
               <div className={TEXT_STYLE}>
-                {sliceDateTime(data?.updated_at, 16)}
+                {dayjs(data?.updated_at).format('YYYY-MM-DD HH:mm')}
               </div>
             </div>
           </div>
@@ -304,7 +304,8 @@ export default function RecruitmentDetailContent() {
                       이메일: {el.applicant.email}
                     </div>
                     <div className="text-[12px] text-[#4B5563]">
-                      지원일시: {sliceDateTime(el.created_at, 16)}
+                      지원일시:{' '}
+                      {dayjs(el.created_at).format('YYYY-MM-DD HH:mm')}
                     </div>
                   </div>
                 </div>
