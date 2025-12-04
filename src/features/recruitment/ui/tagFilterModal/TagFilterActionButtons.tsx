@@ -1,24 +1,24 @@
-import { useRecruitmentModalStore } from '@/store/recruitment/useRecruitmentModalStore'
+import { useTagFilterModalModalStore } from '@/store/recruitment/useRecruitmentModalStore'
 import {
   useRecruitmentTagListStore,
   useRecruitmentTagsStore,
 } from '@/store/recruitment/useRecruitmentTagsStore'
 
 export default function TagFilterActionButtons() {
-  const { closeModal } = useRecruitmentModalStore()
+  const { closeTagFilterModalModal } = useTagFilterModalModalStore()
   const { selectedTags } = useRecruitmentTagsStore()
   const { setSelectedTagsResult } = useRecruitmentTagListStore()
 
   function SaveSelectedTags() {
     setSelectedTagsResult(selectedTags)
-    closeModal()
+    closeTagFilterModalModal()
   }
 
   return (
-    <div className="flex h-[73px] w-full items-center justify-end px-6 py-4">
+    <div className="flex h-[73px] w-full items-center justify-end bg-[#F9FAFB] px-6 py-4">
       <div className="flex h-10 w-auto items-center">
         <div
-          onClick={closeModal}
+          onClick={closeTagFilterModalModal}
           className="mr-3 cursor-pointer rounded-lg bg-[#6B7280] px-4 py-2 text-white hover:bg-[#585e6a] active:font-bold"
         >
           취소

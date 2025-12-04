@@ -7,14 +7,18 @@ import {
   type GetAdminRecruitmentsParams,
 } from '@/features/recruitment/api/getAdminRecruitments'
 import { RecruitmentColumns } from '@/features/recruitment/columns'
-import RecruitmentModal from '@/features/recruitment/ui/modal'
+import RecruitmentDetailModal from '@/features/recruitment/ui/detailModal'
 import RecruitmentFilter from '@/features/recruitment/ui/RecruitmentFilter'
+import RecruitmentTagFilterModal from '@/features/recruitment/ui/tagFilterModal'
+import type { RecruitmentListResults } from '@/mocks/types/accounts'
+import { useDetailModalStore } from '@/store/recruitment/useRecruitmentModalStore'
 import { useRecruitmentSearchStore } from '@/store/recruitment/useRecruitmentSearchStore'
 import { ueeRecruitmentStatusStore } from '@/store/recruitment/useRecruitmentStatusStore'
 import { useRecruitmentTagListStore } from '@/store/recruitment/useRecruitmentTagsStore'
 
 export default function RecruitmentPage() {
   const PAGE_SIZE = 10
+  const { openDetailModal } = useDetailModalStore()
 
   // 1) 테이블용 상태
   const [currentPage, setCurrentPage] = useState(1)
@@ -58,7 +62,8 @@ export default function RecruitmentPage() {
   }
   return (
     <>
-      <RecruitmentModal />
+      <RecruitmentTagFilterModal />
+      <RecruitmentDetailModal />
 
       <div className="mb-6 space-y-4 rounded-lg bg-white p-6">
         <div className="flex items-center">
@@ -67,7 +72,7 @@ export default function RecruitmentPage() {
       </div>
 
       <Table
-        columns={RecruitmentColumns()}
+        columns={RecruitmentColumns}
         sortConfig={sortConfig}
         onSort={handleSort}
         currentPage={currentPage}
@@ -84,6 +89,7 @@ export default function RecruitmentPage() {
         isLoading={isLoading}
         error={error instanceof Error ? error : undefined}
         onRetry={refetch}
+        onRowClick={(row: RecruitmentListResults) => openDetailModal(row.id)}
       />
     </>
   )

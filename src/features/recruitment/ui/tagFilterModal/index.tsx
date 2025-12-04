@@ -2,15 +2,16 @@ import { useState } from 'react'
 
 import { useRecruitmentTagsQuery } from '@/api/recruitment/useRecruitmentTagsQuery'
 import Modal from '@/components/common/Modal'
-import SelectedTagList from '@/features/recruitment/ui/modal/SelectedTagList'
-import TagFilterActionButtons from '@/features/recruitment/ui/modal/TagFilterActionButtons'
-import TagOptionList from '@/features/recruitment/ui/modal/TagOptionList'
-import TagSearchInput from '@/features/recruitment/ui/modal/TagSearchInput'
-import { useRecruitmentModalStore } from '@/store/recruitment/useRecruitmentModalStore'
+import SelectedTagList from '@/features/recruitment/ui/tagFilterModal/SelectedTagList'
+import TagFilterActionButtons from '@/features/recruitment/ui/tagFilterModal/TagFilterActionButtons'
+import TagOptionList from '@/features/recruitment/ui/tagFilterModal/TagOptionList'
+import TagSearchInput from '@/features/recruitment/ui/tagFilterModal/TagSearchInput'
+import { useTagFilterModalModalStore } from '@/store/recruitment/useRecruitmentModalStore'
 import { useRecruitmentTagsStore } from '@/store/recruitment/useRecruitmentTagsStore'
 
-export default function RecruitmentModal() {
-  const { isOpen, closeModal } = useRecruitmentModalStore()
+export default function RecruitmentTagFilterModal() {
+  const { isTagFilterModalOpen, closeTagFilterModalModal } =
+    useTagFilterModalModalStore()
 
   const [inputSearch, setInputSearch] = useState('')
   const [keywordSearch, setKeywordSearch] = useState('')
@@ -29,13 +30,13 @@ export default function RecruitmentModal() {
 
   return (
     <Modal
-      isOpen={isOpen}
+      isOpen={isTagFilterModalOpen}
       title="태그 필터 선택"
       contentClassName="p-0"
       footer={<TagFilterActionButtons />}
       footerClassName="p-0"
       topCloseButton
-      onClose={closeModal}
+      onClose={closeTagFilterModalModal}
     >
       <TagSearchInput
         search={inputSearch}
