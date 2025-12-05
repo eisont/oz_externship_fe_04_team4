@@ -58,7 +58,7 @@ export default function RecruitmentFilter() {
           key={status}
           label="공고 상태"
           labelClassName={LABEL_STYLE}
-          selectClassName="w-[256px] h-9 focus:ring-0 focus:border-gray-300"
+          selectClassName="w-[256px] h-[38px] focus:ring-0 focus:border-gray-300"
           options={[
             { label: '모집중', value: 'false' },
             { label: '마감', value: 'true' },
