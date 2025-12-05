@@ -9,6 +9,7 @@ interface UserDetailFooterProps {
   setIsDeleteModalOpen: React.Dispatch<React.SetStateAction<boolean>>
   handleUserDelete: () => void
   setIsEditMode: React.Dispatch<React.SetStateAction<boolean>>
+  canEditRole: boolean | null
 }
 export function UserDetailFooter({
   setIsRoleModalOpen,
@@ -18,18 +19,21 @@ export function UserDetailFooter({
   setIsDeleteModalOpen,
   handleUserDelete,
   setIsEditMode,
+  canEditRole,
 }: UserDetailFooterProps) {
   return (
     <div className="flex w-full items-center justify-between">
-      <Button
-        variant="custom"
-        className="bg-primary-green text-white"
-        onClick={() => {
-          setIsRoleModalOpen(true)
-        }}
-      >
-        권한 변경하기
-      </Button>
+      {canEditRole && (
+        <Button
+          variant="custom"
+          className="bg-primary-green text-white"
+          onClick={() => {
+            setIsRoleModalOpen(true)
+          }}
+        >
+          권한 변경하기
+        </Button>
+      )}
       <div className="flex justify-end gap-3">
         {isEditMode ? (
           <Button

@@ -29,7 +29,7 @@ export const mockAccountsList: AccountsList = {
   results: [
     {
       id: 1,
-      email: 'user1@example.com',
+      email: 'admin@example.com',
       nickname: 'hong1',
       name: '홍길동',
       birthday: '1995-01-15',
@@ -255,7 +255,7 @@ export const mockAccountsList: AccountsList = {
 export const mockAccountDetail: AccountsDetail = {
   // mockAccountsList의 첫 번째 유저(id: 1)와 연결
   id: 1,
-  email: 'user1@example.com',
+  email: 'admin@example.com',
   nickname: 'hong1',
   name: '홍길동',
   gender: 'M',
@@ -270,14 +270,14 @@ export const mockAccountDetail: AccountsDetail = {
 export const mockAccountDetailMap: Record<number, AccountsDetail> = {
   1: {
     id: 1,
-    email: 'user1@example.com',
+    email: 'admin@example.com',
     nickname: 'hong1',
     name: '홍길동',
     gender: 'M',
     phone_number: '01000000001',
     birthday: '1995-01-15',
     status: 'active',
-    role: 'user',
+    role: 'admin',
     profile_img_url: 'https://example.com/images/profiles/user1.png',
     created_at: '2025-10-30T10:01:57.505250+09:00',
   },

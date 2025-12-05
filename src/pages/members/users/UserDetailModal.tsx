@@ -14,6 +14,7 @@ import type {
   UserDetailUser,
   UserFormType,
 } from '@/pages/types/users'
+import { useAuthStore } from '@/store/authStore'
 import { formatDataTimeForUserDetail } from '@/utils/formatDataTimeForUserDetail'
 import { formatPhoneNumber } from '@/utils/formatPhoneNumber'
 
@@ -32,6 +33,7 @@ export function UserDetailModal({
     url: SERVICE_URLS.ACCOUNTS.DETAIL(userId || 0),
     enabled: !!userId && isOpen,
   })
+  const { isLoggedIn, user: authUser } = useAuthStore()
   const queryClient = useQueryClient()
   const [isEditMode, setIsEditMode] = useState(false)
   const [isRoleModalOpen, setIsRoleModalOpen] = useState(false)
@@ -168,6 +170,8 @@ export function UserDetailModal({
       profile_img: file ?? undefined,
     })
   }
+  const canEditRole = isLoggedIn && authUser && user?.role === 'admin'
+
   console.log('회원정보 data', user)
 
   if (!isOpen || !userId) return null
@@ -192,6 +196,7 @@ export function UserDetailModal({
           handleUserDelete={handleUserDelete}
           setIsEditMode={setIsEditMode}
           isDeleteModalOpen={isDeleteModalOpen}
+          canEditRole={canEditRole}
         />
       }
     >
