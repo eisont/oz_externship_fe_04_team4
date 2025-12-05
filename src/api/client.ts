@@ -6,10 +6,7 @@ type AdminFetchOptions = Omit<RequestInit, 'headers'> & {
   headers?: Record<string, string>
 }
 
-export async function adminFetch(
-  path: string,
-  options: AdminFetchOptions = {}
-) {
+export async function authFetch(path: string, options: AdminFetchOptions = {}) {
   const { skipAuth, headers, ...rest } = options
 
   const accessToken = useAuthStore.getState().accessToken
