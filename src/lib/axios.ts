@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 import { ADMIN_API_PREFIX } from '@/config/api'
 import { useAuthStore } from '@/store/authStore'
@@ -26,13 +26,13 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   (response) => {
     if (response.status !== 200 && !response.data) {
-      return Promise.reject(new Error('서버 응답이 올바르지 않습니다'))
+      return Promise.reject(new AxiosError('서버 응답이 올바르지 않습니다'))
     }
     // Table 컴포넌트의 데이터 형식 추가 ... response.results << API 명세서 컨벤션에 맞춤
     if (response.data && 'count' in response.data) {
       if (!('results' in response.data)) {
         return Promise.reject(
-          new Error('[Axios] Pagination 응답값에 results 값이 없습니다.')
+          new AxiosError('[Axios] Pagination 응답값에 results 값이 없습니다.')
         )
       }
     }
