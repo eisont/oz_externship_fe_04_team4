@@ -4407,7 +4407,10 @@ export const mockApplicationsList: ApplicationsList = {
   results: [
     {
       id: 1,
-      recruitment: { id: 1, title: 'python 스터디 모집 공고 1' },
+      recruitment: {
+        id: 1,
+        title: '파이썬 입문 온라인 스터디 모집',
+      },
       applicant: {
         id: 1,
         nickname: 'hong1',
@@ -4421,7 +4424,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 2,
       recruitment: {
         id: 1,
-        title: 'python 스터디 모집 공고 1',
+        title: '파이썬 입문 온라인 스터디 모집',
       },
       applicant: {
         id: 2,
@@ -4436,7 +4439,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 3,
       recruitment: {
         id: 2,
-        title: 'python 스터디 모집 공고 2',
+        title: '파이썬 알고리즘·코딩테스트 대비 스터디',
       },
       applicant: {
         id: 3,
@@ -4451,7 +4454,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 4,
       recruitment: {
         id: 2,
-        title: 'python 스터디 모집 공고 2',
+        title: '파이썬 알고리즘·코딩테스트 대비 스터디',
       },
       applicant: {
         id: 4,
@@ -4466,7 +4469,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 5,
       recruitment: {
         id: 3,
-        title: 'python 스터디 모집 공고 3',
+        title: '웹 프론트엔드 기초(HTML/CSS) 스터디원 모집',
       },
       applicant: {
         id: 5,
@@ -4481,7 +4484,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 6,
       recruitment: {
         id: 3,
-        title: 'python 스터디 모집 공고 3',
+        title: '웹 프론트엔드 기초(HTML/CSS) 스터디원 모집',
       },
       applicant: {
         id: 6,
@@ -4496,7 +4499,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 7,
       recruitment: {
         id: 4,
-        title: 'python 스터디 모집 공고 4',
+        title: 'React 입문 + 실전 과제 스터디',
       },
       applicant: {
         id: 7,
@@ -4511,7 +4514,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 8,
       recruitment: {
         id: 4,
-        title: 'python 스터디 모집 공고 4',
+        title: 'React 입문 + 실전 과제 스터디',
       },
       applicant: {
         id: 8,
@@ -4526,7 +4529,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 9,
       recruitment: {
         id: 5,
-        title: 'python 스터디 모집 공고 5',
+        title: '데이터 분석 입문(파이썬) 스터디',
       },
       applicant: {
         id: 9,
@@ -4541,7 +4544,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 10,
       recruitment: {
         id: 5,
-        title: 'python 스터디 모집 공고 5',
+        title: '데이터 분석 입문(파이썬) 스터디',
       },
       applicant: {
         id: 10,
@@ -4556,7 +4559,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 11,
       recruitment: {
         id: 6,
-        title: 'python 스터디 모집 공고 6',
+        title: '머신러닝 이론 정리 스터디',
       },
       applicant: {
         id: 11,
@@ -4571,7 +4574,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 12,
       recruitment: {
         id: 6,
-        title: 'python 스터디 모집 공고 6',
+        title: '머신러닝 이론 정리 스터디',
       },
       applicant: {
         id: 12,
@@ -4586,7 +4589,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 13,
       recruitment: {
         id: 7,
-        title: 'python 스터디 모집 공고 7',
+        title: '코딩테스트 하루 한 문제 챌린지',
       },
       applicant: {
         id: 13,
@@ -4601,7 +4604,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 14,
       recruitment: {
         id: 7,
-        title: 'python 스터디 모집 공고 7',
+        title: '코딩테스트 하루 한 문제 챌린지',
       },
       applicant: {
         id: 14,
@@ -4616,7 +4619,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 15,
       recruitment: {
         id: 8,
-        title: 'python 스터디 모집 공고 8',
+        title: 'TypeScript 완전 정복 스터디',
       },
       applicant: {
         id: 15,
@@ -4631,7 +4634,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 16,
       recruitment: {
         id: 8,
-        title: 'python 스터디 모집 공고 8',
+        title: 'TypeScript 완전 정복 스터디',
       },
       applicant: {
         id: 16,
@@ -4646,7 +4649,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 17,
       recruitment: {
         id: 9,
-        title: 'python 스터디 모집 공고 9',
+        title: 'Git & GitHub 협업 플로우 스터디',
       },
       applicant: {
         id: 17,
@@ -4661,7 +4664,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 18,
       recruitment: {
         id: 9,
-        title: 'python 스터디 모집 공고 9',
+        title: 'Git & GitHub 협업 플로우 스터디',
       },
       applicant: {
         id: 18,
@@ -4676,7 +4679,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 19,
       recruitment: {
         id: 10,
-        title: 'python 스터디 모집 공고 10',
+        title: 'AWS 클라우드 기초 개념 스터디',
       },
       applicant: {
         id: 19,
@@ -4691,7 +4694,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 20,
       recruitment: {
         id: 10,
-        title: 'python 스터디 모집 공고 10',
+        title: 'AWS 클라우드 기초 개념 스터디',
       },
       applicant: {
         id: 20,

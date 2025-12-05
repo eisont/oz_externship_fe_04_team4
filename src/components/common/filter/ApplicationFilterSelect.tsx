@@ -19,7 +19,7 @@ interface FilterSelectProps {
   placeholder?: string
 }
 
-export function RecruitmentFilterSelect({
+export function ApplicationFilterSelect({
   className,
   label,
   labelClassName,
@@ -27,7 +27,7 @@ export function RecruitmentFilterSelect({
   options,
   value,
   onChange,
-  placeholder = '전체',
+  placeholder,
 }: FilterSelectProps) {
   return (
     <div className={twMerge(clsx('flex flex-col gap-2', className))}>
@@ -51,7 +51,7 @@ export function RecruitmentFilterSelect({
             )
           )}
         >
-          <option value="">{placeholder}</option>
+          {placeholder && <option value="">{placeholder}</option>}
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}

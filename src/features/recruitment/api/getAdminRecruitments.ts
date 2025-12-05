@@ -6,7 +6,7 @@ import type { RecruitmentTag } from '@/mocks/types/accounts'
 export type GetAdminRecruitmentsParams = {
   page: number
   page_size: number
-  keyword?: string
+  search?: string
   status?: 'all' | 'true' | 'false' | string
   tags?: RecruitmentTag[]
   sort?: string
@@ -18,8 +18,8 @@ export async function getAdminRecruitments(params: GetAdminRecruitmentsParams) {
   searchParams.set('page', String(params.page))
   searchParams.set('page_size', String(params.page_size))
 
-  if (params.keyword?.trim()) {
-    searchParams.set('search', params.keyword.trim())
+  if (params.search?.trim()) {
+    searchParams.set('search', params.search.trim())
   }
 
   // 서버 스펙에 맞춰서 매핑 (예: is_closed=true/false/all)

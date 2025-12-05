@@ -33,7 +33,7 @@ export default function RecruitmentPage() {
   const queryParams: GetAdminRecruitmentsParams = {
     page: currentPage,
     page_size: PAGE_SIZE,
-    keyword,
+    search: keyword,
     status,
     tags: selectedTagsResult,
     sort: sortConfig?.value,

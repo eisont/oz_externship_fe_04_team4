@@ -1,42 +1,40 @@
+import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
+import { Table } from '@/components/common/table'
+import { ApplicationColumns } from '@/features/application/columns'
 import ApplicationDetailModal from '@/features/application/ui/ApplicationDetailModal'
 import ApplicationFilter from '@/features/application/ui/ApplicationFilter'
+import {
+  getAdminApplication,
+  type GetAdminApplicationParams,
+} from '@/features/recruitment/api/getAdminApplication'
+import type { ApplicationsList } from '@/mocks/types/accounts'
 
-// type Application = ApplicationsListResults
+const PAGE_SIZE = 10
 
 export default function ApplicationManagementPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  // const handleRowClick = () => {
-  //   setIsModalOpen(true)
-  // }
+  const handleRowClick = () => {
+    setIsModalOpen(true)
+  }
   const handleCloseModal = () => {
     setIsModalOpen(false)
   }
 
-  // const [filters, setFilters] = useState<{
-  //   search: string
-  //   page: number
-  //   status: string
-  //   sort: string
-  // }>({
-  //   search: '',
-  //   page: 1,
-  //   status: '',
-  //   sort: 'latest',
-  // })
+  const [queryParams, setQueryParams] = useState<GetAdminApplicationParams>({
+    search: '',
+    page: 1,
+    page_size: PAGE_SIZE,
+    status: 'all',
+    sort: 'latest',
+  })
 
-  // const { data, isLoading, error, refetch } = useFetchQuery<
-  //   PaginationResponse<Application>
-  // >({
-  //   queryKey: ['applications', filters],
-  //   url: SERVICE_URLS.APPLICATIONS.LIST,
-  //   params: {
-  //     page_size: 10,
-  //     ...filters,
-  //   },
-  // })
+  const { data, isLoading, error, refetch } = useQuery<ApplicationsList>({
+    queryKey: ['applications', queryParams],
+    queryFn: () => getAdminApplication(queryParams),
+  })
 
   return (
     <>
@@ -45,18 +43,28 @@ export default function ApplicationManagementPage() {
         handleCloseModal={handleCloseModal}
       />
 
-      <ApplicationFilter />
+      <ApplicationFilter
+        setQueryParams={setQueryParams}
+        queryParams={queryParams}
+      />
 
-      {/* <Table
+      <Table
         columns={ApplicationColumns}
-        response={data || { count: 0, results: [], next: null, previous: null }}
-        currentPage={filters.page}
-        onPageChange={(page) => setFilters((prev) => ({ ...prev, page }))}
+        response={
+          data ?? {
+            count: 0,
+            next: null,
+            previous: null,
+            results: [],
+          }
+        }
+        currentPage={queryParams.page}
+        onPageChange={(page) => setQueryParams((prev) => ({ ...prev, page }))}
         isLoading={isLoading}
         error={error?.message}
         onRetry={refetch}
         onRowClick={handleRowClick}
-      /> */}
+      />
     </>
   )
 }

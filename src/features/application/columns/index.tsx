@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 
 import { ApplicationStatusBadge } from '@/components/common/badge'
+import type { ApplicationsStatus } from '@/mocks/types/accounts'
 
 type recruitmentRowType = {
   id: number
@@ -11,8 +12,6 @@ type applicantRowType = {
   nickname: string
   email: string
 }
-
-type ApplicationStatus = 'PENDING' | 'ACCEPTED' | 'REJECTED' | 'CANCELED'
 
 export const ApplicationColumns = [
   {
@@ -41,7 +40,7 @@ export const ApplicationColumns = [
     key: 'status',
     header: '지원 상태',
     width: '100px',
-    render: (row: ApplicationStatus) => (
+    render: (row: ApplicationsStatus) => (
       <div className="rounded-full px-2 py-1 text-xs">
         {ApplicationStatusBadge[row]}
       </div>
