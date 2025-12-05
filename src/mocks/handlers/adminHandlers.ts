@@ -1120,6 +1120,7 @@ export const catchAllAdminHandler = http.all(
 
 export const adminHandlers = [
   // accounts
+  getAccountsMeHandler,
   getAdminAccountsHandler,
   getAdminAccountDetailHandler,
   patchAdminAccountHandler,

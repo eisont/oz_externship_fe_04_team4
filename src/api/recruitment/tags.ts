@@ -1,4 +1,4 @@
-import { adminFetch } from '@/api/client'
+import { authFetch } from '@/api/client'
 import type { RecruitmentTags } from '@/mocks/types/accounts'
 
 type fetchRecruitmentTagsParams = {
@@ -21,7 +21,7 @@ export async function fetchRecruitmentTags({
     params.set('search', search.trim())
   }
 
-  const res = await adminFetch(`/recruitment-tags?${params.toString()}`, {
+  const res = await authFetch(`/recruitment-tags?${params.toString()}`, {
     method: 'GET',
   })
 

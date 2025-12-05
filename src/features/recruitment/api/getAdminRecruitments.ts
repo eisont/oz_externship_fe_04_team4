@@ -1,4 +1,4 @@
-import { adminFetch } from '@/api/client'
+import { authFetch } from '@/api/client'
 import { ADMIN_TEXT } from '@/config/api'
 import type { RecruitmentTag } from '@/mocks/types/accounts'
 
@@ -40,7 +40,7 @@ export async function getAdminRecruitments(params: GetAdminRecruitmentsParams) {
     )
   }
 
-  const res = await adminFetch(
+  const res = await authFetch(
     `${ADMIN_TEXT}/recruitments?${searchParams.toString()}`
   )
 
