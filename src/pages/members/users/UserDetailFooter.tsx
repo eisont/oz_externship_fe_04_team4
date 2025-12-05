@@ -52,15 +52,18 @@ export function UserDetailFooter({
             수정하기
           </Button>
         )}
-
-        <Button variant="delete" onClick={() => setIsDeleteModalOpen(true)}>
-          삭제하기
-        </Button>
-        <UserDetailMemberDelete
-          isDeleteModalOpen={isDeleteModalOpen}
-          setIsDeleteModalOpen={setIsDeleteModalOpen}
-          handleUserDelete={handleUserDelete}
-        />
+        {canEditRole && (
+          <>
+            <Button variant="delete" onClick={() => setIsDeleteModalOpen(true)}>
+              삭제하기
+            </Button>
+            <UserDetailMemberDelete
+              isDeleteModalOpen={isDeleteModalOpen}
+              setIsDeleteModalOpen={setIsDeleteModalOpen}
+              handleUserDelete={handleUserDelete}
+            />
+          </>
+        )}
       </div>
     </div>
   )

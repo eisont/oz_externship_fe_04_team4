@@ -76,6 +76,8 @@ export function UserDetailModal({
   useEffect(() => {
     if (!isOpen) {
       setIsEditMode(false)
+      setProfileImg('')
+      setFile(null)
     }
     if (!isRoleModalOpen) {
       setRole('')
@@ -142,6 +144,7 @@ export function UserDetailModal({
     onSuccess: () => {
       alert('회원 정보가 수정되었습니다.')
       setIsEditMode(false)
+      setFile(null)
       refetch()
       queryClient.invalidateQueries({ queryKey: ['users-list'], exact: false })
     },
@@ -170,9 +173,7 @@ export function UserDetailModal({
       profile_img: file ?? undefined,
     })
   }
-  const canEditRole = isLoggedIn && authUser && user?.role === 'admin'
-
-  console.log('회원정보 data', user)
+  const canEditRole = isLoggedIn && authUser?.role === 'admin'
 
   if (!isOpen || !userId) return null
   if (isLoading) return <div>회원 정보를 로딩 중입니다...</div>
