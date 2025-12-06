@@ -5490,31 +5490,31 @@ export const mockApplicationsDetailMap: Record<number, ApplicationsDetail> = {
         },
 
         {
-          id: 41001,
+          id: 41002,
           title: '왕초보를 위한 파이썬 입문',
           instructor: '파이썬캣',
         },
 
         {
-          id: 41001,
+          id: 41003,
           title: '왕초보를 위한 파이썬 입문',
           instructor: '파이썬캣',
         },
 
         {
-          id: 41001,
+          id: 41004,
           title: '왕초보를 위한 파이썬 입문',
           instructor: '파이썬캣',
         },
 
         {
-          id: 41001,
+          id: 41005,
           title: '왕초보를 위한 파이썬 입문',
           instructor: '파이썬캣',
         },
 
         {
-          id: 41001,
+          id: 41006,
           title: '왕초보를 위한 파이썬 입문',
           instructor: '파이썬캣',
         },
