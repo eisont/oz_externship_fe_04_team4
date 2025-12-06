@@ -4407,7 +4407,10 @@ export const mockApplicationsList: ApplicationsList = {
   results: [
     {
       id: 1,
-      recruitment: { id: 1, title: 'python 스터디 모집 공고 1' },
+      recruitment: {
+        id: 1,
+        title: '파이썬 입문 온라인 스터디 모집',
+      },
       applicant: {
         id: 1,
         nickname: 'hong1',
@@ -4421,7 +4424,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 2,
       recruitment: {
         id: 1,
-        title: 'python 스터디 모집 공고 1',
+        title: '파이썬 입문 온라인 스터디 모집',
       },
       applicant: {
         id: 2,
@@ -4436,7 +4439,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 3,
       recruitment: {
         id: 2,
-        title: 'python 스터디 모집 공고 2',
+        title: '파이썬 알고리즘·코딩테스트 대비 스터디',
       },
       applicant: {
         id: 3,
@@ -4451,7 +4454,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 4,
       recruitment: {
         id: 2,
-        title: 'python 스터디 모집 공고 2',
+        title: '파이썬 알고리즘·코딩테스트 대비 스터디',
       },
       applicant: {
         id: 4,
@@ -4466,7 +4469,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 5,
       recruitment: {
         id: 3,
-        title: 'python 스터디 모집 공고 3',
+        title: '웹 프론트엔드 기초(HTML/CSS) 스터디원 모집',
       },
       applicant: {
         id: 5,
@@ -4481,7 +4484,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 6,
       recruitment: {
         id: 3,
-        title: 'python 스터디 모집 공고 3',
+        title: '웹 프론트엔드 기초(HTML/CSS) 스터디원 모집',
       },
       applicant: {
         id: 6,
@@ -4496,7 +4499,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 7,
       recruitment: {
         id: 4,
-        title: 'python 스터디 모집 공고 4',
+        title: 'React 입문 + 실전 과제 스터디',
       },
       applicant: {
         id: 7,
@@ -4511,7 +4514,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 8,
       recruitment: {
         id: 4,
-        title: 'python 스터디 모집 공고 4',
+        title: 'React 입문 + 실전 과제 스터디',
       },
       applicant: {
         id: 8,
@@ -4526,7 +4529,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 9,
       recruitment: {
         id: 5,
-        title: 'python 스터디 모집 공고 5',
+        title: '데이터 분석 입문(파이썬) 스터디',
       },
       applicant: {
         id: 9,
@@ -4541,7 +4544,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 10,
       recruitment: {
         id: 5,
-        title: 'python 스터디 모집 공고 5',
+        title: '데이터 분석 입문(파이썬) 스터디',
       },
       applicant: {
         id: 10,
@@ -4556,7 +4559,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 11,
       recruitment: {
         id: 6,
-        title: 'python 스터디 모집 공고 6',
+        title: '머신러닝 이론 정리 스터디',
       },
       applicant: {
         id: 11,
@@ -4571,7 +4574,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 12,
       recruitment: {
         id: 6,
-        title: 'python 스터디 모집 공고 6',
+        title: '머신러닝 이론 정리 스터디',
       },
       applicant: {
         id: 12,
@@ -4586,7 +4589,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 13,
       recruitment: {
         id: 7,
-        title: 'python 스터디 모집 공고 7',
+        title: '코딩테스트 하루 한 문제 챌린지',
       },
       applicant: {
         id: 13,
@@ -4601,7 +4604,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 14,
       recruitment: {
         id: 7,
-        title: 'python 스터디 모집 공고 7',
+        title: '코딩테스트 하루 한 문제 챌린지',
       },
       applicant: {
         id: 14,
@@ -4616,7 +4619,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 15,
       recruitment: {
         id: 8,
-        title: 'python 스터디 모집 공고 8',
+        title: 'TypeScript 완전 정복 스터디',
       },
       applicant: {
         id: 15,
@@ -4631,7 +4634,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 16,
       recruitment: {
         id: 8,
-        title: 'python 스터디 모집 공고 8',
+        title: 'TypeScript 완전 정복 스터디',
       },
       applicant: {
         id: 16,
@@ -4646,7 +4649,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 17,
       recruitment: {
         id: 9,
-        title: 'python 스터디 모집 공고 9',
+        title: 'Git & GitHub 협업 플로우 스터디',
       },
       applicant: {
         id: 17,
@@ -4661,7 +4664,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 18,
       recruitment: {
         id: 9,
-        title: 'python 스터디 모집 공고 9',
+        title: 'Git & GitHub 협업 플로우 스터디',
       },
       applicant: {
         id: 18,
@@ -4676,7 +4679,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 19,
       recruitment: {
         id: 10,
-        title: 'python 스터디 모집 공고 10',
+        title: 'AWS 클라우드 기초 개념 스터디',
       },
       applicant: {
         id: 19,
@@ -4691,7 +4694,7 @@ export const mockApplicationsList: ApplicationsList = {
       id: 20,
       recruitment: {
         id: 10,
-        title: 'python 스터디 모집 공고 10',
+        title: 'AWS 클라우드 기초 개념 스터디',
       },
       applicant: {
         id: 20,
@@ -4709,60 +4712,842 @@ export const mockApplicationsList: ApplicationsList = {
 // 지원 내역 상세 조회
 export const mockApplicationsDetail: ApplicationsDetail = {
   id: 1,
-  self_introduction: '나는 홍길동입니다.',
-  motivation: '파이썬 독학으로 마스터해보고 싶어요.',
-  objective: '파이썬 라이브러리 컨트리뷰터가 되고싶어요.',
-  available_time: '10:00 ~ 11:00',
+  self_introduction:
+    '안녕하세요! 백엔드 개발 3년 차로 일하고 있으며, 프론트엔드 기술을 깊이 있게 배우고 싶어 지원하게 되었습니다.',
+  motivation: 'React를 체계적으로 학습하여 풀스택 개발자로 성장하고 싶습니다.',
+  objective:
+    '6개월 내에 React로 완성도 높은 프로젝트를 만들어보는 것을 목표로 하고 있습니다.',
+  available_time: '평일 저녁 7시~10시, 주말 오전',
   has_study_experience: true,
-  study_experience: 'DBA 자격증 스터디 경험 있습니다.',
-  status: 'PENDING',
+  study_experience:
+    '대학교 때 알고리즘 스터디와 자바 스터디에 참여한 경험이 있습니다.',
+  status: 'ACCEPTED',
   recruitment: {
-    // mockRecruitmentDetail / mockRecruitmentList의 첫 번째 공고와 연결
+    // 지원 내역 상세 화면의 스터디 구인 공고 정보와 매칭
     id: 1,
-    title: 'python 스터디 모집 공고 1',
-    expected_headcount: 5,
-    close_at: '2025-11-20T00:00:05.875842+09:00',
-    // mockLectureList에 있는 강의들 기반으로 여러 개 연결
+    title: 'React 마스터 스터디 모집',
+    expected_headcount: 6,
+    close_at: '2024-01-20T00:00:00+09:00',
     lectures: [
       {
         id: 43001,
-        title: '파이썬 입문',
-        instructor: '김한영',
+        title: '모던 리액트 Deep Dive',
+        instructor: '리액트봇',
       },
       {
-        id: 43003,
-        title: 'React 완전정복',
-        instructor: '홍길동',
-      },
-      {
-        id: 43012,
-        title: '3시간 완성 n8n',
-        instructor: 'SOLVIT team',
+        id: 43002,
+        title: 'React 18 완벽 가이드',
+        instructor: '박프론트',
       },
     ],
-    // 기존 태그 + 몇 개 확장
     tags: [
-      {
-        id: 1,
-        name: 'python',
-      },
-      {
-        id: 2,
-        name: '프로그래밍 기초',
-      },
-      {
-        id: 3,
-        name: '온라인 스터디',
-      },
+      { id: 1, name: 'React' },
+      { id: 2, name: 'JavaScript' },
+      { id: 3, name: 'Frontend' },
+      { id: 4, name: '프로젝트' },
     ],
   },
   applicant: {
-    // mockAccountDetail / mockAccountLists의 1번 유저와 연결
     id: 1,
-    nickname: 'hong1',
-    email: 'user1@example.com',
-    profile_img_url: 'https://example.com/images/profiles/user1.png',
+    nickname: '코딩러버',
+    email: 'coder@example.com',
+    gender: 'M',
+    profile_img_url: 'https://example.com/images/profiles/codinglover.png',
   },
-  created_at: '2025-11-20T00:00:05.875842+09:00',
-  updated_at: '2025-11-20T00:00:05.875845+09:00',
+  created_at: '2024-01-15T14:30:00+09:00',
+  updated_at: '2024-01-16T09:15:00+09:00',
+}
+
+// 지원 내역 상세 맵 (id 1 ~ 20)
+export const mockApplicationsDetailMap: Record<number, ApplicationsDetail> = {
+  1: {
+    id: 1,
+    self_introduction:
+      '안녕하세요! 백엔드 개발 3년 차로 일하고 있으며, 파이썬 기초를 다시 단단하게 다지고 싶어 지원했습니다.',
+    motivation: '온라인 스터디를 통해 꾸준한 학습 루틴을 만들고 싶습니다.',
+    objective:
+      '3개월 안에 파이썬 문법과 기본 문법 문제 풀이에 익숙해지는 것이 목표입니다.',
+    available_time: '평일 저녁 7시~10시, 주말 오전',
+    has_study_experience: true,
+    study_experience: '대학교 때 알고리즘 스터디에 참여한 경험이 있습니다.',
+    status: 'PENDING',
+    recruitment: {
+      id: 1,
+      title: '파이썬 입문 온라인 스터디 모집',
+      expected_headcount: 8,
+      close_at: '2025-12-01T23:59:59+09:00',
+      lectures: [
+        {
+          id: 41001,
+          title: '왕초보를 위한 파이썬 입문',
+          instructor: '파이썬캣',
+        },
+      ],
+      tags: [
+        { id: 1, name: 'python' },
+        { id: 2, name: '프로그래밍 기초' },
+      ],
+    },
+    applicant: {
+      id: 1,
+      nickname: 'hong1',
+      email: 'user1@example.com',
+      gender: 'M',
+      profile_img_url: 'https://example.com/images/profiles/user1.png',
+    },
+    created_at: '2025-11-20T09:00:00+09:00',
+    updated_at: '2025-11-20T09:00:00+09:00',
+  },
+
+  2: {
+    id: 2,
+    self_introduction:
+      '안녕하세요! 파이썬으로 데이터 분석을 공부하고 있는 직장인입니다.',
+    motivation:
+      '혼자 공부하다가 흐지부지되는 것을 막기 위해 스터디에 참여하고 싶습니다.',
+    objective:
+      '기초 문법을 확실히 익히고, 간단한 스크립트 정도는 스스로 작성하고 싶습니다.',
+    available_time: '평일 저녁, 토요일 오전',
+    has_study_experience: false,
+    study_experience: '온라인 강의 위주로만 공부해본 경험이 있습니다.',
+    status: 'ACCEPTED',
+    recruitment: {
+      id: 1,
+      title: '파이썬 입문 온라인 스터디 모집',
+      expected_headcount: 8,
+      close_at: '2025-12-01T23:59:59+09:00',
+      lectures: [
+        {
+          id: 41001,
+          title: '왕초보를 위한 파이썬 입문',
+          instructor: '파이썬캣',
+        },
+      ],
+      tags: [
+        { id: 1, name: 'python' },
+        { id: 2, name: '프로그래밍 기초' },
+      ],
+    },
+    applicant: {
+      id: 2,
+      nickname: 'young2',
+      email: 'user2@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user2.png',
+    },
+    created_at: '2025-11-20T09:10:00+09:00',
+    updated_at: '2025-11-20T09:10:00+09:00',
+  },
+
+  3: {
+    id: 3,
+    self_introduction: '안녕하세요! 개발자 전향을 준비 중인 취준생입니다.',
+    motivation:
+      '코딩테스트 준비를 시작해보고 싶어서 파이썬 알고리즘 스터디에 지원했습니다.',
+    objective:
+      '기본 알고리즘 유형(정렬, 구현, 해시 등)을 한 번씩 경험해보고 싶습니다.',
+    available_time: '평일 저녁 8시 이후, 일요일 저녁',
+    has_study_experience: false,
+    study_experience: '온라인 문제 풀이 사이트에서 혼자 풀어본 정도입니다.',
+    status: 'REJECTED',
+    recruitment: {
+      id: 2,
+      title: '파이썬 알고리즘·코딩테스트 대비 스터디',
+      expected_headcount: 10,
+      close_at: '2025-12-05T23:59:59+09:00',
+      lectures: [
+        {
+          id: 42001,
+          title: '파이썬 알고리즘 기초',
+          instructor: '알고리즘짱',
+        },
+      ],
+      tags: [
+        { id: 4, name: '알고리즘' },
+        { id: 11, name: '알고리즘 테스트 대비' },
+        { id: 13, name: '코딩 테스트' },
+      ],
+    },
+    applicant: {
+      id: 3,
+      nickname: 'chul3',
+      email: 'user3@example.com',
+      gender: 'M',
+      profile_img_url: 'https://example.com/images/profiles/user3.png',
+    },
+    created_at: '2025-11-20T09:20:00+09:00',
+    updated_at: '2025-11-20T09:20:00+09:00',
+  },
+
+  4: {
+    id: 4,
+    self_introduction:
+      '안녕하세요! 비전공자로 개발을 시작한 지 6개월 정도 된 사람입니다.',
+    motivation:
+      '코딩테스트를 너무 어렵게 느끼고 있어서, 같이 준비할 사람들을 찾고 있습니다.',
+    objective:
+      '기초 난이도 문제를 꾸준히 풀 수 있는 루틴을 만드는 것이 목표입니다.',
+    available_time: '평일 저녁 7시~9시',
+    has_study_experience: true,
+    study_experience: '부트캠프에서 알고리즘 기초를 짧게 배운 경험이 있습니다.',
+    status: 'PENDING',
+    recruitment: {
+      id: 2,
+      title: '파이썬 알고리즘·코딩테스트 대비 스터디',
+      expected_headcount: 10,
+      close_at: '2025-12-05T23:59:59+09:00',
+      lectures: [
+        {
+          id: 42001,
+          title: '파이썬 알고리즘 기초',
+          instructor: '알고리즘짱',
+        },
+      ],
+      tags: [
+        { id: 4, name: '알고리즘' },
+        { id: 11, name: '알고리즘 테스트 대비' },
+        { id: 13, name: '코딩 테스트' },
+      ],
+    },
+    applicant: {
+      id: 4,
+      nickname: 'min4',
+      email: 'user4@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user4.png',
+    },
+    created_at: '2025-11-20T09:30:00+09:00',
+    updated_at: '2025-11-20T09:30:00+09:00',
+  },
+
+  5: {
+    id: 5,
+    self_introduction: '안녕하세요! 프론트엔드 취업을 준비 중인 지망생입니다.',
+    motivation:
+      'HTML/CSS 기초를 다시 정리해서 레이아웃을 더 깔끔하게 잡고 싶습니다.',
+    objective:
+      '2주 안에 반응형 레이아웃 하나를 스스로 구현해보는 것이 목표입니다.',
+    available_time: '월/수/금 저녁 7시 이후',
+    has_study_experience: true,
+    study_experience: '이전에 개인 블로그를 클론 코딩한 경험이 있습니다.',
+    status: 'CANCELED',
+    recruitment: {
+      id: 3,
+      title: '웹 프론트엔드 기초(HTML/CSS) 스터디원 모집',
+      expected_headcount: 6,
+      close_at: '2025-12-03T23:59:59+09:00',
+      lectures: [],
+      tags: [
+        { id: 5, name: '웹 프론트엔드' },
+        { id: 2, name: '프로그래밍 기초' },
+      ],
+    },
+    applicant: {
+      id: 5,
+      nickname: 'suji5',
+      email: 'user5@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user5.png',
+    },
+    created_at: '2025-11-20T09:40:00+09:00',
+    updated_at: '2025-11-20T09:40:00+09:00',
+  },
+
+  6: {
+    id: 6,
+    self_introduction:
+      '안녕하세요! 디자인 전공 후 프론트엔드로 전향하고 있는 학생입니다.',
+    motivation:
+      '기초 HTML/CSS부터 다시 다지면서 시맨틱 마크업도 익히고 싶습니다.',
+    objective:
+      '랜딩 페이지 1개를 시맨틱 태그와 반응형으로 구현해보는 것이 목표입니다.',
+    available_time: '평일 오후 8시~10시',
+    has_study_experience: false,
+    study_experience: '디자인 툴만 써봤고, 개발 스터디는 처음입니다.',
+    status: 'PENDING',
+    recruitment: {
+      id: 3,
+      title: '웹 프론트엔드 기초(HTML/CSS) 스터디원 모집',
+      expected_headcount: 6,
+      close_at: '2025-12-03T23:59:59+09:00',
+      lectures: [],
+      tags: [
+        { id: 5, name: '웹 프론트엔드' },
+        { id: 2, name: '프로그래밍 기초' },
+      ],
+    },
+    applicant: {
+      id: 6,
+      nickname: 'woo6',
+      email: 'user6@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user6.png',
+    },
+    created_at: '2025-11-20T09:50:00+09:00',
+    updated_at: '2025-11-20T09:50:00+09:00',
+  },
+
+  7: {
+    id: 7,
+    self_introduction:
+      '안녕하세요! React를 독학으로 공부하다가 한계를 느껴 스터디를 찾고 있습니다.',
+    motivation:
+      '입문부터 실전 과제까지 같이 진행하면서 리액트 사용에 익숙해지고 싶습니다.',
+    objective:
+      '리액트로 간단한 토이 프로젝트를 끝까지 완성해보는 것이 목표입니다.',
+    available_time: '평일 저녁, 주말 오후',
+    has_study_experience: true,
+    study_experience:
+      '이전에 알고리즘 스터디를 2개월 정도 진행한 경험이 있습니다.',
+    status: 'ACCEPTED',
+    recruitment: {
+      id: 4,
+      title: 'React 입문 + 실전 과제 스터디',
+      expected_headcount: 6,
+      close_at: '2025-12-07T23:59:59+09:00',
+      lectures: [
+        {
+          id: 43001,
+          title: '모던 리액트 Deep Dive',
+          instructor: '리액트봇',
+        },
+        {
+          id: 43002,
+          title: 'React 18 완벽 가이드',
+          instructor: '박프론트',
+        },
+      ],
+      tags: [
+        { id: 1, name: 'React' },
+        { id: 2, name: 'JavaScript' },
+        { id: 3, name: 'Frontend' },
+        { id: 4, name: '프로젝트' },
+      ],
+    },
+    applicant: {
+      id: 7,
+      nickname: 'jimin7',
+      email: 'user7@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user7.png',
+    },
+    created_at: '2025-11-20T10:00:00+09:00',
+    updated_at: '2025-11-20T10:00:00+09:00',
+  },
+
+  8: {
+    id: 8,
+    self_introduction:
+      '안녕하세요! 리액트로 사이드 프로젝트를 만들어보고 싶은 직장인입니다.',
+    motivation: '실제 과제를 기반으로 리액트 문법과 패턴을 익히고 싶습니다.',
+    objective:
+      '실무에서 자주 쓰는 컴포넌트 구조와 props/state 패턴에 익숙해지는 것이 목표입니다.',
+    available_time: '평일 9시 이후, 토요일 오전',
+    has_study_experience: false,
+    study_experience: '온라인 강의만 수강해봤고, 스터디는 처음입니다.',
+    status: 'PENDING',
+    recruitment: {
+      id: 4,
+      title: 'React 입문 + 실전 과제 스터디',
+      expected_headcount: 6,
+      close_at: '2025-12-07T23:59:59+09:00',
+      lectures: [
+        {
+          id: 43001,
+          title: '모던 리액트 Deep Dive',
+          instructor: '리액트봇',
+        },
+        {
+          id: 43002,
+          title: 'React 18 완벽 가이드',
+          instructor: '박프론트',
+        },
+      ],
+      tags: [
+        { id: 1, name: 'React' },
+        { id: 2, name: 'JavaScript' },
+        { id: 3, name: 'Frontend' },
+        { id: 4, name: '프로젝트' },
+      ],
+    },
+    applicant: {
+      id: 8,
+      nickname: 'sehun8',
+      email: 'user8@example.com',
+      gender: 'M',
+      profile_img_url: 'https://example.com/images/profiles/user8.png',
+    },
+    created_at: '2025-11-20T10:10:00+09:00',
+    updated_at: '2025-11-20T10:10:00+09:00',
+  },
+
+  9: {
+    id: 9,
+    self_introduction:
+      '안녕하세요! 데이터 분석에 관심이 많은 주니어 개발자입니다.',
+    motivation:
+      '파이썬 기반 데이터 분석을 처음부터 차근차근 배워보고 싶어 지원했습니다.',
+    objective: '기초 통계와 간단한 시각화를 직접 구현해보는 것이 목표입니다.',
+    available_time: '화/목 저녁, 토요일 오후',
+    has_study_experience: true,
+    study_experience: '학교에서 R로 데이터 분석 수업을 들은 적이 있습니다.',
+    status: 'REJECTED',
+    recruitment: {
+      id: 5,
+      title: '데이터 분석 입문(파이썬) 스터디',
+      expected_headcount: 7,
+      close_at: '2025-12-04T23:59:59+09:00',
+      lectures: [
+        {
+          id: 43006,
+          title: '데이터 분석을 위한 파이썬',
+          instructor: '데이터박',
+        },
+      ],
+      tags: [
+        { id: 1, name: 'python' },
+        { id: 14, name: '데이터 분석' },
+      ],
+    },
+    applicant: {
+      id: 9,
+      nickname: 'nari9',
+      email: 'user9@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user9.png',
+    },
+    created_at: '2025-11-20T10:20:00+09:00',
+    updated_at: '2025-11-20T10:20:00+09:00',
+  },
+
+  10: {
+    id: 10,
+    self_introduction:
+      '안녕하세요! 데이터 직무로 이직을 준비 중인 직장인입니다.',
+    motivation:
+      '파이썬으로 데이터 분석 실습을 꾸준히 해보고 싶어 스터디를 찾고 있습니다.',
+    objective:
+      '실제 데이터셋으로 간단한 분석 리포트를 작성해보는 것이 목표입니다.',
+    available_time: '평일 저녁 8시 이후, 일요일 오후',
+    has_study_experience: true,
+    study_experience:
+      'SQL 스터디를 진행한 경험이 있고, 이번에는 파이썬을 활용해보고 싶습니다.',
+    status: 'PENDING',
+    recruitment: {
+      id: 5,
+      title: '데이터 분석 입문(파이썬) 스터디',
+      expected_headcount: 7,
+      close_at: '2025-12-04T23:59:59+09:00',
+      lectures: [
+        {
+          id: 43006,
+          title: '데이터 분석을 위한 파이썬',
+          instructor: '데이터박',
+        },
+      ],
+      tags: [
+        { id: 1, name: 'python' },
+        { id: 14, name: '데이터 분석' },
+      ],
+    },
+    applicant: {
+      id: 10,
+      nickname: 'doyun10',
+      email: 'user10@example.com',
+      gender: 'M',
+      profile_img_url: 'https://example.com/images/profiles/user10.png',
+    },
+    created_at: '2025-11-20T10:30:00+09:00',
+    updated_at: '2025-11-20T10:30:00+09:00',
+  },
+
+  11: {
+    id: 11,
+    self_introduction:
+      '안녕하세요! 머신러닝 이론을 조금 더 깊게 이해하고 싶은 백엔드 개발자입니다.',
+    motivation:
+      '이론 위주의 스터디를 통해 개념을 정리하고, 나중에 실습에 활용하고 싶습니다.',
+    objective:
+      '선형 회귀, 분류, 과적합 등 기본 개념을 명확히 이해하는 것이 목표입니다.',
+    available_time: '수/금 저녁',
+    has_study_experience: true,
+    study_experience: '이전에 CS 기초 스터디를 3개월간 운영한 경험이 있습니다.',
+    status: 'ACCEPTED',
+    recruitment: {
+      id: 6,
+      title: '머신러닝 이론 정리 스터디',
+      expected_headcount: 6,
+      close_at: '2025-12-08T23:59:59+09:00',
+      lectures: [],
+      tags: [
+        { id: 21, name: '머신러닝' },
+        { id: 22, name: 'AI' },
+      ],
+    },
+    applicant: {
+      id: 11,
+      nickname: 'jiho11',
+      email: 'user11@example.com',
+      gender: 'M',
+      profile_img_url: 'https://example.com/images/profiles/user11.png',
+    },
+    created_at: '2025-11-20T10:40:00+09:00',
+    updated_at: '2025-11-20T10:40:00+09:00',
+  },
+
+  12: {
+    id: 12,
+    self_introduction: '안녕하세요! AI 분야에 관심이 많은 취준생입니다.',
+    motivation:
+      '혼자 책만 보면서 공부하다 보니 진도가 잘 안 나가서, 스터디와 함께 개념을 정리하고 싶습니다.',
+    objective:
+      '머신러닝 기본 용어와 대표 알고리즘을 정리해서 나만의 노트를 만드는 것이 목표입니다.',
+    available_time: '평일 저녁, 토요일 오전',
+    has_study_experience: false,
+    study_experience: '스터디는 처음이라 기대와 걱정이 반반입니다.',
+    status: 'CANCELED',
+    recruitment: {
+      id: 6,
+      title: '머신러닝 이론 정리 스터디',
+      expected_headcount: 6,
+      close_at: '2025-12-08T23:59:59+09:00',
+      lectures: [],
+      tags: [
+        { id: 21, name: '머신러닝' },
+        { id: 22, name: 'AI' },
+      ],
+    },
+    applicant: {
+      id: 12,
+      nickname: 'daeun12',
+      email: 'user12@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user12.png',
+    },
+    created_at: '2025-11-20T10:50:00+09:00',
+    updated_at: '2025-11-20T10:50:00+09:00',
+  },
+
+  13: {
+    id: 13,
+    self_introduction:
+      '안녕하세요! 코딩테스트를 처음 준비하는 주니어 개발자입니다.',
+    motivation:
+      '하루 한 문제라도 꾸준히 풀어보자는 마음으로 챌린지 스터디에 지원했습니다.',
+    objective:
+      '4주 동안 최소 20문제 이상을 풀어보는 것을 목표로 하고 있습니다.',
+    available_time: '매일 저녁 9시 이후',
+    has_study_experience: true,
+    study_experience:
+      '학교 동기들과 간단하게 알고리즘 스터디를 해본 경험이 있습니다.',
+    status: 'PENDING',
+    recruitment: {
+      id: 7,
+      title: '코딩테스트 하루 한 문제 챌린지',
+      expected_headcount: 20,
+      close_at: '2025-12-02T23:59:59+09:00',
+      lectures: [],
+      tags: [
+        { id: 4, name: '알고리즘' },
+        { id: 13, name: '코딩 테스트' },
+      ],
+    },
+    applicant: {
+      id: 13,
+      nickname: 'hae13',
+      email: 'user13@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user13.png',
+    },
+    created_at: '2025-11-20T11:00:00+09:00',
+    updated_at: '2025-11-20T11:00:00+09:00',
+  },
+
+  14: {
+    id: 14,
+    self_introduction:
+      '안녕하세요! 알고리즘을 꾸준히 연습하고 싶은 프론트엔드 지망생입니다.',
+    motivation:
+      '같이 꾸준히 문제를 풀어줄 동료가 필요해서 챌린지 스터디에 참여하고 싶습니다.',
+    objective:
+      '기본 자료구조와 완전탐색 문제까지는 혼자 풀 수 있게 되는 것이 목표입니다.',
+    available_time: '평일 저녁, 일요일 오후',
+    has_study_experience: true,
+    study_experience: '이전에 CS 이론 스터디를 한 달 정도 참여했습니다.',
+    status: 'ACCEPTED',
+    recruitment: {
+      id: 7,
+      title: '코딩테스트 하루 한 문제 챌린지',
+      expected_headcount: 20,
+      close_at: '2025-12-02T23:59:59+09:00',
+      lectures: [],
+      tags: [
+        { id: 4, name: '알고리즘' },
+        { id: 13, name: '코딩 테스트' },
+      ],
+    },
+    applicant: {
+      id: 14,
+      nickname: 'bora14',
+      email: 'user14@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user14.png',
+    },
+    created_at: '2025-11-20T11:10:00+09:00',
+    updated_at: '2025-11-20T11:10:00+09:00',
+  },
+
+  15: {
+    id: 15,
+    self_introduction:
+      '안녕하세요! React와 TypeScript를 함께 공부하고 있는 프론트엔드 지망생입니다.',
+    motivation:
+      '타입스크립트 기초를 정리하고, 스터디를 통해 실무 감각을 조금이라도 익히고 싶습니다.',
+    objective: '타입 선언과 제네릭 기본 사용에 익숙해지는 것이 목표입니다.',
+    available_time: '화/목 저녁, 토요일 오전',
+    has_study_experience: true,
+    study_experience: '이전에 Git 협업 스터디에 참여해본 경험이 있습니다.',
+    status: 'PENDING',
+    recruitment: {
+      id: 8,
+      title: 'TypeScript 완전 정복 스터디',
+      expected_headcount: 6,
+      close_at: '2025-12-06T23:59:59+09:00',
+      lectures: [],
+      tags: [
+        { id: 5, name: '웹 프론트엔드' },
+        { id: 7, name: '타입스크립트' },
+      ],
+    },
+    applicant: {
+      id: 15,
+      nickname: 'tae15',
+      email: 'user15@example.com',
+      gender: 'M',
+      profile_img_url: 'https://example.com/images/profiles/user15.png',
+    },
+    created_at: '2025-11-20T11:20:00+09:00',
+    updated_at: '2025-11-20T11:20:00+09:00',
+  },
+
+  16: {
+    id: 16,
+    self_introduction:
+      '안녕하세요! 자바스크립트로만 개발하다가 타입스크립트의 필요성을 느끼고 있는 개발자입니다.',
+    motivation:
+      '타입 시스템을 이해해서 리팩터링에 강한 코드를 작성하고 싶습니다.',
+    objective:
+      '기존 자바스크립트 코드를 타입스크립트로 변환해보는 경험을 쌓고 싶습니다.',
+    available_time: '평일 저녁 9시 이후',
+    has_study_experience: false,
+    study_experience: '타입스크립트는 혼자 문서를 조금 읽어본 정도입니다.',
+    status: 'REJECTED',
+    recruitment: {
+      id: 8,
+      title: 'TypeScript 완전 정복 스터디',
+      expected_headcount: 6,
+      close_at: '2025-12-06T23:59:59+09:00',
+      lectures: [],
+      tags: [
+        { id: 5, name: '웹 프론트엔드' },
+        { id: 7, name: '타입스크립트' },
+      ],
+    },
+    applicant: {
+      id: 16,
+      nickname: 'dasol16',
+      email: 'user16@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user16.png',
+    },
+    created_at: '2025-11-20T11:30:00+09:00',
+    updated_at: '2025-11-20T11:30:00+09:00',
+  },
+
+  17: {
+    id: 17,
+    self_introduction:
+      '안녕하세요! 실제 협업 플로우를 경험해보고 싶은 프론트엔드 지망생입니다.',
+    motivation:
+      'Git 브랜치 전략과 PR 리뷰 과정을 익히고 싶어 협업 스터디에 지원했습니다.',
+    objective:
+      '팀원과 함께 작은 프로젝트를 Git 플로우에 맞춰 운영해보는 것이 목표입니다.',
+    available_time: '평일 저녁, 일요일 저녁',
+    has_study_experience: true,
+    study_experience:
+      '개인 프로젝트 위주로만 진행해왔고, 팀 프로젝트 경험은 거의 없습니다.',
+    status: 'PENDING',
+    recruitment: {
+      id: 9,
+      title: 'Git & GitHub 협업 플로우 스터디',
+      expected_headcount: 6,
+      close_at: '2025-11-28T23:59:59+09:00',
+      lectures: [],
+      tags: [
+        { id: 31, name: 'Git' },
+        { id: 32, name: 'GitHub' },
+        { id: 33, name: '협업' },
+      ],
+    },
+    applicant: {
+      id: 17,
+      nickname: 'jihoon17',
+      email: 'user17@example.com',
+      gender: 'M',
+      profile_img_url: 'https://example.com/images/profiles/user17.png',
+    },
+    created_at: '2025-11-20T11:40:00+09:00',
+    updated_at: '2025-11-20T11:40:00+09:00',
+  },
+
+  18: {
+    id: 18,
+    self_introduction:
+      '안녕하세요! 인프라와 클라우드에 관심이 생긴 프론트엔드 개발 지망생입니다.',
+    motivation:
+      'AWS 기초 개념을 이해해서 배포 환경을 좀 더 잘 이해해보고 싶습니다.',
+    objective:
+      'EC2, S3 등 기본 서비스 개념을 익히고, 간단한 아키텍처를 그려보는 것이 목표입니다.',
+    available_time: '평일 저녁 8시 이후',
+    has_study_experience: false,
+    study_experience: '클라우드 관련 스터디는 처음입니다.',
+    status: 'PENDING',
+    recruitment: {
+      id: 10,
+      title: 'AWS 클라우드 기초 개념 스터디',
+      expected_headcount: 6,
+      close_at: '2025-11-27T23:59:59+09:00',
+      lectures: [],
+      tags: [
+        { id: 8, name: '백엔드' },
+        { id: 41, name: 'AWS' },
+        { id: 42, name: '클라우드' },
+      ],
+    },
+    applicant: {
+      id: 19,
+      nickname: 'gaeun19',
+      email: 'user19@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user19.png',
+    },
+    created_at: '2025-11-20T12:00:00+09:00',
+    updated_at: '2025-11-20T12:00:00+09:00',
+  },
+
+  19: {
+    id: 19,
+    self_introduction: '.',
+    motivation: '.',
+    objective: '.',
+    available_time: '.',
+    has_study_experience: true,
+    study_experience: '.',
+    status: 'ACCEPTED',
+    recruitment: {
+      id: 9,
+      title: '.',
+      expected_headcount: 6,
+      close_at: '2025-11-28T23:59:59+09:00',
+      lectures: [],
+      tags: [],
+    },
+    applicant: {
+      id: 18,
+      nickname: 'soyeon18',
+      email: 'user18@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user18.png',
+    },
+    created_at: '2025-11-20T11:50:00+09:00',
+    updated_at: '2025-11-20T11:50:00+09:00',
+  },
+
+  20: {
+    id: 20,
+    self_introduction:
+      ' 안녕하세요! 클라우드 인프라를 조금 더 깊게 이해하고 싶은 백엔드 지망생입니다. 안녕하세요! 클라우드 인프라를 조금 더 깊게 이해하고 싶은 백엔드 지망생입니다. 안녕하세요! 클라우드 인프라를 조금 더 깊게 이해하고 싶은 백엔드 지망생입니다. 안녕하세요! 클라우드 인프라를 조금 더 깊게 이해하고 싶은 백엔드 지망생입니다. 안녕하세요! 클라우드 인프라를 조금 더 깊게 이해하고 싶은 백엔드 지망생입니다. 안녕하세요! 클라우드 인프라를 조금 더 깊게 이해하고 싶은 백엔드 지망생입니다. 안녕하세요! 클라우드 인프라를 조금 더 깊게 이해하고 싶은 백엔드 지망생입니다. 안녕하세요! 클라우드 인프라를 조금 더 깊게 이해하고 싶은 백엔드 지망생입니다. 안녕하세요! 클라우드 인프라를 조금 더 깊게 이해하고 싶은 백엔드 지망생입니다. 안녕하세요! 클라우드 인프라를 조금 더 깊게 이해하고 싶은 백엔드 지망생입니다.',
+    motivation:
+      'AWS 기초 개념을 정리하고, 나중에 자격증 준비에도 도움이 될 만한 내용을 배우고 싶습니다. AWS 기초 개념을 정리하고, 나중에 자격증 준비에도 도움이 될 만한 내용을 배우고 싶습니다. AWS 기초 개념을 정리하고, 나중에 자격증 준비에도 도움이 될 만한 내용을 배우고 싶습니다. AWS 기초 개념을 정리하고, 나중에 자격증 준비에도 도움이 될 만한 내용을 배우고 싶습니다. AWS 기초 개념을 정리하고, 나중에 자격증 준비에도 도움이 될 만한 내용을 배우고 싶습니다. AWS 기초 개념을 정리하고, 나중에 자격증 준비에도 도움이 될 만한 내용을 배우고 싶습니다. AWS 기초 개념을 정리하고, 나중에 자격증 준비에도 도움이 될 만한 내용을 배우고 싶습니다. AWS 기초 개념을 정리하고, 나중에 자격증 준비에도 도움이 될 만한 내용을 배우고 싶습니다. AWS 기초 개념을 정리하고, 나중에 자격증 준비에도 도움이 될 만한 내용을 배우고 싶습니다. AWS 기초 개념을 정리하고, 나중에 자격증 준비에도 도움이 될 만한 내용을 배우고 싶습니다. ',
+    objective:
+      '핵심 서비스 개념을 정리한 노트를 만들고, 간단한 실습까지 해보는 것이 목표입니다. 핵심 서비스 개념을 정리한 노트를 만들고, 간단한 실습까지 해보는 것이 목표입니다. 핵심 서비스 개념을 정리한 노트를 만들고, 간단한 실습까지 해보는 것이 목표입니다. 핵심 서비스 개념을 정리한 노트를 만들고, 간단한 실습까지 해보는 것이 목표입니다. 핵심 서비스 개념을 정리한 노트를 만들고, 간단한 실습까지 해보는 것이 목표입니다. 핵심 서비스 개념을 정리한 노트를 만들고, 간단한 실습까지 해보는 것이 목표입니다. 핵심 서비스 개념을 정리한 노트를 만들고, 간단한 실습까지 해보는 것이 목표입니다. 핵심 서비스 개념을 정리한 노트를 만들고, 간단한 실습까지 해보는 것이 목표입니다. 핵심 서비스 개념을 정리한 노트를 만들고, 간단한 실습까지 해보는 것이 목표입니다. 핵심 서비스 개념을 정리한 노트를 만들고, 간단한 실습까지 해보는 것이 목표입니다.',
+    available_time: '토/일 오후',
+    has_study_experience: true,
+    study_experience:
+      '학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다.',
+    status: 'CANCELED',
+    recruitment: {
+      id: 10,
+      title:
+        'AWS 클라우드 기초 개념 스터디 AWS 클라우드 기초 개념 스터디 AWS 클라우드 기초 개념 스터디 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다. 학교에서 네트워크 수업을 들은 적이 있고, 관련 내용과 연결해서 공부해보고 싶습니다.',
+      expected_headcount: 6,
+      close_at: '2025-11-27T23:59:59+09:00',
+      lectures: [
+        {
+          id: 41001,
+          title: '왕초보를 위한 파이썬 입문',
+          instructor: '파이썬캣',
+        },
+
+        {
+          id: 41002,
+          title: '왕초보를 위한 파이썬 입문',
+          instructor: '파이썬캣',
+        },
+
+        {
+          id: 41003,
+          title: '왕초보를 위한 파이썬 입문',
+          instructor: '파이썬캣',
+        },
+
+        {
+          id: 41004,
+          title: '왕초보를 위한 파이썬 입문',
+          instructor: '파이썬캣',
+        },
+
+        {
+          id: 41005,
+          title: '왕초보를 위한 파이썬 입문',
+          instructor: '파이썬캣',
+        },
+
+        {
+          id: 41006,
+          title: '왕초보를 위한 파이썬 입문',
+          instructor: '파이썬캣',
+        },
+      ],
+      tags: [
+        { id: 8, name: '백엔드' },
+        { id: 41, name: 'AWS' },
+        { id: 42, name: '클라우드' },
+        { id: 1, name: '백엔드' },
+        { id: 2, name: 'AWS' },
+        { id: 3, name: '클라우드' },
+        { id: 4, name: '백엔드' },
+        { id: 5, name: 'AWS' },
+        { id: 6, name: '클라우드' },
+        { id: 7, name: '백엔드' },
+        { id: 9, name: 'AWS' },
+        { id: 10, name: '클라우드' },
+        { id: 11, name: '백엔드' },
+        { id: 12, name: 'AWS' },
+        { id: 13, name: '클라우드' },
+        { id: 14, name: '백엔드' },
+        { id: 15, name: 'AWS' },
+        { id: 16, name: '클라우드' },
+      ],
+    },
+    applicant: {
+      id: 20,
+      nickname: 'haneul20',
+      email: 'user20@example.com',
+      gender: 'F',
+      profile_img_url: 'https://example.com/images/profiles/user20.png',
+    },
+    created_at: '2025-11-20T12:10:00+09:00',
+    updated_at: '2025-11-20T12:10:00+09:00',
+  },
 }

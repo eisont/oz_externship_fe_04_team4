@@ -86,7 +86,7 @@ export function Table<T>({
               {columns.map((column, index) => (
                 <th
                   key={index}
-                  className={`border-b border-gray-200 px-4 py-3 font-semibold text-gray-700 ${
+                  className={`border-b border-gray-200 px-4 py-3 text-xs font-medium text-[#6B7280] ${
                     column.sortable
                       ? 'cursor-pointer select-none hover:bg-gray-100'
                       : ''
@@ -148,7 +148,10 @@ export function Table<T>({
                   onClick={() => onRowClick?.(row)}
                 >
                   {columns.map((column, colIndex) => (
-                    <td key={colIndex} className="px-4 py-3 text-gray-600">
+                    <td
+                      key={colIndex}
+                      className="px-4 py-3 text-sm text-gray-600"
+                    >
                       {column.render
                         ? column.render(row[column.key as keyof T], row)
                         : (row[column.key as keyof T] as ReactNode)}

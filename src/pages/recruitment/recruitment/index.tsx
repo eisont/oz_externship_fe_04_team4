@@ -11,14 +11,15 @@ import RecruitmentDetailModal from '@/features/recruitment/ui/detailModal'
 import RecruitmentFilter from '@/features/recruitment/ui/RecruitmentFilter'
 import RecruitmentTagFilterModal from '@/features/recruitment/ui/tagFilterModal'
 import type { RecruitmentListResults } from '@/mocks/types/accounts'
-import { useDetailModalStore } from '@/store/recruitment/useRecruitmentModalStore'
+import { useRecruitmentDetailModalStore } from '@/store/recruitment/useRecruitmentModalStore'
 import { useRecruitmentSearchStore } from '@/store/recruitment/useRecruitmentSearchStore'
 import { ueeRecruitmentStatusStore } from '@/store/recruitment/useRecruitmentStatusStore'
 import { useRecruitmentTagListStore } from '@/store/recruitment/useRecruitmentTagsStore'
 
+const PAGE_SIZE = 10
+
 export default function RecruitmentPage() {
-  const PAGE_SIZE = 10
-  const { openDetailModal } = useDetailModalStore()
+  const { openDetailModal } = useRecruitmentDetailModalStore()
 
   // 1) 테이블용 상태
   const [currentPage, setCurrentPage] = useState(1)
@@ -32,7 +33,7 @@ export default function RecruitmentPage() {
   const queryParams: GetAdminRecruitmentsParams = {
     page: currentPage,
     page_size: PAGE_SIZE,
-    keyword,
+    search: keyword,
     status,
     tags: selectedTagsResult,
     sort: sortConfig?.value,
@@ -65,11 +66,7 @@ export default function RecruitmentPage() {
       <RecruitmentTagFilterModal />
       <RecruitmentDetailModal />
 
-      <div className="mb-6 space-y-4 rounded-lg bg-white p-6">
-        <div className="flex items-center">
-          <RecruitmentFilter />
-        </div>
-      </div>
+      <RecruitmentFilter />
 
       <Table
         columns={RecruitmentColumns}

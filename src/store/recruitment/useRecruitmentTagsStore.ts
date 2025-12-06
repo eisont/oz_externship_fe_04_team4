@@ -1,13 +1,13 @@
 import { create } from 'zustand'
 
-import type { RecruitmentTag } from '@/mocks/types/accounts'
+import type { TagType } from '@/mocks/types/accounts'
 
 type TagsState = {
-  selectedTags: RecruitmentTag[]
+  selectedTags: TagType[]
 
-  setSelectedTags: (tags: RecruitmentTag[]) => void
-  toggleTag: (tag: RecruitmentTag) => void
-  deleteSelectedTag: (tag: RecruitmentTag) => void
+  setSelectedTags: (tags: TagType[]) => void
+  toggleTag: (tag: TagType) => void
+  deleteSelectedTag: (tag: TagType) => void
   resetSelectedTags: () => void
 }
 
@@ -40,9 +40,9 @@ export const useRecruitmentTagsStore = create<TagsState>((set) => ({
 }))
 
 type TagsResultState = {
-  selectedTagsResult: RecruitmentTag[]
+  selectedTagsResult: TagType[]
 
-  setSelectedTagsResult: (tags: RecruitmentTag[]) => void
+  setSelectedTagsResult: (tags: TagType[]) => void
 }
 
 export const useRecruitmentTagListStore = create<TagsResultState>((set) => ({
