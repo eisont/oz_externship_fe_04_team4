@@ -55,14 +55,17 @@ export default function ApplicationFilter({
       <div className="grid grid-cols-3 gap-4 bg-white">
         <ApplicationSearchInput
           label={searchConfig.label}
+          labelClassName="font-medium"
           placeholder={searchConfig.placeholder}
           value={searchConfig.value}
           onChange={searchConfig.onChange}
+          inputClassName="text-sm"
         />
 
         <ApplicationFilterSelect
           key={application.label}
           label={application.label}
+          labelClassName="font-medium"
           options={application.options}
           value={application.value}
           onChange={application.onChange}
@@ -71,6 +74,7 @@ export default function ApplicationFilter({
         <ApplicationFilterSelect
           key={sort.label}
           label={sort.label}
+          labelClassName="font-medium"
           options={sort.options}
           value={sort.value}
           onChange={sort.onChange}

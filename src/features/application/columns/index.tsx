@@ -31,8 +31,8 @@ export const ApplicationColumns = [
     width: '250px',
     render: (row: applicantRowType) => (
       <div className="flex flex-col">
-        <p className="font-medium text-gray-900">{row?.nickname}</p>
-        <p className="text-sm text-gray-500">{row?.email}</p>
+        <p className="text-sm font-medium text-gray-900">{row?.nickname}</p>
+        <p className="text-xs text-gray-500">{row?.email}</p>
       </div>
     ),
   },
@@ -51,12 +51,12 @@ export const ApplicationColumns = [
     header: '지원일시',
     width: '180px',
 
-    render: (value: string) => dayjs(value).format('YYYY-MM-DD HH:mm'),
+    render: (value: string) => dayjs(value).format('YYYY-MM-DD HH:mm:ss'),
   },
   {
     key: 'updated_at',
     header: '수정일시',
     width: '180px',
-    render: (value: string) => dayjs(value).format('YYYY-MM-DD HH:mm'),
+    render: (value: string) => dayjs(value).format('YYYY-MM-DD HH:mm:ss'),
   },
 ]
