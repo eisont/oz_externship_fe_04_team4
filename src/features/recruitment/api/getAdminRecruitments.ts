@@ -1,6 +1,6 @@
 import { authFetch } from '@/api/client'
 import { ADMIN_TEXT } from '@/config/api'
-import type { RecruitmentTag } from '@/mocks/types/accounts'
+import type { TagsType } from '@/mocks/types/accounts'
 
 // 타입 예시, 실제로는 서버 스키마에 맞게 정의해줘
 export type GetAdminRecruitmentsParams = {
@@ -8,7 +8,7 @@ export type GetAdminRecruitmentsParams = {
   page_size: number
   search?: string
   status?: 'all' | 'true' | 'false' | string
-  tags?: RecruitmentTag[]
+  tags?: TagsType[]
   sort?: string
 }
 

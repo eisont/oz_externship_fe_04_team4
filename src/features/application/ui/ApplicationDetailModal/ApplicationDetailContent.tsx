@@ -15,8 +15,9 @@ import { getAdminApplicationDetail } from '@/features/recruitment/api/getAdminAp
 import { useApplicationDetailModalStore } from '@/store/application/useApplicationModalStore'
 
 const TEXT_STYLE = 'text-sm text-[#374151] cursor-default'
-const TEXT_BOX = 'rounded-lg bg-[#F9FAFB] p-3 text-sm text-[#111827]'
-const WRAPPER_BOX = 'flex flex-col gap-1'
+const TEXT_BOX =
+  'rounded-lg bg-[#F9FAFB] p-3 text-sm text-[#111827] cursor-default'
+const WRAPPER_BOX = 'flex flex-col gap-1 cursor-default'
 
 export default function ApplicationDetailContent() {
   const { selectedRecruitmentId } = useApplicationDetailModalStore()
@@ -46,7 +47,9 @@ export default function ApplicationDetailContent() {
       <div className="flex justify-between">
         {/* 왼쪽 === 스터디 구인 공고 정보 */}
         <div className="flex w-[472px] flex-col gap-4">
-          <div className="text-lg font-semibold">스터디 구인 공고 정보</div>
+          <div className="cursor-default text-lg font-semibold">
+            스터디 구인 공고 정보
+          </div>
           {/* 공고명 */}
           <div className={WRAPPER_BOX}>
             <div className={TEXT_STYLE}>공고명</div>
@@ -89,7 +92,7 @@ export default function ApplicationDetailContent() {
               {data.recruitment.tags.map((e) => (
                 <div
                   key={e.id}
-                  className="rounded-full bg-[#FEF9C3] px-3 py-1 text-[#854D0E]"
+                  className="cursor-default rounded-full bg-[#FEF9C3] px-3 py-1 text-[#854D0E]"
                 >
                   {e.name}
                 </div>
@@ -100,10 +103,12 @@ export default function ApplicationDetailContent() {
 
         {/* 오른쪽 === 지원자 정보 */}
         <div className="flex w-[472px] flex-col gap-4">
-          <div className="text-lg font-semibold">지원자 정보</div>
+          <div className="cursor-default text-lg font-semibold">
+            지원자 정보
+          </div>
 
           {/* 지원자 정보 */}
-          <div className="flex items-center gap-4">
+          <div className="flex cursor-default items-center gap-4">
             <img
               src={data.applicant.profile_img_url}
               alt={data.applicant.nickname}

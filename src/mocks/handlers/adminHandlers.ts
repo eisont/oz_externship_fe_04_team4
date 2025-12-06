@@ -5,7 +5,7 @@ import {
   mockAccountDetailMap,
   mockAccountsList,
   mockAccountsMe,
-  mockApplicationsDetail,
+  mockApplicationsDetailMap,
   mockApplicationsList,
   mockLecturesDetailMap,
   mockLecturesList,
@@ -1091,7 +1091,7 @@ export const getAdminApplicationDetailHandler = http.get(
     if (
       !application_id ||
       Number.isNaN(id) ||
-      id !== mockApplicationsDetail.id
+      id !== mockApplicationsDetailMap[Number(application_id)].id
     ) {
       return HttpResponse.json(
         { error_detail: '해당 지원내역을 찾을 수 없습니다.' },
@@ -1099,9 +1099,13 @@ export const getAdminApplicationDetailHandler = http.get(
       )
     }
 
-    return HttpResponse.json(mockApplicationsDetail, { status: 200 })
+    return HttpResponse.json(
+      mockApplicationsDetailMap[Number(application_id)],
+      { status: 200 }
+    )
   }
 )
+
 export const catchAllAdminHandler = http.all(
   `${ADMIN_API_PREFIX}/*`,
   ({ request }) => {
