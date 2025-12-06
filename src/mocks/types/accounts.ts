@@ -4,7 +4,7 @@ export type ApplicationsStatus =
   | 'REJECTED'
   | 'CANCELED'
 
-export type TagsType = {
+export type TagType = {
   id: number
   name: string
 }
@@ -326,7 +326,7 @@ export type RecruitmentList = {
 export type RecruitmentListResults = {
   id: number
   title: string
-  tags: TagsType[]
+  tags: TagType[]
   close_at: string
   is_closed: boolean
   views_count: number
@@ -339,7 +339,7 @@ export type RecruitmentTags = {
   count: number
   next: null | string
   previous: null | string
-  results: TagsType[]
+  results: TagType[]
 }
 
 // api/v1/admin/applications
@@ -381,7 +381,7 @@ export type RecruitmentDetail = {
   created_at: string
   updated_at: string
   lectures: RecruitmentDetailLectures[]
-  tags: TagsType[]
+  tags: TagType[]
   files: RecruitmentDetailFiles[]
   applications: RecruitmentDetailApplications[]
 }
@@ -428,7 +428,7 @@ export type ApplicationsDetail = {
     expected_headcount: number
     close_at: string
     lectures: ApplicationsDetailLectures[]
-    tags: TagsType[]
+    tags: TagType[]
   }
   applicant: {
     id: number

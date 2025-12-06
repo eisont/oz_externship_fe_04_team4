@@ -1,10 +1,10 @@
 import { Check } from 'lucide-react'
 
-import type { RecruitmentTag } from '@/mocks/types/accounts'
+import type { TagType } from '@/mocks/types/accounts'
 import { useRecruitmentTagsStore } from '@/store/recruitment/useRecruitmentTagsStore'
 
 type Props = {
-  tags?: RecruitmentTag[]
+  tags?: TagType[]
   isLoading: boolean
   isError: boolean
 }

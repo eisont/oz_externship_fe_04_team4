@@ -1,9 +1,9 @@
-import type { RecruitmentTag } from '@/mocks/types/accounts'
+import type { TagType } from '@/mocks/types/accounts'
 
 const WRAPPER_STYLE = 'flex gap-0.5 truncate text-sm text-[#374151]'
 
 type Props = {
-  tags: RecruitmentTag[]
+  tags: TagType[]
   englishLength: number
   koreanLength: number
 }
