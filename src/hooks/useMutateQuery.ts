@@ -4,8 +4,10 @@ import { axiosInstance } from '@/lib/axios'
 
 type HttpMethod = 'post' | 'patch' | 'put' | 'delete' | 'postForm'
 
-interface UseMutateQueryParams<TData, TVariables, TError = Error>
-  extends Omit<UseMutationOptions<TData, TError, TVariables>, 'mutationFn'> {
+interface UseMutateQueryParams<TData, TVariables, TError = Error> extends Omit<
+  UseMutationOptions<TData, TError, TVariables>,
+  'mutationFn'
+> {
   url: string
   method?: HttpMethod
 }
