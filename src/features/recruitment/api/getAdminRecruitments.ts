@@ -38,6 +38,8 @@ export async function getAdminRecruitments(params: GetAdminRecruitmentsParams) {
       'sort',
       params.sort === 'created_asc' ? 'oldest' : 'latest'
     )
+  } else {
+    searchParams.set('sort', (params.sort = 'latest'))
   }
 
   const res = await authFetch(

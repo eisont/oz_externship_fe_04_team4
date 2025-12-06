@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 
 import { RecruitmentStatusBadge } from '@/components/common/badge/RecruitmentStatusBadge'
 import TagFilterPreview from '@/components/common/tag/TagFilterPreview'
-import type { RecruitmentTag } from '@/mocks/types/accounts'
+import type { TagsType } from '@/mocks/types/accounts'
 
 export const RecruitmentColumns = [
   { key: 'id', header: 'ID', width: '10px' },
@@ -11,7 +11,7 @@ export const RecruitmentColumns = [
     key: 'tags',
     header: '태그',
     width: '100px',
-    render: (row: RecruitmentTag[]) => {
+    render: (row: TagsType[]) => {
       const tags = row
 
       return (
