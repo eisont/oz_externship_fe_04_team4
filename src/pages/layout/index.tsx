@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react'
+import { PanelLeftClose, PanelLeftOpen } from 'lucide-react'
+import { useState, type ReactNode } from 'react'
 import { useLocation } from 'react-router'
 
 import Sidebar from '@/components/layout/Sidebar'
@@ -22,6 +23,7 @@ const getPageTitle = (pathname: string): string => {
 
 const Layout = ({ children }: Props) => {
   const { pathname } = useLocation()
+  const [isClose, setIsClose] = useState(false)
 
   return (
     <div className="flex min-h-screen">
@@ -29,7 +31,20 @@ const Layout = ({ children }: Props) => {
         <div className="flex-1 bg-gray-50">{children}</div>
       ) : (
         <>
-          <Sidebar />
+          {!isClose ? (
+            <>
+              <Sidebar />
+              <PanelLeftClose
+                className="absolute top-1 left-[245px] cursor-pointer hover:scale-105"
+                onClick={() => setIsClose(true)}
+              />
+            </>
+          ) : (
+            <PanelLeftOpen
+              className="absolute top-1 cursor-pointer hover:scale-105"
+              onClick={() => setIsClose(false)}
+            />
+          )}
           <div className="flex-1 bg-gray-50 p-8">
             <h1 className="mb-6 text-2xl font-bold text-gray-900">
               {getPageTitle(pathname)}
