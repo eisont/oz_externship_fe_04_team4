@@ -23,7 +23,7 @@ const LINK_BASE_STYLE =
 const ICON_STYLE =
   'group-hover:stroke-[#854D0E] group-active:scale-[1.2] aria-[current=true]:stroke-[#854D0E]'
 
-export default function Sidebar() {
+export default function SideBar() {
   const [userToggle, setUserToggle] = useState(false)
   const [studyToggle, setStudyToggle] = useState(false)
   const [recruitmentToggle, setRecruitmentToggle] = useState(false)
@@ -184,28 +184,30 @@ export default function Sidebar() {
         >
           <div className="flex flex-col items-end overflow-hidden">
             <Link
-              to={'/recruitment/applications'}
+              to={'/recruitment/recruitment'}
+              onClick={() => setRecruitmentToggle(true)}
               className={LINK_BASE_STYLE}
-              aria-current={pathname === '/recruitment/applications'}
+              aria-current={pathname === '/recruitment/recruitment'}
             >
               <ReceiptText
                 size={16}
                 color="#4B5563"
                 className={ICON_STYLE}
-                aria-current={pathname === '/recruitment/applications'}
+                aria-current={pathname === '/recruitment/recruitment'}
               />
               <div className="ml-3">공고 관리</div>
             </Link>
             <Link
-              to={'/recruitment/posts'}
+              to={'/recruitment/applications'}
+              onClick={() => setRecruitmentToggle(true)}
               className={LINK_BASE_STYLE}
-              aria-current={pathname === '/recruitment/posts'}
+              aria-current={pathname === '/recruitment/applications'}
             >
               <UserRoundPlus
                 size={16}
                 color="#4B5563"
                 className={ICON_STYLE}
-                aria-current={pathname === '/recruitment/posts'}
+                aria-current={pathname === '/recruitment/applications'}
               />
               <div className="ml-3">지원 내역 관리</div>
             </Link>
