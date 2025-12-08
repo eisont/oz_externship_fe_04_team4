@@ -1,8 +1,10 @@
 import { useQuery, type UseQueryOptions } from '@tanstack/react-query'
 
+import type { AxiosError } from 'axios'
+
 import { axiosInstance } from '@/lib/axios'
 
-interface UseFetchQueryParams<TData, TError = Error> extends Omit<
+interface UseFetchQueryParams<TData, TError = AxiosError> extends Omit<
   UseQueryOptions<TData, TError>,
   'queryFn'
 > {
@@ -17,14 +19,11 @@ export function useFetchQuery<TData>({
   params,
   ...options
 }: UseFetchQueryParams<TData>) {
-  const query = useQuery<TData, Error>({
+  const query = useQuery<TData, AxiosError>({
     queryKey: Array.isArray(queryKey) ? queryKey : [queryKey],
     queryFn: async () => {
       const response = await axiosInstance.get<TData>(url, { params })
 
-      if (!response.data) {
-        throw new Error('응답 데이터가 존재하지 않습니다.')
-      }
       return response.data
     },
     ...options,
