@@ -6,9 +6,9 @@ import {
   Table,
   type Column,
   type PaginationResponse,
-  type SortConfig,
 } from '@/components/common/table'
 import { SERVICE_URLS } from '@/config/serviceUrls'
+import { useTableFilters } from '@/hooks'
 import { useFetchQuery } from '@/hooks/useFetchQuery'
 import { StudyGroupDetailModal } from '@/pages/study/groups/StudyGroupDetailModal'
 import { formatDateTime } from '@/utils'
@@ -83,26 +83,30 @@ const COLUMNS: Column<StudyGroup>[] = [
   },
 ]
 export default function StudyGroupManagementPage() {
-  const [filters, setFilters] = useState<{
-    search: string
-    page: number
-    status: string
-    sort: string
-  }>({
-    search: '',
-    page: 1,
-    status: '',
-    sort: '',
+  const {
+    filters,
+    sortConfig,
+    updateSearch,
+    updateFilter,
+    updatePage,
+    handleSort,
+  } = useTableFilters({
+    initialFilters: {
+      search: '',
+      page: 1,
+      status: '',
+      sort: '',
+    },
   })
+
   const [selectedStudyGroupId, setSelectedStudyGroupId] = useState<
     number | null
   >(null)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
-  const [sortConfig, setSortConfig] = useState<SortConfig | null>(null)
   const { data, isLoading, error, refetch } = useFetchQuery<
     PaginationResponse<StudyGroup>
   >({
-    queryKey: ['studyGroups', filters],
+    queryKey: ['study-groups', filters],
     url: SERVICE_URLS.STUDY_GROUPS.LIST,
     params: {
       page: filters.page,
@@ -112,14 +116,6 @@ export default function StudyGroupManagementPage() {
       sort: filters.sort,
     },
   })
-  const handleSort = (
-    sortValue: string,
-    direction: 'asc' | 'desc',
-    key: string
-  ) => {
-    setFilters((prev) => ({ ...prev, sort: sortValue, page: 1 }))
-    setSortConfig({ key, value: sortValue, direction })
-  }
 
   const handleRowClick = (studyGroup: StudyGroup) => {
     setSelectedStudyGroupId(studyGroup.id)
@@ -138,8 +134,7 @@ export default function StudyGroupManagementPage() {
             label: '검색',
             placeholder: '그룹명 검색 ...',
             value: filters.search,
-            onChange: (value) =>
-              setFilters((prev) => ({ ...prev, search: value, page: 1 })),
+            onChange: updateSearch,
           }}
           filters={[
             {
@@ -150,8 +145,7 @@ export default function StudyGroupManagementPage() {
                 { label: '종료됨', value: 'ENDED' },
               ],
               value: filters.status,
-              onChange: (value) =>
-                setFilters((prev) => ({ ...prev, status: value, page: 1 })),
+              onChange: (value) => updateFilter('status', value),
             },
           ]}
         />
@@ -160,7 +154,7 @@ export default function StudyGroupManagementPage() {
         columns={COLUMNS}
         response={data || { count: 0, results: [], next: null, previous: null }}
         currentPage={filters.page}
-        onPageChange={(page) => setFilters((prev) => ({ ...prev, page }))}
+        onPageChange={updatePage}
         isLoading={isLoading}
         error={error?.message}
         onRetry={refetch}

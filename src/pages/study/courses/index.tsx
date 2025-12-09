@@ -9,6 +9,7 @@ import {
 } from '@/components/common/table'
 import { SERVICE_URLS } from '@/config/serviceUrls'
 import { useFetchQuery } from '@/hooks/useFetchQuery'
+import { useTableFilters } from '@/hooks/useTableFilters'
 import { LectureDetailModal } from '@/pages/study/courses/LectureDetailModal'
 import { formatDateTime } from '@/utils'
 
@@ -78,10 +79,13 @@ const COLUMNS: Column<Lecture>[] = [
   },
 ]
 export default function LectureManagementPage() {
-  const [filters, setFilters] = useState<{ search: string; page: number }>({
-    search: '',
-    page: 1,
+  const { filters, updateSearch, updatePage } = useTableFilters({
+    initialFilters: {
+      search: '',
+      page: 1,
+    },
   })
+
   const [selectedLecture, setSelectedLecture] = useState<number | null>(null)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const { data, isLoading, error, refetch } = useFetchQuery<
@@ -113,8 +117,7 @@ export default function LectureManagementPage() {
             label: '검색',
             placeholder: '강의명, 강사명 검색...',
             value: filters.search,
-            onChange: (value) =>
-              setFilters((prev) => ({ ...prev, search: value, page: 1 })),
+            onChange: updateSearch,
           }}
         />
       </div>
@@ -122,7 +125,7 @@ export default function LectureManagementPage() {
         columns={COLUMNS}
         response={data || { count: 0, results: [], next: null, previous: null }}
         currentPage={filters.page}
-        onPageChange={(page) => setFilters((prev) => ({ ...prev, page }))}
+        onPageChange={updatePage}
         isLoading={isLoading}
         error={error?.message}
         onRetry={refetch}
