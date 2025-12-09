@@ -8,6 +8,7 @@ import {
   type PaginationResponse,
 } from '@/components/common/table'
 import { SERVICE_URLS } from '@/config/serviceUrls'
+import { useTableFilters } from '@/hooks'
 import { useFetchQuery } from '@/hooks/useFetchQuery'
 import type { StudyReviewListResults } from '@/mocks/types/accounts'
 import { ReviewDetailModal } from '@/pages/study/reviews/ReviewDetailModal'
@@ -63,13 +64,13 @@ const COLUMNS: Column<ReviewProps>[] = [
   },
 ]
 export default function ReviewManagementPage() {
-  const [filters, setFilters] = useState<{
-    search: string
-    page: number
-  }>({
-    search: '',
-    page: 1,
+  const { filters, updateSearch, updatePage } = useTableFilters({
+    initialFilters: {
+      search: '',
+      page: 1,
+    },
   })
+
   const [selectedReviewId, setSelectedReviewId] = useState<number | null>(null)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const { data, isLoading, error, refetch } = useFetchQuery<
@@ -101,8 +102,7 @@ export default function ReviewManagementPage() {
             label: '검색',
             placeholder: '사용자 닉네임, 이메일 검색 ...',
             value: filters.search,
-            onChange: (value) =>
-              setFilters((prev) => ({ ...prev, search: value, page: 1 })),
+            onChange: updateSearch,
           }}
         />
       </div>
@@ -113,7 +113,7 @@ export default function ReviewManagementPage() {
             data || { count: 0, results: [], next: null, previous: null }
           }
           currentPage={filters.page}
-          onPageChange={(page) => setFilters((prev) => ({ ...prev, page }))}
+          onPageChange={updatePage}
           isLoading={isLoading}
           error={error?.message}
           onRetry={refetch}
