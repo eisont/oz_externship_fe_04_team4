@@ -1,57 +1,65 @@
+import { ADMIN_API_URL } from '@/config/api'
+
 export const SERVICE_URLS = {
   // 회원 관리
   ACCOUNTS: {
-    LIST: '/accounts',
-    DETAIL: (accountId: number) => `/accounts/${accountId}`,
-    UPDATE: (accountId: number) => `/accounts/${accountId}`,
-    DELETE: (accountId: number) => `/accounts/${accountId}`,
-    CHANGE_ROLE: (accountId: number) => `/accounts/${accountId}/role`,
-    ACTIVATE: (accountId: number) => `/accounts/${accountId}/activate`,
-    DEACTIVATE: (accountId: number) => `/accounts/${accountId}/deactivate`,
+    LIST: `${ADMIN_API_URL}/accounts`,
+    DETAIL: (accountId: number) => `${ADMIN_API_URL}/accounts/${accountId}`,
+    UPDATE: (accountId: number) => `${ADMIN_API_URL}/accounts/${accountId}`,
+    DELETE: (accountId: number) => `${ADMIN_API_URL}/accounts/${accountId}`,
+    CHANGE_ROLE: (accountId: number) =>
+      `${ADMIN_API_URL}/accounts/${accountId}/role`,
+    ACTIVATE: (accountId: number) =>
+      `${ADMIN_API_URL}/accounts/${accountId}/activate`,
+    DEACTIVATE: (accountId: number) =>
+      `${ADMIN_API_URL}/accounts/${accountId}/deactivate`,
   },
 
   // 탈퇴 관리
   WITHDRAWALS: {
-    LIST: '/withdrawals',
-    DETAIL: (withdrawalId: number) => `/withdrawals/${withdrawalId}`,
+    LIST: `${ADMIN_API_URL}/withdrawals`,
+    DETAIL: (withdrawalId: number) =>
+      `${ADMIN_API_URL}/withdrawals/${withdrawalId}`,
   },
 
   // 분석
   ANALYTICS: {
-    SIGNUP_TRENDS: '/analytics/signup/trends',
-    WITHDRAWAL_REASONS_PERCENTAGE: '/analytics/withdrawal-reasons/percentage',
-    WITHDRAWAL_REASONS_STATS_MONTHLY:
-      '/analytics/withdrawal-reasons/stats/monthly',
+    SIGNUP_TRENDS: `${ADMIN_API_URL}/analytics/signup/trends`,
+    WITHDRAWAL_REASONS_PERCENTAGE: `${ADMIN_API_URL}/analytics/withdrawal-reasons/percentage`,
+    WITHDRAWAL_REASONS_STATS_MONTHLY: `${ADMIN_API_URL}/analytics/withdrawal-reasons/stats/monthly`,
   },
 
   // 강의 관리
   LECTURES: {
-    LIST: '/lectures',
-    DETAIL: (lectureId: number) => `/lectures/${lectureId}`,
+    LIST: `${ADMIN_API_URL}/lectures`,
+    DETAIL: (lectureId: number) => `${ADMIN_API_URL}/lectures/${lectureId}`,
   },
 
   // 스터디 그룹 관리
   STUDY_GROUPS: {
-    LIST: '/study-groups',
-    DETAIL: (groupId: number) => `/study-groups/${groupId}`,
+    LIST: `${ADMIN_API_URL}/study-groups`,
+    DETAIL: (groupId: number) => `${ADMIN_API_URL}/study-groups/${groupId}`,
   },
 
   // 스터디 리뷰 관리
   STUDY_REVIEWS: {
-    LIST: '/study-reviews',
-    DETAIL: (reviewId: number) => `/study-reviews/${reviewId}`,
+    LIST: `${ADMIN_API_URL}/study-reviews`,
+    DETAIL: (reviewId: number) => `${ADMIN_API_URL}/study-reviews/${reviewId}`,
   },
 
   // 스터디 구인 공고 관리
   RECRUITMENTS: {
-    LIST: '/recruitments',
-    DETAIL: (recruitmentId: number) => `/recruitments/${recruitmentId}`,
-    DELETE: (recruitmentId: number) => `/recruitments/${recruitmentId}`,
+    LIST: `${ADMIN_API_URL}/recruitments`,
+    DETAIL: (recruitmentId: number) =>
+      `${ADMIN_API_URL}/recruitments/${recruitmentId}`,
+    DELETE: (recruitmentId: number) =>
+      `${ADMIN_API_URL}/recruitments/${recruitmentId}`,
   },
 
   // 지원 내역 관리
   APPLICATIONS: {
-    LIST: '/applications',
-    DETAIL: (applicationId: number) => `/applications/${applicationId}`,
+    LIST: `${ADMIN_API_URL}/applications`,
+    DETAIL: (applicationId: number) =>
+      `${ADMIN_API_URL}/applications/${applicationId}`,
   },
 } as const
