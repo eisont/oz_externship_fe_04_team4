@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { fetchRecruitmentTags } from '@/api/recruitment/tags'
+import { fetchRecruitmentTags } from '@/api/tags'
 import type { RecruitmentTags } from '@/mocks/types/accounts'
 
 type useRecruitmentTagsQueryParams = {

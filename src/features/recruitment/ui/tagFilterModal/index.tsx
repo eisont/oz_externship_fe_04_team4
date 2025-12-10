@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-import { useRecruitmentTagsQuery } from '@/api/recruitment/useRecruitmentTagsQuery'
 import Modal from '@/components/common/Modal'
 import SelectedTagList from '@/features/recruitment/ui/tagFilterModal/SelectedTagList'
 import TagFilterActionButtons from '@/features/recruitment/ui/tagFilterModal/TagFilterActionButtons'
 import TagOptionList from '@/features/recruitment/ui/tagFilterModal/TagOptionList'
 import TagSearchInput from '@/features/recruitment/ui/tagFilterModal/TagSearchInput'
+import { useRecruitmentTagsQuery } from '@/hooks/model/useRecruitmentTagsQuery'
 import { useTagFilterModalStore } from '@/store/recruitment/useRecruitmentModalStore'
 import { useRecruitmentTagsStore } from '@/store/recruitment/useRecruitmentTagsStore'
 

@@ -2,8 +2,8 @@ import { type FormEvent } from 'react'
 
 import { useNavigate } from 'react-router'
 
-import { useLoginMutation } from '@/api/auth/useLoginMutation'
 import Button from '@/components/common/Button'
+import { useLoginMutation } from '@/hooks/model/useLoginMutation'
 import { useAuthRole } from '@/hooks/useAuthRole'
 
 const INPUT_STYLE =
