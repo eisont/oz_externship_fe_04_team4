@@ -22,6 +22,4 @@ dist-ssr
 *.sln
 *.sw?
 .history
-.env
-.env.development
-.env.production
+.env*

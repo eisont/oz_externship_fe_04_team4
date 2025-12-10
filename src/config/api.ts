@@ -5,3 +5,5 @@ export const API_V1_PREFIX = '/api/v1'
 export const ADMIN_TEXT = '/admin'
 
 export const ADMIN_API_PREFIX = `${API_V1_PREFIX}${ADMIN_TEXT}`
+
+export const ADMIN_API_URL = `${BASE_URL}${API_V1_PREFIX}${ADMIN_TEXT}`
