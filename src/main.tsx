@@ -8,10 +8,9 @@ import { worker } from '@/mocks/browser'
 import './index.css'
 
 async function enableMocking() {
-  // true MSW on, false MSW off
-  if (!import.meta.env.DEV) {
-    return
-  }
+  if (!import.meta.env.DEV) return
+
+  if (import.meta.env.VITE_USE_MOCK !== 'true') return
 
   return worker.start({
     onUnhandledRequest: 'bypass', // 모킹되지 않은 요청은 실제 서버로 전달
