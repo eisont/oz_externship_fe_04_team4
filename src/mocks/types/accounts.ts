@@ -60,9 +60,7 @@ export type AccountsDetail = {
 
 // api/v1/admin/withdrawals
 export type WithdrawalsListItem = {
-  [x: string]: string | number
   id: number
-  status: string
   email: string
   name: string
   role: 'user' | 'staff' | 'admin'

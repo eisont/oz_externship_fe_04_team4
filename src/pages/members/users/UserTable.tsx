@@ -89,7 +89,6 @@ export default function UserTable() {
       page_size: 10,
       search: filters.search,
       status: filters.status,
-      role: filters.role,
       sort: filters.sort,
     },
   })
