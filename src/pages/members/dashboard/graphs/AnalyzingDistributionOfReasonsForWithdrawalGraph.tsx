@@ -54,18 +54,6 @@ export default function AnalyzingDistributionOfReasonsForWithdrawalGraph({
   title,
   height = 320,
 }: PieChartProps) {
-  function isLegendItemPayload(payload: unknown): payload is CustomLegendItem {
-    if (typeof payload !== 'object' || payload === null) return false
-
-    const p = payload as Record<string, unknown>
-
-    return (
-      typeof p.label === 'string' &&
-      typeof p.value === 'number' &&
-      typeof p.count === 'number'
-    )
-  }
-
   const {
     data: rawData,
     isLoading,
