@@ -102,7 +102,9 @@ export default function UserTable() {
     setIsModalOpen(false)
     setSelectedUser(null)
   }
-
+  const sortedResults = data?.results
+    ? [...data.results].sort((a, b) => a.id - b.id)
+    : []
   if (isLoading) return <div>Loading</div>
   if (axios.isAxiosError(error)) {
     // eslint-disable-next-line no-console
@@ -149,7 +151,11 @@ export default function UserTable() {
       <div className="border-t border-gray-200" />
       <Table
         columns={COLUMNS}
-        response={data || { count: 0, results: [], next: null, previous: null }}
+        response={
+          data
+            ? { ...data, results: sortedResults }
+            : { count: 0, results: [], next: null, previous: null }
+        }
         currentPage={filters.page}
         onPageChange={updatePage}
         isLoading={isLoading}

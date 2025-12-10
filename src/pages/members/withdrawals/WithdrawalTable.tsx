@@ -71,7 +71,7 @@ export default function WithdrawalTable() {
       status: '',
       role: '',
       reason: '',
-      sort: 'id_desc',
+      sort: 'id_asc',
     },
   })
 
