@@ -9,35 +9,9 @@ import Modal from '@/components/common/Modal'
 import { GENDER_LABEL } from '@/config/gender'
 import { ROLE_LABEL } from '@/config/role'
 import { STATUS_LABEL } from '@/config/status'
-import type { userUpdateSchema } from '@/pages/members/users/schema/userUpdateSchema'
-import type { UserDetailUser, UserFormType } from '@/pages/types/users'
+import type { UserDetailFormProps } from '@/pages/types/users'
 import { formatPhoneNumber } from '@/utils/formatPhoneNumber'
 
-interface UserDetailFormProps {
-  profileImg: string
-  isEditMode: boolean
-  user: UserDetailUser
-  form: UserFormType
-  setForm: React.Dispatch<React.SetStateAction<UserFormType>>
-  fileInput: React.RefObject<HTMLInputElement | null>
-  isRoleModalOpen: boolean
-  setIsRoleModalOpen: React.Dispatch<React.SetStateAction<boolean>>
-  handleImgChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  setRole: React.Dispatch<React.SetStateAction<string>>
-  role: string
-  handleFormChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  nicknameRes: { detail: string } | null
-  isNicknameLoading: boolean
-  isNicknameError: boolean
-  nicknameError: AxiosError | unknown
-  errors: Record<string, string>
-  validateField: <T extends keyof typeof userUpdateSchema.shape>(
-    field: T,
-    value: unknown
-  ) => void
-  handlePhoneBlur: () => void
-  handlePhoneChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-}
 function UserDetailFormComponent({
   profileImg,
   isEditMode,
