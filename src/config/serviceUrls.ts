@@ -13,6 +13,7 @@ export const SERVICE_URLS = {
       `${ADMIN_API_URL}/accounts/${accountId}/activate`,
     DEACTIVATE: (accountId: number) =>
       `${ADMIN_API_URL}/accounts/${accountId}/deactivate`,
+    CHECK_NICKNAME: `${ADMIN_API_URL}/accounts/check-nickname`,
   },
 
   // 탈퇴 관리
