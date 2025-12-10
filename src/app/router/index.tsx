@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router'
 
 import Layout from '@/app/layout'
 import { ProtectedRoute } from '@/app/router/ProtectedRoute'
+import { ROUTE_PATHS } from '@/app/router/routePaths'
 import Login from '@/pages/login'
 import AdminDashboardPage from '@/pages/members/dashboard'
 import AdminUserManagementPage from '@/pages/members/users'
@@ -16,23 +17,41 @@ export default function AppRouter() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path={ROUTE_PATHS.LOGIN} element={<Login />} />
 
         <Route element={<ProtectedRoute />}>
-          <Route path="members/users" element={<AdminUserManagementPage />} />
           <Route
-            path="members/withdrawals"
+            path={ROUTE_PATHS.MEMBERS.USERS}
+            element={<AdminUserManagementPage />}
+          />
+          <Route
+            path={ROUTE_PATHS.MEMBERS.WITHDRAWALS}
             element={<AdminWithdrawalManagementPage />}
           />
-          <Route path="members/dashboard" element={<AdminDashboardPage />} />
-
-          <Route path="study/courses" element={<LectureManagementPage />} />
-          <Route path="study/groups" element={<StudyGroupManagementPage />} />
-          <Route path="study/reviews" element={<ReviewManagementPage />} />
-
-          <Route path="recruitment/recruitment" element={<RecruitmentPage />} />
           <Route
-            path="recruitment/applications"
+            path={ROUTE_PATHS.MEMBERS.DASHBOARD}
+            element={<AdminDashboardPage />}
+          />
+
+          <Route
+            path={ROUTE_PATHS.STUDY.COURSES}
+            element={<LectureManagementPage />}
+          />
+          <Route
+            path={ROUTE_PATHS.STUDY.GROUPS}
+            element={<StudyGroupManagementPage />}
+          />
+          <Route
+            path={ROUTE_PATHS.STUDY.REVIEWS}
+            element={<ReviewManagementPage />}
+          />
+
+          <Route
+            path={ROUTE_PATHS.RECRUITMENT.LIST}
+            element={<RecruitmentPage />}
+          />
+          <Route
+            path={ROUTE_PATHS.RECRUITMENT.APPLICATIONS}
             element={<ApplicationManagementPage />}
           />
         </Route>

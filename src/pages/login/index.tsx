@@ -2,6 +2,7 @@ import { type FormEvent } from 'react'
 
 import { useLocation, useNavigate } from 'react-router'
 
+import { ROUTE_PATHS } from '@/app/router/routePaths'
 import Button from '@/components/common/Button'
 import { useLoginMutation } from '@/hooks/model/useLoginMutation'
 import { useAuthRole } from '@/hooks/useAuthRole'
@@ -19,7 +20,8 @@ export default function Login() {
   const { mutate, isPending, error } = useLoginMutation()
   const { isUser } = useAuthRole()
 
-  const from = (location.state as LocationState)?.from || '/members/users'
+  const from =
+    (location.state as LocationState)?.from || `${ROUTE_PATHS.MEMBERS.USERS}`
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
