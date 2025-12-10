@@ -1,4 +1,4 @@
-import { API_V1_PREFIX } from '@/config/api'
+import { API_V1_PREFIX, BASE_URL } from '@/config/api'
 import { useAuthStore } from '@/store/authStore'
 
 type AdminFetchOptions = Omit<RequestInit, 'headers'> & {
@@ -20,7 +20,7 @@ export async function authFetch(path: string, options: AdminFetchOptions = {}) {
     mergedHeaders.Authorization = `Bearer ${accessToken}`
   }
 
-  const res = await fetch(`${API_V1_PREFIX}${path}`, {
+  const res = await fetch(`${BASE_URL}${API_V1_PREFIX}${path}`, {
     ...rest,
     headers: mergedHeaders,
   })
