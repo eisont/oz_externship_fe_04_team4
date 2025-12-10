@@ -1,7 +1,7 @@
-import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 
-import { checkNicknameAPI } from '@/api/checkNickname'
+import { SERVICE_URLS } from '@/config/serviceUrls'
+import { useFetchQuery } from '@/hooks/useFetchQuery'
 
 export function useCheckNickname(nickname: string) {
   const [debouncedNickname, setDebouncedNickname] = useState(nickname)
@@ -12,11 +12,16 @@ export function useCheckNickname(nickname: string) {
 
     return () => clearTimeout(timer)
   }, [nickname])
-  return useQuery({
+  const query = useFetchQuery<{ detail: string }>({
     queryKey: ['check-nickname', debouncedNickname],
-    queryFn: () => checkNicknameAPI(debouncedNickname),
+    url: SERVICE_URLS.ACCOUNTS.CHECK_NICKNAME,
+    params: { nickname: debouncedNickname },
     enabled: debouncedNickname.trim().length > 0,
     retry: false,
-    select: (data) => data,
   })
+
+  return {
+    ...query,
+    data: query.data ?? null,
+  }
 }
