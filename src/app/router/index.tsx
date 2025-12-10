@@ -26,16 +26,13 @@ export default function AppRouter() {
           />
           <Route path="members/dashboard" element={<AdminDashboardPage />} />
 
-          <Route path="/study/courses" element={<LectureManagementPage />} />
-          <Route path="/study/groups" element={<StudyGroupManagementPage />} />
-          <Route path="/study/reviews" element={<ReviewManagementPage />} />
+          <Route path="study/courses" element={<LectureManagementPage />} />
+          <Route path="study/groups" element={<StudyGroupManagementPage />} />
+          <Route path="study/reviews" element={<ReviewManagementPage />} />
 
+          <Route path="recruitment/recruitment" element={<RecruitmentPage />} />
           <Route
-            path="/recruitment/recruitment"
-            element={<RecruitmentPage />}
-          />
-          <Route
-            path="/recruitment/applications"
+            path="recruitment/applications"
             element={<ApplicationManagementPage />}
           />
         </Route>
