@@ -12,9 +12,8 @@ import RecruitmentFilter from '@/features/recruitment/ui/RecruitmentFilter'
 import RecruitmentTagFilterModal from '@/features/recruitment/ui/tagFilterModal'
 import type { RecruitmentListResults } from '@/mocks/types/accounts'
 import { useRecruitmentDetailModalStore } from '@/store/recruitment/useRecruitmentModalStore'
-import { useRecruitmentSearchStore } from '@/store/recruitment/useRecruitmentSearchStore'
-import { ueeRecruitmentStatusStore } from '@/store/recruitment/useRecruitmentStatusStore'
-import { useRecruitmentTagListStore } from '@/store/recruitment/useRecruitmentTagsStore'
+import { useRecruitmentTagListStore } from '@/store/recruitment/useRecruitmentTagListStore'
+import type { statusType } from '@/types'
 
 const PAGE_SIZE = 10
 
@@ -25,9 +24,8 @@ export default function RecruitmentPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [sortConfig, setSortConfig] = useState<SortConfig | null>(null)
 
-  // 2) 필터 상태 (zustand)
-  const { keyword } = useRecruitmentSearchStore()
-  const { status } = ueeRecruitmentStatusStore()
+  const [keyword, setKeyword] = useState('')
+  const [status, setStatus] = useState<statusType>('all')
   const { selectedTagsResult } = useRecruitmentTagListStore()
 
   const queryParams: GetAdminRecruitmentsParams = {
@@ -66,7 +64,11 @@ export default function RecruitmentPage() {
       <RecruitmentTagFilterModal />
       <RecruitmentDetailModal />
 
-      <RecruitmentFilter />
+      <RecruitmentFilter
+        setKeyword={setKeyword}
+        status={status}
+        setStatus={setStatus}
+      />
 
       <Table
         columns={RecruitmentColumns}

@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import clsx from 'clsx'
 import dayjs from 'dayjs'
 import {
   Bookmark,
@@ -10,11 +9,11 @@ import {
 } from 'lucide-react'
 import type { ChangeEvent } from 'react'
 import { Link } from 'react-router'
-import { twMerge } from 'tailwind-merge'
 
 import { ApplicationStatusBadge } from '@/components/common/badge'
 import { getAdminRecruitmentDetail } from '@/features/recruitment/api/getAdminRecruitmentDetail'
 import { markdownToHtml } from '@/lib/markdown'
+import { tM } from '@/lib/twMerge'
 import { useRecruitmentDetailModalStore } from '@/store/recruitment/useRecruitmentModalStore'
 import { formatPrice } from '@/utils/price'
 
@@ -72,13 +71,13 @@ export default function RecruitmentDetailContent() {
           {/* 예상 모집 인원, 예상 결제 비용 */}
           <div className="flex justify-between">
             <div className={LEFT_BOX_STYLE}>
-              <div className={twMerge(clsx('w-[260px]', { TEXT_STYLE }))}>
+              <div className={tM('w-[260px]', { TEXT_STYLE })}>
                 예상 모집 인원
               </div>
               <div className={TEXT_STYLE}>{data?.expected_headcount}</div>
             </div>
             <div className={LEFT_BOX_STYLE}>
-              <div className={twMerge(clsx('w-[260px]', { TEXT_STYLE }))}>
+              <div className={tM('w-[260px]', { TEXT_STYLE })}>
                 예상 결제 비용
               </div>
               <div className={TEXT_STYLE}>
@@ -114,23 +113,15 @@ export default function RecruitmentDetailContent() {
           {/* 조회수, 북마크 순 */}
           <div className="flex justify-between">
             <div className={LEFT_BOX_STYLE}>
-              <div className={twMerge(clsx('w-[260px]', { TEXT_STYLE }))}>
-                조회수
-              </div>
-              <div
-                className={twMerge(clsx('flex items-center', { TEXT_STYLE }))}
-              >
+              <div className={tM('w-[260px]', { TEXT_STYLE })}>조회수</div>
+              <div className={tM('flex items-center', { TEXT_STYLE })}>
                 <Eye className="mr-1 w-4 text-[#9CA3AF]" />
                 {data?.views_count}
               </div>
             </div>
             <div className={LEFT_BOX_STYLE}>
-              <div className={twMerge(clsx('w-[260px]', { TEXT_STYLE }))}>
-                북마크 수
-              </div>
-              <div
-                className={twMerge(clsx('flex items-center', { TEXT_STYLE }))}
-              >
+              <div className={tM('w-[260px]', { TEXT_STYLE })}>북마크 수</div>
+              <div className={tM('flex items-center', { TEXT_STYLE })}>
                 <Bookmark className="mr-1 w-4 text-[#9CA3AF]" />
                 {data?.bookmark_count}
               </div>
@@ -140,7 +131,7 @@ export default function RecruitmentDetailContent() {
           {/* 공고 등록일시, 마지막 수정일시 */}
           <div className="flex justify-between">
             <div className={LEFT_BOX_STYLE}>
-              <div className={twMerge(clsx('w-[260px]', { TEXT_STYLE }))}>
+              <div className={tM('w-[260px]', { TEXT_STYLE })}>
                 공고 등록일시
               </div>
               <div className={TEXT_STYLE}>
@@ -148,7 +139,7 @@ export default function RecruitmentDetailContent() {
               </div>
             </div>
             <div className={LEFT_BOX_STYLE}>
-              <div className={twMerge(clsx('w-[260px]', { TEXT_STYLE }))}>
+              <div className={tM('w-[260px]', { TEXT_STYLE })}>
                 마지막 수정일시
               </div>
               <div className={TEXT_STYLE}>

@@ -15,15 +15,13 @@ import type {
 } from '@/mocks/types/accounts'
 import { useApplicationDetailModalStore } from '@/store/application/useApplicationModalStore'
 
-const PAGE_SIZE = 10
-
 export default function ApplicationManagementPage() {
   const { openDetailModal } = useApplicationDetailModalStore()
 
   const [queryParams, setQueryParams] = useState<GetAdminApplicationParams>({
     search: '',
     page: 1,
-    page_size: PAGE_SIZE,
+    page_size: 10,
     status: 'all',
     sort: 'latest',
   })
