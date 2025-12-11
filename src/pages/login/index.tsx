@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router'
 
 import { ROUTE_PATHS } from '@/app/router/routePaths'
 import Button from '@/components/common/Button'
-import { useLoginMutation } from '@/hooks/model/useLoginMutation'
+import { useLoginMutation } from '@/hooks/model'
 import { useAuthRole } from '@/hooks/useAuthRole'
 
 type LocationState = {

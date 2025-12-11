@@ -1,7 +1,7 @@
 import { Check } from 'lucide-react'
 
-import { useRecruitmentTagsQuery } from '@/hooks/model/useRecruitmentTagsQuery'
-import { useRecruitmentTagsStore } from '@/store/recruitment/useRecruitmentTagsStore'
+import { useRecruitmentTagsQuery } from '@/hooks/model'
+import { useRecruitmentTagsStore } from '@/store/recruitment'
 
 type TagOptionListProps = {
   submittedValue: string

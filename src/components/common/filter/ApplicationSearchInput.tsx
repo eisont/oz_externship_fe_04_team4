@@ -5,7 +5,7 @@ import { useState, type KeyboardEvent } from 'react'
 import type { SearchConfig } from '@/components/common/filter/types'
 import { tM } from '@/lib/twMerge'
 
-export default function ApplicationSearchInput({
+export function ApplicationSearchInput({
   className,
   label = '검색',
   labelClassName,

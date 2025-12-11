@@ -6,7 +6,7 @@ import type { ChangeEvent } from 'react'
 
 import { ApplicationStatusMediumBadge } from '@/components/common/badge'
 import { GENDER_LABEL } from '@/config/gender'
-import { getAdminApplicationDetail } from '@/features/application/api/getAdminApplicationDetail'
+import { getAdminApplicationDetail } from '@/features/application/api'
 import { tM } from '@/lib/twMerge'
 import { useApplicationDetailModalStore } from '@/store/application/useApplicationModalStore'
 

@@ -1,2 +1,1 @@
-// RecruitmentPage
-export type statusType = 'all' | 'false' | 'true'
+export * from './recrument.types'

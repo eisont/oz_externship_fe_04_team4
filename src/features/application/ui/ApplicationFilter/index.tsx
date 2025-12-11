@@ -1,8 +1,10 @@
 import { type Dispatch, type SetStateAction } from 'react'
 
-import { FilterSelect } from '@/components/common/filter'
-import ApplicationSearchInput from '@/components/common/filter/ApplicationSearchInput'
-import type { GetAdminApplicationParams } from '@/features/application/api/getAdminApplication'
+import {
+  ApplicationSearchInput,
+  FilterSelect,
+} from '@/components/common/filter'
+import type { GetAdminApplicationParams } from '@/types'
 
 type ApplicationFilterProps = {
   setQueryParams: Dispatch<SetStateAction<GetAdminApplicationParams>>

@@ -1,11 +1,10 @@
-// api/v1/recruitment-tags
-
 import type {
   ApplicationsStatus,
   GenderStatus,
   TagType,
 } from '@/types/api/common.types'
 
+// api/v1/recruitment-tags
 // 태그 목록 조회
 export type RecruitmentTags = {
   count: number
@@ -80,17 +79,17 @@ export type RecruitmentDetail = {
 
 // api/v1/admin/applications
 // 모집공고 지원 내역 목록 조회
+export type ApplicationRecruitment = { id: number; title: string }
+export type ApplicationApplicant = {
+  id: number
+  nickname: string
+  email: string
+}
+
 export type ApplicationsListResults = {
   id: number
-  recruitment: {
-    id: number
-    title: string
-  }
-  applicant: {
-    id: number
-    nickname: string
-    email: string
-  }
+  recruitment: ApplicationRecruitment
+  applicant: ApplicationApplicant
   status: ApplicationsStatus
   created_at: string
   updated_at: string

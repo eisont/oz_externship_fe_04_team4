@@ -8,10 +8,12 @@ import {
 } from 'react'
 
 import { FilterSelect } from '@/components/common/filter'
-import TagFilterPreview from '@/features/recruitment/ui/TagFilterPreview/TagFilterPreview'
+import TagFilterPreview from '@/features/recruitment/ui/TagFilterPreview'
 import { tM } from '@/lib/twMerge'
-import { useTagFilterModalStore } from '@/store/recruitment/useRecruitmentModalStore'
-import { useRecruitmentTagListStore } from '@/store/recruitment/useRecruitmentTagListStore'
+import {
+  useRecruitmentTagListStore,
+  useTagFilterModalStore,
+} from '@/store/recruitment'
 import type { statusType } from '@/types'
 
 const LABEL_STYLE = 'text-sm text-[#374151]'

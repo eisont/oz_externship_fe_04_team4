@@ -2,17 +2,16 @@ import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
 import { Table, type SortConfig } from '@/components/common/table'
-import {
-  getAdminRecruitments,
-  type GetAdminRecruitmentsParams,
-} from '@/features/recruitment/api/getAdminRecruitments'
-import { RecruitmentColumns } from '@/features/recruitment/columns'
+import { getAdminRecruitments } from '@/features/recruitment/api'
+import RecruitmentColumns from '@/features/recruitment/columns'
 import RecruitmentDetailModal from '@/features/recruitment/ui/detailModal'
 import RecruitmentFilter from '@/features/recruitment/ui/RecruitmentFilter'
 import RecruitmentTagFilterModal from '@/features/recruitment/ui/tagFilterModal'
-import { useRecruitmentDetailModalStore } from '@/store/recruitment/useRecruitmentModalStore'
-import { useRecruitmentTagListStore } from '@/store/recruitment/useRecruitmentTagListStore'
-import type { statusType } from '@/types'
+import {
+  useRecruitmentDetailModalStore,
+  useRecruitmentTagListStore,
+} from '@/store/recruitment'
+import type { GetAdminRecruitmentsParams, statusType } from '@/types'
 import type { RecruitmentListResults } from '@/types/api'
 
 const PAGE_SIZE = 10

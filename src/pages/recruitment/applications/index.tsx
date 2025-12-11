@@ -2,14 +2,12 @@ import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
 import { Table } from '@/components/common/table'
-import {
-  getAdminApplication,
-  type GetAdminApplicationParams,
-} from '@/features/application/api/getAdminApplication'
+import { getAdminApplication } from '@/features/application/api'
 import { ApplicationColumns } from '@/features/application/columns'
 import ApplicationDetailModal from '@/features/application/ui/ApplicationDetailModal'
 import ApplicationFilter from '@/features/application/ui/ApplicationFilter'
 import { useApplicationDetailModalStore } from '@/store/application/useApplicationModalStore'
+import type { GetAdminApplicationParams } from '@/types'
 import type { ApplicationsList, ApplicationsListResults } from '@/types/api'
 
 export default function ApplicationManagementPage() {

@@ -5,8 +5,10 @@ import SelectedTagList from '@/features/recruitment/ui/tagFilterModal/SelectedTa
 import TagFilterActionButtons from '@/features/recruitment/ui/tagFilterModal/TagFilterActionButtons'
 import TagOptionList from '@/features/recruitment/ui/tagFilterModal/TagOptionList'
 import TagSearchInput from '@/features/recruitment/ui/tagFilterModal/TagSearchInput'
-import { useTagFilterModalStore } from '@/store/recruitment/useRecruitmentModalStore'
-import { useRecruitmentTagsStore } from '@/store/recruitment/useRecruitmentTagsStore'
+import {
+  useRecruitmentTagsStore,
+  useTagFilterModalStore,
+} from '@/store/recruitment'
 
 export default function RecruitmentTagFilterModal() {
   const { isTagFilterModalOpen, closeTagFilterModalModal } =
