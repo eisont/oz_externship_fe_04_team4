@@ -435,7 +435,6 @@ export const getAdminWithdrawalsHandler = http.get(
     const { page, pageSize } = parsePagination(request)
     const url = new URL(request.url)
     const search = url.searchParams.get('search') || ''
-    const status = url.searchParams.get('status') || ''
     const sort = url.searchParams.get('sort') || ''
     const role = url.searchParams.get('role') || ''
     const reason = url.searchParams.get('reason') || ''
@@ -449,10 +448,6 @@ export const getAdminWithdrawalsHandler = http.get(
           item.email.toLowerCase().includes(keyword) ||
           String(item.id).includes(keyword)
       )
-    }
-
-    if (status) {
-      filteredItems = filteredItems.filter((item) => item.status === status)
     }
 
     if (role) {
