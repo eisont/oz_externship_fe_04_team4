@@ -61,6 +61,7 @@ export type AccountsDetail = {
 // api/v1/admin/withdrawals
 // 회원 탈퇴 내역 목록 조회
 export type WithdrawalsListItem = {
+  [x: string]: string | number
   id: number
   email: string
   name: string
