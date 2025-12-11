@@ -25,7 +25,7 @@ const LINK_BASE_STYLE =
 const ICON_STYLE =
   'group-hover:stroke-[#854D0E] group-active:scale-[1.2] aria-[current=true]:stroke-[#854D0E]'
 
-export default function SideBar() {
+export default function Sidebar() {
   const [userToggle, setUserToggle] = useState(false)
   const [studyToggle, setStudyToggle] = useState(false)
   const [recruitmentToggle, setRecruitmentToggle] = useState(false)

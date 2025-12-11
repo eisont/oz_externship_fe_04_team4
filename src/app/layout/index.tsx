@@ -3,7 +3,7 @@ import { useState, type ReactNode } from 'react'
 import { useLocation } from 'react-router'
 
 import { ROUTE_PATHS } from '@/app/router/routePaths'
-import SideBar from '@/components/layout/Sidebar'
+import Sidebar from '@/components/layout/Sidebar'
 
 type Props = { children: ReactNode }
 
@@ -20,7 +20,7 @@ const PATHNAME_TITLE_MAP: Record<string, string> = {
 
 const getPageTitle = (pathname: string): string => PATHNAME_TITLE_MAP[pathname]
 
-const Layout = ({ children }: Props) => {
+export default function Layout({ children }: Props) {
   const { pathname } = useLocation()
   const [isClose, setIsClose] = useState(false)
 
@@ -41,7 +41,7 @@ const Layout = ({ children }: Props) => {
         </div>
       ) : (
         <>
-          <SideBar />
+          <Sidebar />
           <div className="group absolute inline-block">
             <PanelLeftClose
               className="absolute top-1 left-[245px] cursor-pointer hover:scale-105"
@@ -63,5 +63,3 @@ const Layout = ({ children }: Props) => {
     </div>
   )
 }
-
-export default Layout
