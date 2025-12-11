@@ -48,8 +48,11 @@ export function WithdrawalDetailModal({
     profile_img_url: '',
     reason: '',
     reason_detail: '',
+<<<<<<< HEAD
     due_date: '',
     withdrawn_at: '',
+=======
+>>>>>>> 4bac704 (feat: 탈퇴 form 데이터 연결)
   })
 
   useEffect(() => {
@@ -64,6 +67,7 @@ export function WithdrawalDetailModal({
       role: ROLE_LABEL[member.role as keyof typeof ROLE_LABEL] ?? '',
       created_at: member.created_at
         ? dayjs(member.created_at).locale('ko').format('YYYY. M. D. A h:mm:ss')
+<<<<<<< HEAD
         : '',
       status: STATUS_LABEL[member.status as keyof typeof STATUS_LABEL] ?? '',
       profile_img_url: member.profile_img_url,
@@ -75,6 +79,13 @@ export function WithdrawalDetailModal({
       due_date: user.due_date
         ? dayjs(user.due_date).locale('ko').format('YYYY. M. D. A h:mm:ss')
         : '',
+=======
+        : '',
+      status: STATUS_LABEL[member.status as keyof typeof STATUS_LABEL] ?? '',
+      profile_img_url: member.profile_img_url,
+      reason: user.reason,
+      reason_detail: user.reason_detail,
+>>>>>>> 4bac704 (feat: 탈퇴 form 데이터 연결)
     })
   }, [user])
 
