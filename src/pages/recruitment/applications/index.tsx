@@ -1,11 +1,11 @@
-import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
 import { Table } from '@/components/common/table'
-import { getAdminApplication } from '@/features/application/api'
+import { SERVICE_URLS } from '@/config/serviceUrls'
 import { ApplicationColumns } from '@/features/application/columns'
 import ApplicationDetailModal from '@/features/application/ui/ApplicationDetailModal'
 import ApplicationFilter from '@/features/application/ui/ApplicationFilter'
+import { useFetchQuery } from '@/hooks/useFetchQuery'
 import { useApplicationDetailModalStore } from '@/store/application/useApplicationModalStore'
 import type { GetAdminApplicationQuery } from '@/types/api/query'
 import type {
@@ -17,19 +17,16 @@ export default function ApplicationManagementPage() {
   const { openDetailModal } = useApplicationDetailModalStore()
 
   const [queryParams, setQueryParams] = useState<GetAdminApplicationQuery>({
-    search: '',
     page: 1,
     page_size: 10,
-    status: 'all',
-    sort: 'latest',
   })
 
   const { data, isLoading, error, refetch } =
-    useQuery<GetApplicationsListResponse>({
+    useFetchQuery<GetApplicationsListResponse>({
       queryKey: ['applications', queryParams],
-      queryFn: () => getAdminApplication(queryParams),
+      url: SERVICE_URLS.APPLICATIONS.LIST,
+      params: queryParams,
     })
-
   return (
     <>
       <ApplicationDetailModal />
