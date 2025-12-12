@@ -1,5 +1,5 @@
 import ReviewRating from '@/components/common/ReviewRating'
-import type { StudyReviewDetail } from '@/mocks/types/accounts'
+import type { StudyReviewDetail } from '@/types/api'
 import { formatDateTime } from '@/utils'
 
 interface ReviewDetailContentProps {
