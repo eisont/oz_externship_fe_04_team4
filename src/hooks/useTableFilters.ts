@@ -49,7 +49,7 @@ export function useTableFilters<T extends TableFilters>({
 
   // 검색어 업데이트
   const updateSearch = (value: string) => {
-    setFilters((prev) => ({ ...prev, search: value, page: 1 }) as T)
+    setFilters((prev) => ({ ...prev, search: value, page: 1 }))
   }
 
   // 페이지 업데이트
@@ -65,10 +65,10 @@ export function useTableFilters<T extends TableFilters>({
   ) => {
     if (sortValue === '') {
       setSortConfig(null)
-      setFilters((prev) => ({ ...prev, sort: '', page: 1 }) as T)
+      setFilters((prev) => ({ ...prev, sort: '', page: 1 }))
     } else {
       setSortConfig({ key, value: sortValue, direction })
-      setFilters((prev) => ({ ...prev, sort: sortValue, page: 1 }) as T)
+      setFilters((prev) => ({ ...prev, sort: sortValue, page: 1 }))
     }
   }
 
