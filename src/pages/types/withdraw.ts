@@ -33,6 +33,8 @@ export interface WithDrawDetailInfoUser {
   created_at: string
   reason: string
   reason_detail: string
+  withdrawn_at: string
+  due_date: string
 }
 
 export interface WithDrawDetailInfo {
@@ -63,4 +65,6 @@ export interface WithDrawwDetailFormType {
   profile_img_url: string
   reason: string
   reason_detail: string
+  due_date: string
+  withdrawn_at: string
 }

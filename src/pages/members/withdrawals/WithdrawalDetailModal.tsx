@@ -35,6 +35,8 @@ export function WithdrawalDetailModal({
 
   console.log('📌 API 응답:', user)
 
+  const [_sisWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false)
+
   // const queryClient = useQueryClient()
   const [form, setForm] = useState<WithDrawwDetailFormType>({
     id: withdrawalId ?? 0,
@@ -48,6 +50,8 @@ export function WithdrawalDetailModal({
     profile_img_url: '',
     reason: '',
     reason_detail: '',
+    due_date: '',
+    withdrawn_at: '',
   })
 
   useEffect(() => {
@@ -67,6 +71,8 @@ export function WithdrawalDetailModal({
       profile_img_url: member.profile_img_url,
       reason: user.reason,
       reason_detail: user.reason_detail,
+      withdrawn_at: user.withdrawn_at,
+      due_date: user.due_date,
     })
   }, [user])
 
@@ -120,13 +126,13 @@ export function WithdrawalDetailModal({
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={() => setIsWithdrawalModalOpen(false)}
       title="회원 탈퇴 상세 정보"
       className="z-50"
       contentClassName="h-130 overflow-y-auto"
       topCloseButton
       footerClassName="bg-[#F9FAFB]"
-      footer={<WithdrawalDetailFooter />}
+      footer={<WithdrawalDetailFooter onClose={onClose} status={form.status} />}
     >
       {user && (
         <WithdrawalDetailForm

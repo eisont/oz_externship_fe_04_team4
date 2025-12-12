@@ -76,7 +76,7 @@ function WithdrawalDetailFormComponent({ form }: WithdrawlDetailFormProps) {
         <p className="text-color-primary-black text-lg font-semibold">
           탈퇴 정보
         </p>
-        <div className="flex justify-between">
+        <div className="mt-4 flex justify-between">
           <div className="flex flex-col gap-6">
             <Input
               label="탈퇴요청 고유 ID"
@@ -94,22 +94,24 @@ function WithdrawalDetailFormComponent({ form }: WithdrawlDetailFormProps) {
           <div className="flex flex-col gap-6">
             <Input
               label="탈퇴요청 일시"
-              name="reason"
-              value={form.reason}
+              name="withdrawn_at"
+              value={form.withdrawn_at}
               editable={false}
             />
             <Input
               label="삭제 예정 일시"
-              name="reason"
-              value={form.reason}
+              name="due_date"
+              value={form.due_date}
               editable={false}
             />
           </div>
         </div>
-        <div>
+        <div className="mt-4 flex w-full">
           <Input
             label="탈퇴 상세 사유"
             name="reason"
+            wrapperClassName="w-full"
+            inputClassName="w-full"
             value={form.reason_detail}
             editable={false}
           />
