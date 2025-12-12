@@ -7,13 +7,16 @@ import { ApplicationColumns } from '@/features/application/columns'
 import ApplicationDetailModal from '@/features/application/ui/ApplicationDetailModal'
 import ApplicationFilter from '@/features/application/ui/ApplicationFilter'
 import { useApplicationDetailModalStore } from '@/store/application/useApplicationModalStore'
-import type { GetAdminApplicationParams } from '@/types'
-import type { ApplicationsList, ApplicationsListResults } from '@/types/api'
+import type { GetAdminApplicationQuery } from '@/types/api/query'
+import type {
+  ApplicationsListResults,
+  GetApplicationsListResponse,
+} from '@/types/api/response'
 
 export default function ApplicationManagementPage() {
   const { openDetailModal } = useApplicationDetailModalStore()
 
-  const [queryParams, setQueryParams] = useState<GetAdminApplicationParams>({
+  const [queryParams, setQueryParams] = useState<GetAdminApplicationQuery>({
     search: '',
     page: 1,
     page_size: 10,
@@ -21,10 +24,11 @@ export default function ApplicationManagementPage() {
     sort: 'latest',
   })
 
-  const { data, isLoading, error, refetch } = useQuery<ApplicationsList>({
-    queryKey: ['applications', queryParams],
-    queryFn: () => getAdminApplication(queryParams),
-  })
+  const { data, isLoading, error, refetch } =
+    useQuery<GetApplicationsListResponse>({
+      queryKey: ['applications', queryParams],
+      queryFn: () => getAdminApplication(queryParams),
+    })
 
   return (
     <>

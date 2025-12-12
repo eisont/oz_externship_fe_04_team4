@@ -1,22 +1,15 @@
 import { authFetch } from '@/api/client'
 import { API_URL } from '@/config/api'
+import type { CreateLoginResponse } from '@/types/api/response'
 
-export type LoginRequest = {
+export type CreateLoginBody = {
   email: string
   password: string
 }
-export type LoginResponse = {
-  access_token: string
-  refresh_token: string
-  user: {
-    id: number
-    email: string
-    name: string
-    role: 'admin' | 'staff' | 'user'
-  }
-}
 
-export async function loginAdmin(body: LoginRequest): Promise<LoginResponse> {
+export async function loginAdmin(
+  body: CreateLoginBody
+): Promise<CreateLoginResponse> {
   const res = await authFetch(`${API_URL}/login`, {
     method: 'POST',
     skipAuth: true,

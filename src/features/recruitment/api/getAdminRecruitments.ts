@@ -1,8 +1,8 @@
 import { authFetch } from '@/api/client'
 import { SERVICE_URLS } from '@/config/serviceUrls'
-import type { GetAdminRecruitmentsParams } from '@/types/recrument.types'
+import type { GetAdminRecruitmentsQuery } from '@/types/api/query'
 
-export async function getAdminRecruitments(params: GetAdminRecruitmentsParams) {
+export async function getAdminRecruitments(params: GetAdminRecruitmentsQuery) {
   const searchParams = new URLSearchParams()
 
   searchParams.set('page', String(params.page))

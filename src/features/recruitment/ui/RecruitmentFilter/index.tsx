@@ -14,7 +14,7 @@ import {
   useRecruitmentTagListStore,
   useTagFilterModalStore,
 } from '@/store/recruitment'
-import type { statusType } from '@/types'
+import type { StatusType } from '@/types'
 
 const LABEL_STYLE = 'text-sm text-[#374151]'
 const BOX_BASE_STYLE = 'h-[38px] w-[256px]'
@@ -22,7 +22,7 @@ const BOX_BASE_STYLE = 'h-[38px] w-[256px]'
 type RecruitmentFilterProps = {
   setKeyword: Dispatch<SetStateAction<string>>
   status: string
-  setStatus: Dispatch<SetStateAction<statusType>>
+  setStatus: Dispatch<SetStateAction<StatusType>>
 }
 
 export default function RecruitmentFilter({
@@ -88,7 +88,7 @@ export default function RecruitmentFilter({
             { label: '마감', value: 'true' },
           ]}
           value={status}
-          onChange={(value) => setStatus(value as statusType)}
+          onChange={(value) => setStatus(value as StatusType)}
           placeholder="전체"
         />
 

@@ -16,17 +16,17 @@ const TEXT_BOX =
 const WRAPPER_BOX = 'flex flex-col gap-1 cursor-default'
 
 export default function ApplicationDetailContent() {
-  const { selectedRecruitmentId } = useApplicationDetailModalStore()
+  const { application_id } = useApplicationDetailModalStore()
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ['adminApplicationDetail', selectedRecruitmentId],
+    queryKey: ['adminApplicationDetail', application_id],
     queryFn: () => {
-      if (selectedRecruitmentId === null) {
+      if (application_id === null) {
         throw new Error('선택한 공고가 없습니다.')
       }
-      return getAdminApplicationDetail(selectedRecruitmentId)
+      return getAdminApplicationDetail(application_id)
     },
-    enabled: selectedRecruitmentId != null,
+    enabled: application_id != null,
   })
 
   if (!data) return null

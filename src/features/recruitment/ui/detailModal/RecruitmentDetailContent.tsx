@@ -22,17 +22,17 @@ const RIGHT_LEFT_BOX_STYLE = 'flex flex-col gap-1 mb-6 cursor-default'
 const TEXT_STYLE = 'text-sm text-[#374151] cursor-default'
 
 export default function RecruitmentDetailContent() {
-  const { selectedRecruitmentId } = useRecruitmentDetailModalStore()
+  const { recruitment_id } = useRecruitmentDetailModalStore()
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ['adminRecruitmentDetail', selectedRecruitmentId],
+    queryKey: ['adminRecruitmentDetail', recruitment_id],
     queryFn: () => {
-      if (selectedRecruitmentId === null) {
+      if (recruitment_id === null) {
         throw new Error('선택한 공고가 없습니다.')
       }
-      return getAdminRecruitmentDetail(selectedRecruitmentId)
+      return getAdminRecruitmentDetail(recruitment_id)
     },
-    enabled: selectedRecruitmentId != null,
+    enabled: recruitment_id != null,
   })
 
   if (isLoading) {

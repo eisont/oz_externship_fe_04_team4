@@ -4,11 +4,12 @@ import {
   ApplicationSearchInput,
   FilterSelect,
 } from '@/components/common/filter'
-import type { GetAdminApplicationParams, sortType } from '@/types'
+import type { SortType } from '@/types'
+import type { GetAdminApplicationQuery } from '@/types/api/query'
 
 type ApplicationFilterProps = {
-  setQueryParams: Dispatch<SetStateAction<GetAdminApplicationParams>>
-  queryParams: GetAdminApplicationParams
+  setQueryParams: Dispatch<SetStateAction<GetAdminApplicationQuery>>
+  queryParams: GetAdminApplicationQuery
 }
 
 export default function ApplicationFilter({
@@ -42,7 +43,7 @@ export default function ApplicationFilter({
       { label: '오래된순', value: 'oldest' },
     ],
     value: queryParams.sort,
-    onChange: (value: sortType) =>
+    onChange: (value: SortType) =>
       setQueryParams((prev) => ({ ...prev, sort: value })),
   }
 
@@ -75,7 +76,7 @@ export default function ApplicationFilter({
           selectClassName="h-[38px] w-full appearance-none rounded-lg border border-[#D1D5DB] px-3 py-2 outline-0"
           options={sort.options}
           value={sort.value}
-          onChange={(value) => sort.onChange(value as sortType)}
+          onChange={(value) => sort.onChange(value as SortType)}
         />
       </div>
     </div>

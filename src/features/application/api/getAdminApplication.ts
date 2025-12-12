@@ -1,8 +1,8 @@
 import { authFetch } from '@/api/client'
 import { SERVICE_URLS } from '@/config/serviceUrls'
-import type { GetAdminApplicationParams } from '@/types'
+import type { GetAdminApplicationQuery } from '@/types/api/query'
 
-export async function getAdminApplication(params: GetAdminApplicationParams) {
+export async function getAdminApplication(params: GetAdminApplicationQuery) {
   const searchParams = new URLSearchParams()
 
   searchParams.set('page', String(params.page))

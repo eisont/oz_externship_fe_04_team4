@@ -11,8 +11,9 @@ import {
   useRecruitmentDetailModalStore,
   useRecruitmentTagListStore,
 } from '@/store/recruitment'
-import type { GetAdminRecruitmentsParams, sortType, statusType } from '@/types'
-import type { RecruitmentListResults } from '@/types/api'
+import type { SortType, StatusType } from '@/types'
+import type { GetAdminRecruitmentsQuery } from '@/types/api/query'
+import type { RecruitmentListResults } from '@/types/api/response'
 
 const PAGE_SIZE = 10
 
@@ -24,16 +25,16 @@ export default function RecruitmentPage() {
   const [sortConfig, setSortConfig] = useState<SortConfig | null>(null)
 
   const [keyword, setKeyword] = useState('')
-  const [status, setStatus] = useState<statusType>('all')
+  const [status, setStatus] = useState<StatusType>('all')
   const { selectedTagsResult } = useRecruitmentTagListStore()
 
-  const queryParams: GetAdminRecruitmentsParams = {
+  const queryParams: GetAdminRecruitmentsQuery = {
     page: currentPage,
     page_size: 10,
     search: keyword,
     status,
     tags: selectedTagsResult,
-    sort: sortConfig?.value as sortType,
+    sort: sortConfig?.value as SortType,
   }
 
   // 3) Table에 넘길 response 생성

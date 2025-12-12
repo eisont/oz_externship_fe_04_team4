@@ -1,18 +1,13 @@
 import { authFetch } from '@/api/client'
 import { SERVICE_URLS } from '@/config/serviceUrls'
-import type { RecruitmentTags } from '@/types/api'
-
-type fetchRecruitmentTagsParams = {
-  page?: number
-  pageSize?: number
-  search?: string
-}
+import type { GetRecruitmentTagsQuery } from '@/types/api/query'
+import type { GetRecruitmentTagsResponse } from '@/types/api/response'
 
 export async function fetchRecruitmentTags({
   page = 1,
   pageSize = 20,
   search = '',
-}: fetchRecruitmentTagsParams): Promise<RecruitmentTags> {
+}: GetRecruitmentTagsQuery): Promise<GetRecruitmentTagsResponse> {
   const params = new URLSearchParams()
 
   params.set('page', String(page))
