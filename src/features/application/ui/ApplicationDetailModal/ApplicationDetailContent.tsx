@@ -1,14 +1,14 @@
-import { useQuery } from '@tanstack/react-query'
-
 import dayjs from 'dayjs'
 
 import type { ChangeEvent } from 'react'
 
 import { ApplicationStatusMediumBadge } from '@/components/common/badge'
 import { GENDER_LABEL } from '@/config/gender'
-import { getAdminApplicationDetail } from '@/features/application/api'
+import { SERVICE_URLS } from '@/config/serviceUrls'
+import { useFetchQuery } from '@/hooks/useFetchQuery'
 import { tM } from '@/lib/twMerge'
 import { useApplicationDetailModalStore } from '@/store/application/useApplicationModalStore'
+import type { GetApplicationsDetailResponse } from '@/types/api/response'
 
 const TEXT_STYLE = 'text-sm text-[#374151] cursor-default'
 const TEXT_BOX =
@@ -18,16 +18,11 @@ const WRAPPER_BOX = 'flex flex-col gap-1 cursor-default'
 export default function ApplicationDetailContent() {
   const { application_id } = useApplicationDetailModalStore()
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['adminApplicationDetail', application_id],
-    queryFn: () => {
-      if (application_id === null) {
-        throw new Error('선택한 공고가 없습니다.')
-      }
-      return getAdminApplicationDetail(application_id)
-    },
-    enabled: application_id != null,
-  })
+  const { data, isLoading, error } =
+    useFetchQuery<GetApplicationsDetailResponse>({
+      queryKey: ['applicationDetail', application_id],
+      url: SERVICE_URLS.APPLICATIONS.DETAIL(application_id!),
+    })
 
   if (!data) return null
   if (isLoading) {
