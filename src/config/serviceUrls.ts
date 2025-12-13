@@ -1,4 +1,4 @@
-import { ADMIN_TEXT, API_URL } from '@/config/api'
+import { ADMIN_TEXT } from '@/config/api'
 
 export const SERVICE_URLS = {
   // 회원 관리
@@ -61,7 +61,7 @@ export const SERVICE_URLS = {
   },
 
   TAGS: {
-    LIST: `${API_URL}/recruitment-tags`,
+    LIST: '/recruitment-tags',
   },
 
   // 지원 내역 관리

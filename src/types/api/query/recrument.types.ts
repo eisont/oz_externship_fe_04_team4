@@ -2,7 +2,7 @@ import type { ApplicationsStatus, SortType } from '@/types'
 
 export type GetRecruitmentTagsQuery = {
   page?: number
-  pageSize?: number
+  page_size?: number
   search?: string
 }
 
