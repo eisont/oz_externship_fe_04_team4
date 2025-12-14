@@ -27,9 +27,9 @@ export default function TagFilterPreview({ tags }: TagFilterPreviewProps) {
       const style = window.getComputedStyle(child)
 
       const childWidth = rect.width
-      const marginRight = parseFloat(style.marginRight || '0')
+      const gapRight = parseFloat(style.marginRight || '0')
 
-      const totalChildWidth = childWidth + marginRight
+      const totalChildWidth = childWidth + gapRight
 
       if (widthSum + totalChildWidth > parentWidth) break
 
