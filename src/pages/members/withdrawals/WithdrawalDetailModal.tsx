@@ -19,27 +19,23 @@ import type {
 export function WithdrawalDetailModal({
   isOpen,
   onClose,
-  userId,
+  withdrawalId,
 }: WithDrawDetailModalProps) {
   const {
     data: user,
     isLoading,
     error,
-    // refetch,
   } = useFetchQuery<WithDrawDetailInfo>({
-    queryKey: ['withdrawal-detail', userId],
-    url: SERVICE_URLS.WITHDRAWALS.DETAIL(userId || 0),
-    enabled: !!userId && isOpen,
+    queryKey: ['withdrawal-detail', withdrawalId],
+    url: SERVICE_URLS.WITHDRAWALS.DETAIL(withdrawalId || 0),
+    enabled: !!withdrawalId && isOpen,
     staleTime: 60 * 1000,
     gcTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
   })
 
-  console.log('📌 API 응답:', user)
-
-  // const queryClient = useQueryClient()
   const [form, setForm] = useState<WithDrawwDetailFormType>({
-    id: userId ?? 0,
+    id: withdrawalId ?? 0,
     email: '',
     nickname: '',
     name: '',
@@ -48,28 +44,40 @@ export function WithdrawalDetailModal({
     created_at: '',
     status: '',
     profile_img_url: '',
+    reason: '',
+    reason_detail: '',
+    due_date: '',
+    withdrawn_at: '',
   })
 
   useEffect(() => {
     if (!user) return
-    const u = user.user
+    const member = user.user
     setForm({
-      id: u.id,
-      email: u.email,
-      nickname: u.nickname,
-      name: u.name,
-      gender: u.gender,
-      role: ROLE_LABEL[u.role as keyof typeof ROLE_LABEL] ?? '',
-      created_at: u.created_at
-        ? dayjs(u.created_at).locale('ko').format('YYYY. M. D. A h:mm:ss')
+      id: member.id,
+      email: member.email,
+      nickname: member.nickname,
+      name: member.name,
+      gender: member.gender,
+      role: ROLE_LABEL[member.role as keyof typeof ROLE_LABEL] ?? '',
+      created_at: member.created_at
+        ? dayjs(member.created_at).locale('ko').format('YYYY. M. D. A h:mm:ss')
         : '',
-      status: STATUS_LABEL[u.status as keyof typeof STATUS_LABEL] ?? '',
-      profile_img_url: u.profile_img_url,
+      status: STATUS_LABEL[member.status as keyof typeof STATUS_LABEL] ?? '',
+      profile_img_url: member.profile_img_url,
+      reason: user.reason,
+      reason_detail: user.reason_detail,
+      withdrawn_at: user.withdrawn_at
+        ? dayjs(user.withdrawn_at).locale('ko').format('YYYY. M. D. A h:mm:ss')
+        : '',
+      due_date: user.due_date
+        ? dayjs(user.due_date).locale('ko').format('YYYY. M. D. A h:mm:ss')
+        : '',
     })
   }, [user])
 
   if (isLoading) return <Loading label="회원 정보를 로딩 중입니다..." />
-  if (!isOpen || !userId) return null
+  if (!isOpen || !withdrawalId) return null
   if (error) return <ErrorMessage />
 
   return (
@@ -81,11 +89,15 @@ export function WithdrawalDetailModal({
       contentClassName="h-130 overflow-y-auto"
       topCloseButton
       footerClassName="bg-[#F9FAFB]"
-      footer={<WithdrawalDetailFooter />}
+      footer={
+        <WithdrawalDetailFooter
+          onClose={onClose}
+          status={form.status}
+          withdrawalId={withdrawalId}
+        />
+      }
     >
-      {user && (
-        <WithdrawalDetailForm user={user} setForm={setForm} form={form} />
-      )}
+      {user && <WithdrawalDetailForm form={form} />}
     </Modal>
   )
 }
