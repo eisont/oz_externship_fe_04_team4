@@ -1,20 +1,32 @@
+import { useQueryClient } from '@tanstack/react-query'
+
 import Button from '@/components/common/Button'
+import { SERVICE_URLS } from '@/config/serviceUrls'
+import { useMutateQuery } from '@/hooks/useMutateQuery'
 interface WithdrawalDetailFooterProps {
-  status: string
+  status?: string
   onClose: () => void
+  withdrawalId: number
 }
 export function WithdrawalDetailFooter({
-  status,
+  //status,
+  withdrawalId,
   onClose,
 }: WithdrawalDetailFooterProps) {
+  const queryClient = useQueryClient()
+
+  const RestoreUserMutation = useMutateQuery<string, number>({
+    url: SERVICE_URLS.ACCOUNTS.ACTIVATE(withdrawalId!),
+    method: 'post',
+    onSuccess: () => {
+      alert('회원 복구가 완료되었습니다.')
+      onClose()
+      queryClient.invalidateQueries({ queryKey: ['users-list'], exact: false })
+    },
+  })
+
   const handleUserRecovery = () => {
-    if (status === 'active') {
-      alert('회원입니다')
-    } else if (status === 'deactive') {
-      alert('비활성입니다')
-    } else {
-      alert('탈퇴요청입니다')
-    }
+    RestoreUserMutation.mutate(withdrawalId)
   }
   return (
     <div className="flex w-full items-center justify-end">

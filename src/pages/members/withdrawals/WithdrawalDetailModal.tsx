@@ -23,7 +23,6 @@ export function WithdrawalDetailModal({
     data: user,
     isLoading,
     error,
-    // refetch,
   } = useFetchQuery<WithDrawDetailInfo>({
     queryKey: ['withdrawal-detail', withdrawalId],
     url: SERVICE_URLS.WITHDRAWALS.DETAIL(withdrawalId || 0),
@@ -33,11 +32,8 @@ export function WithdrawalDetailModal({
     refetchOnWindowFocus: false,
   })
 
-  console.log('📌 API 응답:', user)
-
   const [_sisWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false)
 
-  // const queryClient = useQueryClient()
   const [form, setForm] = useState<WithDrawwDetailFormType>({
     id: withdrawalId ?? 0,
     email: '',
@@ -76,49 +72,6 @@ export function WithdrawalDetailModal({
     })
   }, [user])
 
-  // useEffect(() => {
-
-  //   if (!isDeleteModalOpen) {
-  //     setIsDeleteModalOpen(false)
-  //   }
-  // }, [isOpen, isDeleteModalOpen, user])
-
-  // const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = e.target
-
-  //   setForm((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }))
-  // }
-
-  // const handleUserDelete = () => {
-  //   deleteUserMutation.mutate({})
-  // }
-
-  // const deleteUserMutation = useMutateQuery({
-  //   url: SERVICE_URLS.ACCOUNTS.DELETE(userId!),
-  //   method: 'delete',
-  //   onSuccess: () => {
-  //     alert('회원 삭제가 완료되었습니다.')
-
-  //     onClose()
-  //     queryClient.invalidateQueries({ queryKey: ['users-list'], exact: false })
-  //   },
-  // })
-
-  // const updateUserMutation = useMutateQuery({
-  //   url: SERVICE_URLS.WITHDRAWALS.DETAIL(userId!),
-  //   method: 'postForm',
-  //   onSuccess: () => {
-  //     alert('회원 정보가 수정되었습니다.')
-  //     refetch()
-  //     queryClient.invalidateQueries({ queryKey: ['users-list'], exact: false })
-  //   },
-  // })
-
-  // const { isAdmin } = useAuthRole()
-
   if (!isOpen || !withdrawalId) return null
   if (isLoading) return <div>회원 정보를 로딩 중입니다...</div>
   if (error) return <div>에러가 났습니다</div>
@@ -132,14 +85,15 @@ export function WithdrawalDetailModal({
       contentClassName="h-130 overflow-y-auto"
       topCloseButton
       footerClassName="bg-[#F9FAFB]"
-      footer={<WithdrawalDetailFooter onClose={onClose} status={form.status} />}
-    >
-      {user && (
-        <WithdrawalDetailForm
-          form={form}
-          // handleFormChange={handleFormChange}
+      footer={
+        <WithdrawalDetailFooter
+          onClose={onClose}
+          status={form.status}
+          withdrawalId={withdrawalId}
         />
-      )}
+      }
+    >
+      {user && <WithdrawalDetailForm form={form} />}
     </Modal>
   )
 }

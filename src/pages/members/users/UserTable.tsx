@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { useState } from 'react'
 
 import { FilterBar } from '@/components/common/filter'
@@ -107,14 +106,7 @@ export default function UserTable() {
     ? [...data.results].sort((a, b) => a.id - b.id)
     : []
   if (isLoading) return <div>Loading</div>
-  if (axios.isAxiosError(error)) {
-    // eslint-disable-next-line no-console
-    console.log(error.response?.status)
-    // eslint-disable-next-line no-console
-    console.log(error.response?.data)
-    // eslint-disable-next-line no-console
-    console.log(error.message)
-  }
+
   return (
     <div className="space-y-4 p-6">
       <FilterBar
