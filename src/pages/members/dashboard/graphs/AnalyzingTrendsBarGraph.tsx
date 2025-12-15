@@ -11,7 +11,6 @@ import {
 import { Empty } from '@/components/common/Empty'
 import { ErrorMessage } from '@/components/common/ErrorMessage'
 import { Loading } from '@/components/common/Loading'
-import { RenderSwitch } from '@/components/common/RenderSwitch'
 import { useFetchQuery } from '@/hooks/useFetchQuery'
 import type {
   ApiItem,
@@ -42,15 +41,12 @@ export default function AnalyzingTrendsBarGraph({
       }))
     : []
 
+  if (isLoading) return <Loading />
+  if (error) return <ErrorMessage />
+  if (!mappedData.length) return <Empty />
+
   return (
     <div className="border-box mx-auto flex w-full flex-col">
-      <RenderSwitch
-        cases={[
-          { when: isLoading, render: <Loading /> },
-          { when: error !== null, render: <ErrorMessage /> },
-          { when: !mappedData?.length, render: <Empty /> },
-        ]}
-      />
       {title && (
         <h2 className="mb-7 text-lg font-semibold text-gray-800">{title}</h2>
       )}

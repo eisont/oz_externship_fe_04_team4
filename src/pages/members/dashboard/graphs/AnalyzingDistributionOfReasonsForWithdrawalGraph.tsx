@@ -12,7 +12,6 @@ import type { Payload } from 'recharts/types/component/DefaultTooltipContent'
 import { Empty } from '@/components/common/Empty'
 import { ErrorMessage } from '@/components/common/ErrorMessage'
 import { Loading } from '@/components/common/Loading'
-import { RenderSwitch } from '@/components/common/RenderSwitch'
 import { useFetchQuery } from '@/hooks/useFetchQuery'
 import type {
   CustomLegendItem,
@@ -80,65 +79,59 @@ export default function AnalyzingDistributionOfReasonsForWithdrawalGraph({
     value: item.value,
   }))
 
+  if (isLoading) return <Loading />
+  if (error) return <ErrorMessage />
+  if (!mappedData.length) return <Empty />
   return (
-    <>
-      <RenderSwitch
-        cases={[
-          { when: isLoading, render: <Loading /> },
-          { when: error !== null, render: <ErrorMessage /> },
-          { when: !mappedData?.length, render: <Empty /> },
-        ]}
-      />
-      <div className="border-box mx-auto flex w-full flex-col">
-        {title && (
-          <h2 className="mb-7 text-lg font-semibold text-gray-800">{title}</h2>
-        )}
+    <div className="border-box mx-auto flex w-full flex-col">
+      {title && (
+        <h2 className="mb-7 text-lg font-semibold text-gray-800">{title}</h2>
+      )}
 
-        <div style={{ width: '100%', height }}>
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={pieData}
-                dataKey="value"
-                nameKey="label"
-                cx="50%"
-                cy="50%"
-                innerRadius="50%"
-                outerRadius="80%"
-                fill="#82ca9d"
-                label={({ value }) => `${value}%`}
-                isAnimationActive={isAnimationActive}
-                paddingAngle={4}
-              >
-                {pieData.map((_, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Legend
-                align="right"
-                layout="vertical"
-                verticalAlign="middle"
-                iconType="circle"
-                content={() => (
-                  <CustomLegend items={mappedData} colors={COLORS} />
-                )}
-              />
-              <Tooltip
-                formatter={(
-                  value: number,
-                  _name: string,
-                  props: Payload<number, string>
-                ) => {
-                  return [`${value}%`, props.payload?.label ?? '']
-                }}
-              />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
+      <div style={{ width: '100%', height }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              data={pieData}
+              dataKey="value"
+              nameKey="label"
+              cx="50%"
+              cy="50%"
+              innerRadius="50%"
+              outerRadius="80%"
+              fill="#82ca9d"
+              label={({ value }) => `${value}%`}
+              isAnimationActive={isAnimationActive}
+              paddingAngle={4}
+            >
+              {pieData.map((_, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+            <Legend
+              align="right"
+              layout="vertical"
+              verticalAlign="middle"
+              iconType="circle"
+              content={() => (
+                <CustomLegend items={mappedData} colors={COLORS} />
+              )}
+            />
+            <Tooltip
+              formatter={(
+                value: number,
+                _name: string,
+                props: Payload<number, string>
+              ) => {
+                return [`${value}%`, props.payload?.label ?? '']
+              }}
+            />
+          </PieChart>
+        </ResponsiveContainer>
       </div>
-    </>
+    </div>
   )
 }
