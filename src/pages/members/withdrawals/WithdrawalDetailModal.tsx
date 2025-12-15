@@ -67,8 +67,12 @@ export function WithdrawalDetailModal({
       profile_img_url: member.profile_img_url,
       reason: user.reason,
       reason_detail: user.reason_detail,
-      withdrawn_at: user.withdrawn_at,
-      due_date: user.due_date,
+      withdrawn_at: user.withdrawn_at
+        ? dayjs(user.withdrawn_at).locale('ko').format('YYYY. M. D. A h:mm:ss')
+        : '',
+      due_date: user.due_date
+        ? dayjs(user.due_date).locale('ko').format('YYYY. M. D. A h:mm:ss')
+        : '',
     })
   }, [user])
 
