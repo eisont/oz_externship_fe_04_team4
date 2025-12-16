@@ -1,11 +1,10 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { createJSONStorage, persist } from 'zustand/middleware'
 
 import type { CreateLoginResponse } from '@/types/api/response'
 
 type AuthState = {
   accessToken: string | null
-  refreshToken: string | null
   user: CreateLoginResponse['user'] | null
   isLoggedIn: boolean
   setAuth: (payload: CreateLoginResponse) => void
@@ -22,11 +21,10 @@ export const useAuthStore = create<AuthState>()(
       setAuth: (payload) =>
         set({
           accessToken: payload.access_token,
-          refreshToken: payload.refresh_token,
           user: payload.user,
           isLoggedIn: true,
         }),
     }),
-    { name: 'admin-auth' }
+    { name: 'admin-auth', storage: createJSONStorage(() => sessionStorage) }
   )
 )
