@@ -83,7 +83,6 @@ export function UserDetailRight({
         className="cursor-default"
         value={form.role}
       />
-
       <UserDetailChangeRole
         setRole={setRole}
         isRoleModalOpen={isRoleModalOpen}

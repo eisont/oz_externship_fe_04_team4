@@ -127,7 +127,6 @@ export function UserDetailLeft({
             >
               <option value="active">활성</option>
               <option value="inactive">비활성</option>
-              <option value="withdraw">탈퇴</option>
             </select>
             <span className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-gray-400">
               <ChevronDown size={12} />
