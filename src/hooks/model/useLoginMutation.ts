@@ -16,7 +16,7 @@ export function useLoginMutation(
   const setAuth = useAuthStore((state) => state.setAuth)
 
   return useMutateQuery<CreateLoginResponse, CreateLoginBody>({
-    url: SERVICE_URLS.LOGIN,
+    url: SERVICE_URLS.ACCOUNTS.LOGIN,
     method: 'post',
     ...options,
     onSuccess: (data, variables, context, mutation) => {

@@ -1,9 +1,6 @@
 import { ADMIN_TEXT } from '@/config/api'
 
 export const SERVICE_URLS = {
-  // 로그인
-  LOGIN: `/login`,
-
   // 회원 관리
   ACCOUNTS: {
     LOGIN: `/accounts/login`,
