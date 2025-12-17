@@ -8,7 +8,7 @@ import { adminHandlers } from './adminHandlers'
 type LoginRequestBody = { email: string; password: string }
 
 const loginHandler = http.post(
-  `${API_URL}accounts/login`,
+  `${API_URL}/accounts/login`,
   async ({ request }) => {
     const body = (await request.json()) as LoginRequestBody
 
