@@ -26,7 +26,7 @@ export function useUserProfileImage(validateField: ValidateField) {
     setError('')
     setFile(file)
     setPreview(URL.createObjectURL(file))
-    validateField('profile_img', file)
+    validateField('profile_img_url', file)
   }
 
   const resetImage = () => {
