@@ -13,6 +13,7 @@ import { useAuthRole } from '@/hooks/useAuthRole'
 import { useFetchQuery } from '@/hooks/useFetchQuery'
 import { useMutateQuery } from '@/hooks/useMutateQuery'
 import { USER_API_ERROR_MESSAGE } from '@/pages/members/users/api/userErrorMessageMap'
+import { useS3Upload } from '@/pages/members/users/hook/s3UploadService'
 import { useUserDetailForm } from '@/pages/members/users/hook/useUserDetailForm'
 import { userUpdateSchema } from '@/pages/members/users/schema/userUpdateSchema'
 import { UserDetailFooter } from '@/pages/members/users/UserDetailFooter'
@@ -35,7 +36,6 @@ export function UserDetailModal({
   const [isRoleModalOpen, setIsRoleModalOpen] = useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [profileImg, setProfileImg] = useState<string>('')
-  const [file, setFile] = useState<File | null>(null)
   const [role, setRole] = useState('')
 
   useEffect(() => {
@@ -66,11 +66,10 @@ export function UserDetailModal({
   }, [user?.profile_img_url])
   const updateUserMutation = useMutateQuery({
     url: SERVICE_URLS.ACCOUNTS.DETAIL(userId!),
-    method: 'patchForm',
+    method: 'patch',
     onSuccess: () => {
       alert('회원 정보가 수정되었습니다.')
       setIsEditMode(false)
-      setFile(null)
       queryClient.invalidateQueries({
         queryKey: ['user-detail', userId],
       })
@@ -95,7 +94,6 @@ export function UserDetailModal({
     if (!isOpen) {
       setIsEditMode(false)
       setProfileImg('')
-      setFile(null)
     }
     if (!isRoleModalOpen) {
       setRole('')
@@ -109,16 +107,39 @@ export function UserDetailModal({
 
   const MAX_FILE_SIZE = 10 * 1024 * 1024
 
+  const { mutateAsync: uploadToS3 } = useS3Upload()
+
   const handleImgChange = async (
     e: React.ChangeEvent<HTMLInputElement>
   ): Promise<void> => {
     const file = e.target.files?.[0]
     if (!file) return
 
+    //  파일 사이즈 검증
     if (file.size > MAX_FILE_SIZE) {
       alert('프로필 사진은 10MB 이하만 업로드 가능합니다.')
       e.target.value = ''
       return
+    }
+
+    try {
+      // S3 업로드 (presigned → put → file_url 반환)
+      const fileUrl = await uploadToS3(file)
+
+      //  미리보기 or form 상태 반영
+      setProfileImg(fileUrl)
+
+      //  form에 저장하는 경우
+      setForm((prev) => ({
+        ...prev,
+        profile_img_url: fileUrl,
+      }))
+    } catch (error) {
+      // useMutation onError도 타지만, UI 보호용
+      console.error('이미지 업로드 실패', error)
+    } finally {
+      // 같은 파일 재선택 가능하게 초기화
+      e.target.value = ''
     }
   }
   const handleUserDelete = () => {
@@ -135,7 +156,7 @@ export function UserDetailModal({
       nickname: form.nickname,
       phone_number: form.phone,
       status: form.status,
-      profile_img: file ?? undefined,
+      profile_img_url: profileImg || undefined,
     })
 
     if (!parsed.success) {
