@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 import { useEffect, useState } from 'react'
-=======
-import { useState } from 'react'
->>>>>>> Stashed changes
 
 import { handleApiError } from '@/api/handleApiError'
 import { FilterBar } from '@/components/common/filter'
@@ -117,10 +113,7 @@ export default function UserTable() {
   const sortedResults = data?.results
     ? [...data.results].sort((a, b) => a.id - b.id)
     : []
-<<<<<<< Updated upstream
-=======
   if (isLoading) return <div>Loading</div>
->>>>>>> Stashed changes
   return (
     <div className="space-y-4 p-6">
       <FilterBar
