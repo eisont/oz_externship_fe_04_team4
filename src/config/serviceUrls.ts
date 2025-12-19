@@ -7,6 +7,7 @@ export const SERVICE_URLS = {
   // 회원 관리
   ACCOUNTS: {
     LOGIN: `/accounts/login`,
+    REFRESH: '/accounts/token/refresh',
     ME: `/accounts/me`,
     LIST: `${ADMIN_TEXT}/account`,
     DETAIL: (accountId: number) => `${ADMIN_TEXT}/account/${accountId}`,
