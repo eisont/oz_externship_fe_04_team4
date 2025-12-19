@@ -4,7 +4,6 @@ import 'dayjs/locale/ko'
 import { useEffect, useState } from 'react'
 
 import { handleApiError } from '@/api/handleApiError'
-import { ErrorMessage } from '@/components/common/ErrorMessage'
 import { Loading } from '@/components/common/Loading'
 import Modal from '@/components/common/Modal'
 import { ROLE_LABEL } from '@/config/role'
@@ -170,9 +169,6 @@ export function UserDetailModal({
   const { isAdmin } = useAuthRole()
   if (isLoading) return <Loading label="회원 정보를 로딩 중입니다..." />
   if (!isOpen) return null
-  if (Object.keys(errors).length > 0) {
-    return <ErrorMessage>에러가 났습니다.</ErrorMessage>
-  }
   return (
     <Modal
       isOpen={isOpen}
