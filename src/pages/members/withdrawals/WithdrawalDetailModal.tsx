@@ -2,19 +2,15 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/ko'
 import { useEffect, useState } from 'react'
 
-import { handleApiError } from '@/api/handleApiError'
 import { ErrorMessage } from '@/components/common/ErrorMessage'
 import { Loading } from '@/components/common/Loading'
 import Modal from '@/components/common/Modal'
 import { ROLE_LABEL } from '@/config/role'
-import { SERVICE_URLS } from '@/config/serviceUrls'
 import { STATUS_LABEL } from '@/config/status'
-import { useFetchQuery } from '@/hooks/useFetchQuery'
-import { WITHDRAWALS_API_ERROR_MESSAGE } from '@/pages/members/withdrawals/api/withdrawalsErrorMessageMap'
+import { useWithdrawalsDetail } from '@/pages/members/withdrawals/hook/useWithdrawalsDetail'
 import { WithdrawalDetailFooter } from '@/pages/members/withdrawals/WithdrawalDetailFooter'
 import { WithdrawalDetailForm } from '@/pages/members/withdrawals/WithdrawalDetailForm'
 import type {
-  WithDrawDetailInfo,
   WithDrawDetailModalProps,
   WithDrawwDetailFormType,
 } from '@/pages/types/withdraw'
@@ -27,19 +23,8 @@ export function WithdrawalDetailModal({
     data: user,
     isLoading,
     error,
-  } = useFetchQuery<WithDrawDetailInfo>({
-    queryKey: ['withdrawal-detail', withdrawalId],
-    url: SERVICE_URLS.WITHDRAWALS.DETAIL(withdrawalId || 0),
-    enabled: !!withdrawalId && isOpen,
-    staleTime: 60 * 1000,
-    gcTime: 5 * 60 * 1000,
-    refetchOnWindowFocus: false,
-  })
-  useEffect(() => {
-    if (error) {
-      handleApiError(error, WITHDRAWALS_API_ERROR_MESSAGE.detail)
-    }
-  }, [error])
+  } = useWithdrawalsDetail(withdrawalId, isOpen)
+
   const [form, setForm] = useState<WithDrawwDetailFormType>({
     id: withdrawalId ?? 0,
     email: '',
