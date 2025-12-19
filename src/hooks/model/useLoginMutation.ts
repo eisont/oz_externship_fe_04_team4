@@ -1,18 +1,14 @@
-import { type UseMutationOptions } from '@tanstack/react-query'
+import { useQueryClient, type UseMutationOptions } from '@tanstack/react-query'
 
 import { SERVICE_URLS } from '@/config/serviceUrls'
 import { useMutateQuery } from '@/hooks/useMutateQuery'
 import { useAuthStore } from '@/store/authStore'
-import type { CreateLoginResponse } from '@/types/api/response'
-
-type CreateLoginBody = {
-  email: string
-  password: string
-}
+import type { CreateLoginBody, CreateLoginResponse } from '@/types/api/response'
 
 export function useLoginMutation(
   options?: UseMutationOptions<CreateLoginResponse, Error, CreateLoginBody>
 ) {
+  const queryClient = useQueryClient()
   const setAuth = useAuthStore((state) => state.setAuth)
 
   return useMutateQuery<CreateLoginResponse, CreateLoginBody>({
@@ -21,6 +17,8 @@ export function useLoginMutation(
     ...options,
     onSuccess: (data, variables, context, mutation) => {
       setAuth(data)
+
+      queryClient.invalidateQueries({ queryKey: ['accountMe'] })
 
       if (options?.onSuccess) {
         options.onSuccess(data, variables, context, mutation)
