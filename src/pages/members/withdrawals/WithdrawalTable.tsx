@@ -48,7 +48,6 @@ export default function WithdrawalTable() {
       page: filters.page,
       page_size: 10,
       search: filters.search,
-      status: filters.status,
       role: filters.role,
       reason: filters.reason,
       sort: filters.sort,

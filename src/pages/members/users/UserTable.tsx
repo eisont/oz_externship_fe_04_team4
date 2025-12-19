@@ -38,12 +38,14 @@ const COLUMNS: Column<UserApiRawItem>[] = [
     header: '권한',
     width: '110px',
     render: (value: RoleType) => getRole(value),
+    align: 'center',
   },
   {
     key: 'status',
     header: '상태',
     width: '110px',
     render: (value: StatusType) => getStatus(value),
+    align: 'center',
   },
   {
     key: 'created_at',

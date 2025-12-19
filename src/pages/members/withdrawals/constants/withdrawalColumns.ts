@@ -11,14 +11,14 @@ export const WITHDRAWAL_COLUMNS: Column<WithdrawalsApiRawItem>[] = [
     key: 'id',
     header: '탈퇴요청 ID',
     width: '130px',
-    sortable: { asc: 'id_asc', desc: 'id_desc' },
+    sortable: { asc: 'oldest', desc: 'latest' },
   },
   { key: 'email', header: '이메일', width: '160px' },
   {
     key: 'name',
     header: '이름',
     width: '80px',
-    sortable: { asc: 'name_asc', desc: 'name_desc' },
+    align: 'center',
   },
   {
     key: 'role',
@@ -43,6 +43,6 @@ export const WITHDRAWAL_COLUMNS: Column<WithdrawalsApiRawItem>[] = [
     width: '200px',
     render: (value: string) =>
       dayjs(value).locale('ko').format('YYYY. M. D. A h:mm:ss'),
-    sortable: { asc: 'withdrawn_asc', desc: 'withdrawn_desc' },
+    sortable: { asc: 'oldest', desc: 'latest' },
   },
 ]
