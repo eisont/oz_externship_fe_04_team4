@@ -1,63 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-import { handleApiError } from '@/api/handleApiError'
 import { FilterBar } from '@/components/common/filter'
-import {
-  Table,
-  type Column,
-  type PaginationResponse,
-} from '@/components/common/table'
-import type { RoleType } from '@/config/role'
-import { SERVICE_URLS } from '@/config/serviceUrls'
-import type { StatusType } from '@/config/status'
+import { Table } from '@/components/common/table'
 import { useTableFilters } from '@/hooks'
-import { useFetchQuery } from '@/hooks/useFetchQuery'
-import { USER_API_ERROR_MESSAGE } from '@/pages/members/users/api/userErrorMessageMap'
+import { USER_COLUMNS } from '@/pages/members/users/constants/userColumns'
+import {
+  ROLE_FILTER_OPTIONS,
+  STATUS_FILTER_OPTIONS,
+} from '@/pages/members/users/constants/userFilters'
+import { useUserTable } from '@/pages/members/users/hook/useUserTable'
 import { UserDetailModal } from '@/pages/members/users/UserDetailModal'
-import { getRole } from '@/pages/members/withdrawals/utils/getRole'
-import { getStatus } from '@/pages/members/withdrawals/utils/getStatus'
 import type { UserApiRawItem } from '@/pages/types/users'
-import { formatDateTime } from '@/utils'
-
-const COLUMNS: Column<UserApiRawItem>[] = [
-  { key: 'id', header: '회원 ID', width: '100px' },
-  { key: 'email', header: '이메일', width: '160px' },
-  { key: 'nickname', header: '닉네임', width: '120px' },
-  {
-    key: 'name',
-    header: '이름',
-    width: '90px',
-  },
-  {
-    key: 'birthday',
-    header: '생년월일',
-    width: '120px',
-  },
-  {
-    key: 'role',
-    header: '권한',
-    width: '110px',
-    render: (value: RoleType) => getRole(value),
-  },
-  {
-    key: 'status',
-    header: '상태',
-    width: '110px',
-    render: (value: StatusType) => getStatus(value),
-  },
-  {
-    key: 'created_at',
-    header: '가입일',
-    width: '120px',
-    render: (value: string) => formatDateTime(value),
-  },
-  {
-    key: 'withdraw_at',
-    header: '탈퇴요청일',
-    width: '120px',
-    render: (value: string) => formatDateTime(value),
-  },
-]
 
 export default function UserTable() {
   const {
@@ -79,27 +32,7 @@ export default function UserTable() {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedUser, setSelectedUser] = useState<number | null>(null)
-
-  const { data, isLoading, error, refetch } = useFetchQuery<
-    PaginationResponse<UserApiRawItem>
-  >({
-    queryKey: ['users-list', filters],
-    url: SERVICE_URLS.ACCOUNTS.LIST,
-    params: {
-      page: filters.page,
-      page_size: 10,
-      search: filters.search,
-      status: filters.status,
-      role: filters.role,
-      sort: filters.sort,
-    },
-  })
-
-  useEffect(() => {
-    if (error) {
-      handleApiError(error, USER_API_ERROR_MESSAGE.list)
-    }
-  }, [error])
+  const { data, isLoading, error, refetch } = useUserTable(filters)
 
   const handleRowClick = (user: UserApiRawItem) => {
     setSelectedUser(user.id)
@@ -126,22 +59,14 @@ export default function UserTable() {
         filters={[
           {
             label: '상태',
-            options: [
-              { label: '활성', value: 'active' },
-              { label: '비활성', value: 'inactive' },
-              { label: '탈퇴요청', value: 'withdrew' },
-            ],
+            options: STATUS_FILTER_OPTIONS,
             value: filters.status,
             onChange: (value) => updateFilter('status', value),
             placeholder: '상태',
           },
           {
             label: '권한',
-            options: [
-              { label: '관리자', value: 'admin' },
-              { label: '스태프', value: 'staff' },
-              { label: '일반회원', value: 'user' },
-            ],
+            options: ROLE_FILTER_OPTIONS,
             value: filters.role,
             onChange: (value) => updateFilter('role', value),
             placeholder: '권한',
@@ -150,7 +75,7 @@ export default function UserTable() {
       />
       <div className="border-t border-gray-200" />
       <Table
-        columns={COLUMNS}
+        columns={USER_COLUMNS}
         response={
           data
             ? { ...data, results: sortedResults }

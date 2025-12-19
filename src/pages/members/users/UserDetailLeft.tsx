@@ -38,8 +38,10 @@ export function UserDetailLeft({
   // Zod 검증을 먼저 확인
 
   useEffect(() => {
-    setOriginalNickname(form.nickname)
-  }, [form.nickname])
+    if (isEditMode) {
+      setOriginalNickname(form.nickname)
+    }
+  }, [isEditMode]) // eslint-disable-line
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const onlyNumbers = e.target.value.replace(/\D/g, '')
