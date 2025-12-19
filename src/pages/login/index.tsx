@@ -29,6 +29,18 @@ export default function Login() {
     },
   })
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const formData = new FormData(e.currentTarget)
+    const email = formData.get('email')
+    const password = formData.get('password')
+
+    if (typeof email !== 'string' || typeof password !== 'string') return
+
+    mutate({ email, password })
+  }
+
   useEffect(() => {
     if (!didLogin) return
     if (!role) return
@@ -44,18 +56,6 @@ export default function Login() {
       alert('관리자 페이지는 admin 및 staff 계정만 접근 가능합니다.')
     }
   }, [didLogin, role, navigate, from, clearAuth])
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    const formData = new FormData(e.currentTarget)
-    const email = formData.get('email')
-    const password = formData.get('password')
-
-    if (typeof email !== 'string' || typeof password !== 'string') return
-
-    mutate({ email, password })
-  }
 
   return (
     <div className="flex items-center justify-between">

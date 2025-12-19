@@ -1,47 +1,99 @@
-import axios, { AxiosError } from 'axios'
+import axios, { AxiosError, type AxiosRequestConfig } from 'axios'
 
 import { API_URL } from '@/config/api'
+import { SERVICE_URLS } from '@/config/serviceUrls'
 import { useAuthStore } from '@/store/authStore'
+
+const refreshClient = axios.create({
+  baseURL: API_URL,
+  withCredentials: true,
+  headers: { 'Content-Type': 'application/json' },
+})
+
+let refreshPromise: Promise<string> | null = null
+
+async function refreshAccessToken(): Promise<string> {
+  const token = useAuthStore.getState().accessToken
+  if (!token) {
+    throw new AxiosError('토큰이 없어 refresh 불가')
+  }
+
+  const res = await refreshClient.post<{ accessToken: string }>(
+    SERVICE_URLS.ACCOUNTS.REFRESH,
+    undefined,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
+  return res.data.accessToken
+}
 
 export const axiosInstance = axios.create({
   baseURL: API_URL,
   timeout: 10000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  withCredentials: true,
+  headers: { 'Content-Type': 'application/json' },
 })
 
-axiosInstance.interceptors.request.use(
-  (config) => {
-    if (config.url?.includes('login')) return config
-    const token = useAuthStore.getState().accessToken
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
-    }
-    return config
-  },
-  (error) => {
-    return Promise.reject(error)
+axiosInstance.interceptors.request.use((config) => {
+  const isAuthFree =
+    config.url?.includes(SERVICE_URLS.ACCOUNTS.LOGIN) ||
+    config.url?.includes(SERVICE_URLS.ACCOUNTS.REFRESH)
+
+  if (isAuthFree) return config
+
+  const token = useAuthStore.getState().accessToken
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
   }
-)
+  return config
+})
 
 axiosInstance.interceptors.response.use(
-  (response) => {
-    if (response.status !== 200 && !response.data) {
-      return Promise.reject(new AxiosError('서버 응답이 올바르지 않습니다'))
-    }
-    // Table 컴포넌트의 데이터 형식 추가 ... response.results << API 명세서 컨벤션에 맞춤
-    if (response.data && 'count' in response.data) {
-      if (!('results' in response.data)) {
-        return Promise.reject(
-          new AxiosError('[Axios] Pagination 응답값에 results 값이 없습니다.')
-        )
-      }
+  (response) => response,
+  async (error) => {
+    const status = error.response?.status
+    const originalConfig = error.config as AxiosRequestConfig & {
+      _retry?: boolean
     }
 
-    return response
-  },
-  (error) => {
-    return Promise.reject(error)
+    if (!originalConfig) return Promise.reject(error)
+
+    const url = originalConfig.url ?? ''
+
+    const isAuthFree =
+      url.includes(SERVICE_URLS.ACCOUNTS.LOGIN) ||
+      url.includes(SERVICE_URLS.ACCOUNTS.REFRESH)
+
+    if (status !== 401 || isAuthFree) return Promise.reject(error)
+
+    if (originalConfig._retry) {
+      useAuthStore.getState().clearAuth()
+      return Promise.reject(error)
+    }
+    originalConfig._retry = true
+
+    try {
+      if (!refreshPromise) {
+        refreshPromise = refreshAccessToken().finally(() => {
+          refreshPromise = null
+        })
+      }
+
+      const newAccessToken = await refreshPromise
+      useAuthStore.getState().setAccessToken(newAccessToken)
+
+      originalConfig.headers = {
+        ...(originalConfig.headers ?? {}),
+        Authorization: `Bearer ${newAccessToken}`,
+      }
+
+      return axiosInstance(originalConfig)
+    } catch (refreshError) {
+      useAuthStore.getState().clearAuth()
+      return Promise.reject(refreshError)
+    }
   }
 )
