@@ -20,9 +20,7 @@ export function useLoginMutation(
 
       queryClient.invalidateQueries({ queryKey: QUERY_KEY.ACCOUNTS.ME })
 
-      if (options?.onSuccess) {
-        options.onSuccess(data, variables, context, mutation)
-      }
+      options?.onSuccess?.(data, variables, context, mutation)
     },
   })
 }

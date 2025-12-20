@@ -3,6 +3,16 @@ import axios, { AxiosError, type AxiosRequestConfig } from 'axios'
 import { API_URL, SERVICE_URLS } from '@/config'
 import { useAuthStore } from '@/store/authStore'
 
+function redirectToLogin() {
+  const loginPath = '/'
+  if (window.location.pathname === loginPath) return
+
+  const from = encodeURIComponent(
+    window.location.pathname + window.location.search
+  )
+  window.location.replace(`${loginPath}?from=${from}`)
+}
+
 const refreshClient = axios.create({
   baseURL: API_URL,
   withCredentials: true,
@@ -70,6 +80,7 @@ axiosInstance.interceptors.response.use(
 
     if (originalConfig._retry) {
       useAuthStore.getState().clearAuth()
+      redirectToLogin()
       return Promise.reject(error)
     }
     originalConfig._retry = true
@@ -92,6 +103,7 @@ axiosInstance.interceptors.response.use(
       return axiosInstance(originalConfig)
     } catch (refreshError) {
       useAuthStore.getState().clearAuth()
+      redirectToLogin()
       return Promise.reject(refreshError)
     }
   }
