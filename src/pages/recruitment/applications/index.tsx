@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Table } from '@/components/common/table'
-import { SERVICE_URLS } from '@/config/serviceUrls'
+import { QUERY_KEY, SERVICE_URLS } from '@/config'
 import { ApplicationColumns } from '@/features/application/columns'
 import ApplicationDetailModal from '@/features/application/ui/ApplicationDetailModal'
 import ApplicationFilter from '@/features/application/ui/ApplicationFilter'
@@ -24,7 +24,7 @@ export default function ApplicationManagementPage() {
 
   const { data, isLoading, error, refetch } =
     useFetchQuery<GetApplicationsListResponse>({
-      queryKey: ['applications', queryParams],
+      queryKey: [QUERY_KEY.APPLICATIONS.LIST, queryParams],
       url: SERVICE_URLS.APPLICATIONS.LIST,
       params: queryParams,
     })

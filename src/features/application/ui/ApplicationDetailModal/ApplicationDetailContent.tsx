@@ -3,8 +3,7 @@ import dayjs from 'dayjs'
 import type { ChangeEvent } from 'react'
 
 import { ApplicationStatusMediumBadge } from '@/components/common/badge'
-import { GENDER_LABEL } from '@/config/gender'
-import { SERVICE_URLS } from '@/config/serviceUrls'
+import { GENDER_LABEL, QUERY_KEY, SERVICE_URLS } from '@/config'
 import { useFetchQuery } from '@/hooks/useFetchQuery'
 import { tM } from '@/lib/twMerge'
 import { useApplicationDetailModalStore } from '@/store/application/useApplicationModalStore'
@@ -20,7 +19,7 @@ export default function ApplicationDetailContent() {
 
   const { data, isLoading, error } =
     useFetchQuery<GetApplicationsDetailResponse>({
-      queryKey: ['applicationDetail', application_id],
+      queryKey: [QUERY_KEY.APPLICATIONS.DETAIL, application_id],
       url: SERVICE_URLS.APPLICATIONS.DETAIL(application_id!),
     })
 

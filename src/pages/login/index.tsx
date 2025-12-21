@@ -29,6 +29,18 @@ export default function Login() {
     },
   })
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const formData = new FormData(e.currentTarget)
+    const email = formData.get('email')
+    const password = formData.get('password')
+
+    if (typeof email !== 'string' || typeof password !== 'string') return
+
+    mutate({ email, password })
+  }
+
   useEffect(() => {
     if (!didLogin) return
     if (!role) return
@@ -44,18 +56,6 @@ export default function Login() {
       alert('관리자 페이지는 admin 및 staff 계정만 접근 가능합니다.')
     }
   }, [didLogin, role, navigate, from, clearAuth])
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    const formData = new FormData(e.currentTarget)
-    const email = formData.get('email')
-    const password = formData.get('password')
-
-    if (typeof email !== 'string' || typeof password !== 'string') return
-
-    mutate({ email, password })
-  }
 
   return (
     <div className="flex items-center justify-between">
@@ -86,7 +86,9 @@ export default function Login() {
               className={INPUT_STYLE}
             />
             {error && (
-              <p className="mb-3 text-sm text-red-500">{error.message}</p>
+              <p className="mb-3 text-sm text-red-500">
+                {error.message && '아이디/비밀번호를 확인해주세요.'}
+              </p>
             )}
             <Button
               type="submit"
