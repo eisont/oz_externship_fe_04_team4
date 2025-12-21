@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
+import { AUTH_PERSIST_KEY } from '@/config'
 import type { CreateLoginResponse } from '@/types/api/response'
 
 type AuthState = {
@@ -37,7 +38,7 @@ export const useAuthStore = create<AuthState>()(
       },
     }),
     {
-      name: 'admin-auth',
+      name: AUTH_PERSIST_KEY,
       storage: createJSONStorage(() => sessionStorage),
     }
   )

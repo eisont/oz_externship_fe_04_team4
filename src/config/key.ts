@@ -13,3 +13,5 @@ export const QUERY_KEY = {
     DETAIL: ['application', 'detail'],
   },
 }
+
+export const AUTH_PERSIST_KEY = 'admin-auth'
