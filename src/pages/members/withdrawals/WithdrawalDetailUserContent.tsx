@@ -1,4 +1,5 @@
 import Input from '@/components/common/Input'
+import { GENDER_LABEL } from '@/config'
 import type { WithDrawwDetailFormType } from '@/pages/types/withdraw'
 
 type WithdrawalDetailUserContentProps = {
@@ -34,7 +35,7 @@ export function WithdrawalDetailUserContent({
       <div className="flex flex-col gap-6">
         <Input
           label="성별"
-          value={form.gender}
+          value={GENDER_LABEL[form.gender as 'M' | 'F']}
           editable={false}
           name="gender"
         />
