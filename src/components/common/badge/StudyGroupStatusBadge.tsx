@@ -19,7 +19,7 @@ export function StudyGroupStatusBadge({
   status,
   className,
 }: StudyGroupStatusBadgeProps) {
-  const baseClass = 'inline-block rounded px-2 py-1 text-xs'
+  const baseClass = 'inline-block rounded-full px-2 py-1 text-xs'
   const statusData = STUDY_GROUP_STYLES[status] || {
     desc: '-',
     style: 'bg-gray-100 text-gray-700',

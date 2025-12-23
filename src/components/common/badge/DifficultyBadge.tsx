@@ -15,7 +15,7 @@ export function DifficultyBadge({
   difficulty,
   className,
 }: DifficultyBadgeProps) {
-  const baseClass = 'inline-block rounded px-2 py-1 text-sm'
+  const baseClass = 'inline-block rounded-full px-2 py-1 text-sm'
 
   const { desc, style } = DIFFICULTY_CONFIG[difficulty || ''] || {
     desc: '-',

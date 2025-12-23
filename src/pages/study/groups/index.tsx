@@ -29,7 +29,7 @@ const COLUMNS: Column<StudyGroup>[] = [
   {
     key: 'name',
     header: '그룹명',
-    width: '300px',
+    width: '200px',
     sortable: {
       asc: 'name_asc',
       desc: 'name_desc',
@@ -38,13 +38,13 @@ const COLUMNS: Column<StudyGroup>[] = [
   {
     key: 'headcount',
     header: '인원 현황',
-    width: '150px',
+    width: '100px',
     render: (_, row) => `${row.current_headcount} / ${row.max_headcount}명`,
   },
   {
     key: 'duration',
     header: '스터디 기간',
-    width: '150px',
+    width: '300px',
     render: (_, row) =>
       `${formatDateTime(row.start_at)} ~ ${formatDateTime(row.end_at)}`,
   },
