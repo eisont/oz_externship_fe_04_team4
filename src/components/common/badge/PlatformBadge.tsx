@@ -11,7 +11,7 @@ const PLATFORM_STYLES: Record<string, string> = {
 }
 
 export function PlatformBadge({ platform, className }: PlatformBadgeProps) {
-  const baseClass = 'inline-block rounded px-2 py-1 text-xs'
+  const baseClass = 'inline-block rounded-full px-2 py-1 text-xs'
   const platformStyle = PLATFORM_STYLES[platform] || 'bg-gray-100 text-gray-700'
 
   return (
