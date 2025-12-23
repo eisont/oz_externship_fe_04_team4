@@ -50,7 +50,7 @@ export default function ReviewRating({
         {showNumber && (
           <span
             className={twMerge(
-              clsx('ml-1 text-sm font-medium text-[#111827]', numberClassName)
+              clsx('ml-1 text-xs font-normal text-[#111827]', numberClassName)
             )}
           >
             {Math.floor(value)} / 5
