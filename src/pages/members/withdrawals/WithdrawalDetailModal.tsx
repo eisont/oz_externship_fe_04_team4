@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { ErrorMessage } from '@/components/common/ErrorMessage'
 import { Loading } from '@/components/common/Loading'
 import Modal from '@/components/common/Modal'
+import { REASON_LABEL } from '@/config'
 import { ROLE_LABEL } from '@/config/role'
 import { STATUS_LABEL } from '@/config/status'
 import { useWithdrawalsDetail } from '@/pages/members/withdrawals/hook/useWithdrawalsDetail'
@@ -56,7 +57,7 @@ export function WithdrawalDetailModal({
         : '',
       status: STATUS_LABEL[member.status as keyof typeof STATUS_LABEL] ?? '',
       profile_img_url: member.profile_img_url,
-      reason: user.reason,
+      reason: REASON_LABEL[user.reason as keyof typeof REASON_LABEL],
       reason_detail: user.reason_detail,
       withdrawn_at: user.withdrawn_at
         ? dayjs(user.withdrawn_at).locale('ko').format('YYYY. M. D. A h:mm:ss')
