@@ -77,7 +77,7 @@ export type StudyGroupDetailLectures = {
   id: number
   title: string
   instructor: string
-  profile_img_url: string
+  thumbnail_img_url: string
   url_link: string
 }
 export type StudyGroupDetailMembers = {
