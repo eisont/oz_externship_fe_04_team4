@@ -1,0 +1,61 @@
+name: Sync upstream develop (mirror)
+
+on:
+  repository_dispatch:
+    types: [sync-upstream-develop]
+  workflow_dispatch:
+
+# GITHUB_TOKEN은 push에 쓰지 않음(권한/워크플로우 업데이트 제한 회피)
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-upstream-develop
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fork (no credentials)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Add upstream
+        run: |
+          git remote add upstream https://github.com/OZ-Coding-School/oz_externship_fe_04_team4.git || true
+          git remote set-url upstream https://github.com/OZ-Coding-School/oz_externship_fe_04_team4.git
+          git remote -v
+
+      - name: Fetch upstream
+        run: git fetch upstream --prune
+
+      - name: Mirror develop to upstream/develop
+        run: |
+          # develop 브랜치가 없으면 생성(포크 첫 세팅 대비)
+          if ! git show-ref --verify --quiet refs/heads/develop; then
+            git checkout -b develop
+          else
+            git checkout develop
+          fi
+
+          git reset --hard upstream/develop
+
+      - name: Force push to origin/develop (using PAT)
+        env:
+          PUSH_TOKEN: ${{ secrets.FORK_PUSH_PAT }}
+        run: |
+          if [ -z "$PUSH_TOKEN" ]; then
+            echo "Missing secret: FORK_PUSH_PAT"
+            exit 1
+          fi
+
+          git remote set-url origin https://x-access-token:${PUSH_TOKEN}@github.com/eisont/oz_externship_fe_04_team4.git
+          git push --force origin develop
